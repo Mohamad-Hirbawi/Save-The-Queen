@@ -3,8 +3,8 @@
 
 int main()
 {
-	GameController b;
-	b.run();
+	GameController c;
+	c.run();
 }
 //}
 //#include <SFML/Graphics.hpp>
