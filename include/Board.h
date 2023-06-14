@@ -12,16 +12,18 @@ class Board
 {
 public:
 	Board();
-	~Board(){}
+	~Board() {}
 	std::vector<std::string> getMap() const;
 	int getHeight()const;
 	int getWidth()const;
 	void draw(sf::RenderWindow& window);
 	void createStaticObject(char c, sf::Vector2f position);
 	void createMovingObject(char c, sf::Vector2f position);
-	
+
 
 	void checkCollision(MovingObject& thisObj, GameController& game, const sf::Time& deltaTime);
+
+	void changeStatic(Toolbar_t type, sf::Vector2f position);
 
 	void checkCollision(MovingObject& thisObj);//
 	std::unique_ptr<Prince> getPrince();//

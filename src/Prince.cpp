@@ -1,7 +1,7 @@
 #include "Prince.h"
 
 Prince::Prince(Toolbar_t symbol, sf::Vector2f position)
-	 :MovingObject(symbol, position), m_positionPrince(position){}
+	:MovingObject(symbol, position), m_positionPrince(position) {}
 
 //void Prince::handleCollision(Stair&, GameController&)
 //{
@@ -27,7 +27,7 @@ void Prince::handleCollision(Wall&, GameController&)
 
 void Prince::handleCollision(Coin&, GameController&)
 {
-
+	moveToPrevPos();
 }
 
 //void Prince::handleCollision(Coin&, GameController&)

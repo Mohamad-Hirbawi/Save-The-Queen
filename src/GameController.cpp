@@ -12,7 +12,7 @@ void GameController::run() {
 	//window.draw(m_gameWallp);
 	//window.display();
 
-	
+
 	while (window.isOpen()) {
 		window.clear();
 		window.draw(m_gameWallp);
@@ -49,14 +49,14 @@ void GameController::creatObject() {
 	//m_sprite.setTexture(m_pTexture);
 	//m_sprite.setScale(1.2, 1.3);
 	//m_cake = 0;
-	
+
 	if (!m_pTexture.loadFromFile("Background1.jpg"))
 		std::cout << "wrong";
 	m_gameWallp.setTexture(m_pTexture);
 	m_gameWallp.setScale(0.5, 0.5);
 	std::cout << "true";
 
-		
+
 	std::vector<std::string> boadrdmap = m_board.getMap();
 	sf::Vector2f position;
 	float xLoc, yLoc;
@@ -83,28 +83,28 @@ void GameController::creatObject() {
 			else   //moving object
 			{
 				m_board.createMovingObject(c, position);
-			
-			//	std::unique_ptr<MovingObject> movable = createMovingObject(c, position);
-			//	if (c != SHADOW_C)
-			//	{
-			//		m_pacman.push_back(std::move(movable));
-			//		m_initailPacmanLocation = position;
-			//	}
-			//	else
-			//	{
-			//		m_shadow.push_back(std::move(movable));
-			//		m_initailShadowsLocation.push_back(position);
-			//	}
+
+				//	std::unique_ptr<MovingObject> movable = createMovingObject(c, position);
+				//	if (c != SHADOW_C)
+				//	{
+				//		m_pacman.push_back(std::move(movable));
+				//		m_initailPacmanLocation = position;
+				//	}
+				//	else
+				//	{
+				//		m_shadow.push_back(std::move(movable));
+				//		m_initailShadowsLocation.push_back(position);
+				//	}
 			}
 		}
 	}
-	
+
 
 }
 
 bool GameController::isStaticObj(char c)
 {
-	if (c == WALL_C || c == STAIR_C|| c == COIN_C)
+	if (c == WALL_C || c == STAIR_C || c == COIN_C)
 		return true;
 	return false;
 
@@ -119,8 +119,14 @@ void GameController::move(sf::Time deltaTime)
 
 }
 
-void GameController::checkCollision(MovingObject& thisObj ,sf::Time deltaTime)
+void GameController::checkCollision(MovingObject& thisObj, sf::Time deltaTime)
 {
 	m_board.checkCollision(thisObj, *this, deltaTime); //check collisions with static objects
+
+}
+
+void GameController::ChangeStaticObj(Toolbar_t type, sf::Vector2f position)
+{
+	m_board.changeStatic(type, position);
 
 }

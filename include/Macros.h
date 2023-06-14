@@ -24,13 +24,13 @@ const int MUSIC_ICON_POS = 40;
 
 const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^',COIN_C = '*', EMPTY_C = ' ',
 CAKE_C = '*', GIFT_C = '$', GATE_C = 'D',
-KEY_C = '%',/* DWARFS_C = '^',*/ SHADOW_C = '&', SUPERPACMAN_C = '@';
+KEY_C = '%', SHADOW_C = '&', SUPERPACMAN_C = '@';
 
 
 enum  Toolbar_t
 {
 	PRINCE = 1, WALL, STAIR , COIN ,KEY, CAKE, GATE, GIFT,
-	GATEOPEN, SHADOW, SUPERPACMAN, NONE
+	GATEOPEN, SHADOW, NONE
 };
 
 // for caption

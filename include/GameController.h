@@ -13,6 +13,8 @@ public:
 
 	void run();
 	void creatObject();
+	void ChangeStaticObj(Toolbar_t type, sf::Vector2f position);
+
 private:
 	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;
@@ -24,6 +26,7 @@ private:
 	void move(sf::Time deltaTime);
 	sf::Texture m_pTexture;
 	void checkCollision(MovingObject& thisObj, sf::Time deltaTime);
+
 
 
 };

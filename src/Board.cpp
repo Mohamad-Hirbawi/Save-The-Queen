@@ -22,7 +22,7 @@ bool Board::readLvlMap() {
 	return true;
 
 }
-void Board::readLvlSize(){
+void Board::readLvlSize() {
 	std::string number;
 	this->m_read >> number;
 	if (m_read.eof())
@@ -125,4 +125,24 @@ void Board::checkCollision(MovingObject& thisObj, GameController& game, const sf
 		}
 	}
 
+}
+
+void Board::changeStatic(Toolbar_t type, sf::Vector2f position)
+{
+	for (auto& unmovable : m_staticObj)
+	{
+		if (unmovable != nullptr && unmovable->getposition() == position)
+		{
+			auto staticPtr = this->m_staticObj.begin();
+			for (; staticPtr != m_staticObj.end(); staticPtr++)
+			{
+				if ((*staticPtr)->getposition() == unmovable->getposition())
+				{
+					m_staticObj.erase(staticPtr);
+					break;
+				}
+			}
+		}
+
+	}
 }
