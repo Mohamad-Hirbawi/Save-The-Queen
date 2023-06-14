@@ -9,6 +9,7 @@ Caption::Caption()
 
 void Caption::startCaptions()
 {
+
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.02, WINDOW_HEIGHT * 0.9);
 	m_text.push_back(m_helpText);
 
@@ -26,11 +27,13 @@ void Caption::resetartCaptions()
 
 void Caption::drawCaptions(sf::RenderWindow& window)
 {
+
 	updateTime(0);
 	window.draw(m_text[1]);
 
 	m_text[0].setString("Score: " + std::to_string(m_score));
 	window.draw(m_text[0]);
+
 
 }
 
