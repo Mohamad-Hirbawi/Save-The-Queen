@@ -21,5 +21,5 @@ public:
 
 private:
 
-	sf::Vector2f m_positionPrince;
+	sf::Vector2f m_positionMonster;
 };

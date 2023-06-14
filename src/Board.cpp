@@ -139,7 +139,7 @@ void Board::changeStatic(Toolbar_t type, sf::Vector2f position)
 	{
 		if (unmovable != nullptr && unmovable->getposition() == position)
 		{
-			auto staticPtr = this->m_staticObj.begin();
+			auto staticPtr = m_staticObj.begin();
 			for (; staticPtr != m_staticObj.end(); staticPtr++)
 			{
 				if ((*staticPtr)->getposition() == unmovable->getposition())
