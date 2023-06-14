@@ -13,6 +13,7 @@ public:
 	void handleCollision(Object&, GameController&) override;
 	void handleCollision(Wall&, GameController&) override;
 	void handleCollision(Coin&, GameController&) override;
+	virtual void move(sf::Time deltaTime)override;
 
 private:
 	

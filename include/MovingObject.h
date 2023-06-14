@@ -10,7 +10,7 @@ public:
 	//void moveToPos(sf::Vector2f pos);
 	//bool outOfBounds() const;
 
-	void move(sf::Time deltaTime);
+	virtual void move(sf::Time deltaTime) = 0;
 
 	void moveToPrevPos();
 
