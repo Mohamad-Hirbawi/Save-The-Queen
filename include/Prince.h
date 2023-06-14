@@ -1,6 +1,5 @@
 #pragma once
 #include "MovingObject.h"
-#include <SFML/Graphics.hpp>
 
 class Prince : public MovingObject
 {

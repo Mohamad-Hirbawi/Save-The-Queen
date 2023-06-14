@@ -2,6 +2,7 @@
 #include "Macros.h"
 #include "Menu.h"
 #include "Board.h"
+#include "Caption.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -27,6 +28,6 @@ private:
 	sf::Texture m_pTexture;
 	void checkCollision(MovingObject& thisObj, sf::Time deltaTime);
 
-
+	Caption m_caption;
 
 };

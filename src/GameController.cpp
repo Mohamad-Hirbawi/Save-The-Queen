@@ -7,16 +7,13 @@ void GameController::run() {
 	m_menu.activateMenu(window);
 	creatObject();
 	m_timer.restart();
-
-	//window.clear();
-	//window.draw(m_gameWallp);
-	//window.display();
-
+	m_caption.resetartCaptions();
 
 	while (window.isOpen()) {
 		window.clear();
 		window.draw(m_gameWallp);
-		m_board.draw(window);
+		m_board.drawBoard(window);
+		m_caption.drawCaptions(window);
 
 		for (auto evnt = sf::Event(); window.pollEvent(evnt); )
 		{

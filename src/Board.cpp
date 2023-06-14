@@ -53,7 +53,7 @@ int Board::getWidth() const
 }
 
 // templete
-void Board::draw(sf::RenderWindow& window)
+void Board::drawBoard(sf::RenderWindow& window)
 {
 	for (int i = 0; i < m_staticObj.size(); i++)
 	{

@@ -6,17 +6,6 @@
 
 using std::vector;
 
-// icon names
-//enum  Toolbar_t
-//{
-//	PACMAN = 1, WALL , KEY, CAKE, GATE,GIFT,
-//	GATEOPEN ,SHADOW,SUPERPACMAN, NONE
-//};
-//  DWARFS_C 
-//const char PACMAN_C = 'a', WALL_C = '#', EMPTY_C = ' ', 
-//CAKE_C = '*', GIFT_C = '$', GATE_C = 'D',
-//KEY_C = '%',/* DWARFS_C = '^',*/ SHADOW_C = '&', SUPERPACMAN_C ='@';
-
 const int NUM_OF_ICONS = 9; // number of icons
 
 enum class Audioo
@@ -31,7 +20,7 @@ public:
 	~Textures();
 
 	static Textures& instance();
-	sf::Texture* getIcon(const Toolbar_t);;
+	sf::Texture* getIcon(const Toolbar_t);
 	sf::SoundBuffer* getSound(Audioo);
 	sf::Font* getFont();
 
