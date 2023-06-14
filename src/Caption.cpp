@@ -31,7 +31,7 @@ void Caption::resetartCaptions()
 
 void Caption::drawCaptions(sf::RenderWindow& window)
 {
-	m_textScore.setString("Score: " + std::to_string(m_score));
+	m_textScore.setString("Sc " + std::to_string(m_score));
 	window.draw(m_textScore);
 }
 
