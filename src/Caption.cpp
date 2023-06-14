@@ -12,10 +12,8 @@ void Caption::startCaptions()
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.02, WINDOW_HEIGHT * 0.9);
 	m_text.push_back(m_helpText);
 
-	m_stageTimeText.setFont(*Textures::instance().getFont());
-	m_stageTimeText.setCharacterSize(CAP_CHAR_SIZE);
-	m_stageTimeText.setPosition(WINDOW_WIDTH * 0.2, WINDOW_HEIGHT * 0.9);
-	m_stageTimeText.setFillColor(sf::Color::White);
+	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.2, WINDOW_HEIGHT * 0.9);
+	m_text.push_back(m_helpText);
 }
 
 
@@ -29,7 +27,7 @@ void Caption::resetartCaptions()
 void Caption::drawCaptions(sf::RenderWindow& window)
 {
 	updateTime(0);
-	window.draw(m_stageTimeText);
+	window.draw(m_text[1]);
 
 	m_text[0].setString("Score: " + std::to_string(m_score));
 	window.draw(m_text[0]);
@@ -44,9 +42,9 @@ void Caption::increaseScore(const int number)
 void Caption::updateTime(float time)
 {
 	m_stageTime += time;
-	m_stageTime -= this->m_Timer.getElapsedTime().asSeconds();
+	m_stageTime -= (m_Timer.getElapsedTime().asSeconds())/60;
 
-	m_stageTimeText.setString("Time left: " + std::to_string(m_stageTime));
+	m_text[1].setString("Time left: " + std::to_string(m_stageTime));
 	m_Timer.restart();
 }
 
