@@ -19,7 +19,7 @@ void Caption::startCaptions()
 	this->m_stageTimeText.setFont(*Textures::instance().getFont());
 	this->m_stageTimeText.setCharacterSize(CAP_CHAR_SIZE);
 	this->m_stageTimeText.setPosition(BUFF_DISTANCE + WINDOW_WIDTH / 4 * 3, WINDOW_HEIGHT + BUFF_DISTANCE);
-	this->m_stageTimeText.setFillColor(sf::Color::Blue);
+	this->m_stageTimeText.setFillColor(sf::Color::Red);
 	this->m_stageTimeText.setOutlineColor(sf::Color::Black);
 	this->m_stageTimeText.setOutlineThickness(CAP_OUTLINE_THICKNESS);
 }
