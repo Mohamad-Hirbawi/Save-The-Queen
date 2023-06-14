@@ -14,6 +14,7 @@ public:
 	void resetartCaptions();
 
 	void drawCaptions(sf::RenderWindow& window);
+	void increaseScore(const int number);
 
 private:
 	void startCaptions();

@@ -34,3 +34,4 @@ enum  Toolbar_t
 };
 
 // for caption
+const int EATCOIN = 1;

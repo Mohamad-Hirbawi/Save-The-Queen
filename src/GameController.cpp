@@ -127,3 +127,8 @@ void GameController::ChangeStaticObj(Toolbar_t type, sf::Vector2f position)
 	m_board.changeStatic(type, position);
 
 }
+
+void GameController::increaseScore(const int number)
+{
+	m_caption.increaseScore(number);
+}

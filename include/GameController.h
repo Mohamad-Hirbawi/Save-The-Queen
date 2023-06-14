@@ -15,6 +15,7 @@ public:
 	void run();
 	void creatObject();
 	void ChangeStaticObj(Toolbar_t type, sf::Vector2f position);
+	void increaseScore(const int number);
 
 private:
 	sf::Sprite m_gameWallp;

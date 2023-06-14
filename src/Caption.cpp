@@ -27,3 +27,8 @@ void Caption::drawCaptions(sf::RenderWindow& window)
 	m_textScore.setString("Score: " + std::to_string(m_score));
 	window.draw(m_textScore);
 }
+
+void Caption::increaseScore(const int number)
+{
+	m_score += number;
+}
