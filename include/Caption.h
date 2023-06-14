@@ -22,5 +22,6 @@ private:
 	int m_score;
 
 	sf::Text m_textScore;
+	sf::Text m_stageTimeText
 
 };

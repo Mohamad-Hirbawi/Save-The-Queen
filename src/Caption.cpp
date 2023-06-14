@@ -15,6 +15,13 @@ void Caption::startCaptions()
 	m_textScore.setFillColor(sf::Color::Blue);
 	m_textScore.setOutlineColor(sf::Color::Black);
 	m_textScore.setOutlineThickness(CAP_OUTLINE_THICKNESS);
+
+	this->m_stageTimeText.setFont(*Textures::instance().getFont());
+	this->m_stageTimeText.setCharacterSize(CAP_CHAR_SIZE);
+	this->m_stageTimeText.setPosition(BUFF_DISTANCE + WINDOW_WIDTH / 4 * 3, WINDOW_HEIGHT + BUFF_DISTANCE);
+	this->m_stageTimeText.setColor(sf::Color::Blue);
+	this->m_stageTimeText.setOutlineColor(sf::Color::Black);
+	this->m_stageTimeText.setOutlineThickness(CAP_OUTLINE_THICKNESS);
 }
 
 void Caption::resetartCaptions()
