@@ -57,9 +57,9 @@ void Menu::activateMenu(sf::RenderWindow& window)
 		{
 			window.clear();
 			window.draw(m_startWallp);
-			window.draw(m_text[0]);
-			window.draw(m_text[1]);
-			window.draw(m_text[2]);
+			window.draw(m_text[NEW]);
+			window.draw(m_text[INFO]);
+			window.draw(m_text[EXIT]);
 		}
 		if (m_index == 2){	infoFunc(window);}
 
@@ -93,10 +93,12 @@ void Menu::activateMenu(sf::RenderWindow& window)
 		}
 	}
 }
+
 void Menu::infoFunc(sf::RenderWindow& window) {
+
 	window.clear(sf::Color::White);
 	window.draw(m_infosprite);
-	window.draw(m_text[3]);
+	window.draw(m_text[BACK]);
 
 	sf::Text text;
 	text.setFont(m_font);
@@ -104,28 +106,26 @@ void Menu::infoFunc(sf::RenderWindow& window) {
 	text.setCharacterSize(REG_CHAR_SIZE * 0.5);
 	text.setPosition({ WINDOW_WIDTH * 0.1, WINDOW_HEIGHT * 0.1 });
 	text.setString(INFOSTR);
-	//text.setOutlineColor(sf::Color::White);
-	//text.setOutlineThickness(OUTLINE_THICKNESS/10);
 	window.draw(text);
 }
 
 bool Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window, int& i) const
 {
 
-	if (m_text[2].getGlobalBounds().contains(Location))// pressed exit
+	if (m_text[EXIT].getGlobalBounds().contains(Location))// pressed exit
 		return false;
 
 
-	if (m_text[3].getGlobalBounds().contains(Location)) { // pressed back
+	if (m_text[BACK].getGlobalBounds().contains(Location)) { // pressed back
 		i = 0;
 		return true;
 	}
 
-	if (m_text[0].getGlobalBounds().contains(Location)) { // pressed New
+	if (m_text[NEW].getGlobalBounds().contains(Location)) { // pressed New
 		i = 1;
 		return true;
 	}
-	if (m_text[1].getGlobalBounds().contains(Location)) { // pressed info
+	if (m_text[INFO].getGlobalBounds().contains(Location)) { // pressed info
 		i = 2;
 		return true;
 	}
@@ -154,15 +154,9 @@ void Menu::handleMove(const sf::Vector2f& Location)
 
 	m_textHelp = m_text;
 	m_text.clear();
-	// mark/unmark start button
-	m_text.push_back(doHandleClick(m_textHelp[0], Location));
-	//m_text(0) = doHandleClick(m_text(0), Location);
-
-	//mark/unmark info button
-	m_text.push_back(doHandleClick(m_textHelp[1], Location));
-
-	//mark/unmark exit button
-	m_text.push_back(doHandleClick(m_textHelp[2], Location));
-
-	m_text.push_back(doHandleClick(m_textHelp[3], Location));
+	// mark/unmark button
+	m_text.push_back(doHandleClick(m_textHelp[NEW], Location));
+	m_text.push_back(doHandleClick(m_textHelp[INFO], Location));
+	m_text.push_back(doHandleClick(m_textHelp[EXIT], Location));
+	m_text.push_back(doHandleClick(m_textHelp[BACK], Location));
 }
