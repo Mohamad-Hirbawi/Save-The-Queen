@@ -17,6 +17,11 @@ const float BOLD_OUTLINE = 10.0;
 const std::string INFOSTR = "This game was done by Mohammad Hirbawi and Mustafa fachori.";
 const float  MOVEMENTSPEED = 170.0;//3
 
+enum Menus_t
+{
+	NEW, INFO, EXIT, BACK
+};
+
 const int CAP_CHAR_SIZE = 20;
 const float CAP_OUTLINE_THICKNESS = 3.0;
 const int BUFF_DISTANCE = 10;
@@ -33,5 +38,13 @@ enum  Toolbar_t
 	GATEOPEN, SHADOW, NONE
 };
 
+
+
 // for caption
 const int EATCOIN = 1;
+const int TIMEOFGAME = 60;
+
+enum Captions
+{
+	SCORE, TIME
+};
