@@ -27,14 +27,14 @@ const float CAP_OUTLINE_THICKNESS = 3.0;
 const int BUFF_DISTANCE = 10;
 const int MUSIC_ICON_POS = 40;
 
-const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^',COIN_C = '*', EMPTY_C = ' ',
+const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^',COIN_C = '*', KEYMONSTER_C = 'k', BALLMONSTER_C = 'b', EMPTY_C = ' ',
 CAKE_C = '*', GIFT_C = '$', GATE_C = 'D',
 KEY_C = '%', SHADOW_C = '&', SUPERPACMAN_C = '@';
 
 
 enum  Toolbar_t
 {
-	PRINCE = 1, WALL, STAIR , COIN ,KEY, CAKE, GATE, GIFT,
+	PRINCE = 1, WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER ,KEY, CAKE, GATE, GIFT,
 	GATEOPEN, SHADOW, NONE
 };
 

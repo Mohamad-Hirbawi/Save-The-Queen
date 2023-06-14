@@ -36,6 +36,7 @@ void GameController::run() {
 		}
 
 		move(m_timer.restart());
+		moveMonster(m_timer.restart());
 		window.display();
 
 	}
@@ -113,6 +114,17 @@ void GameController::move(sf::Time deltaTime)
 	m_board.m_prince->move(deltaTime);
 	checkCollision(*m_board.m_prince, m_timer.restart());
 
+	for (int index = 0; index < m_board.m_keyMonster.size(); index++)
+	{
+		m_board.m_keyMonster[index]->move(deltaTime);
+		checkCollision(*m_board.m_prince, m_timer.restart());
+	}
+
+
+}
+void GameController::moveMonster(sf::Time deltaTime)
+{
+	
 
 }
 
