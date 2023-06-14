@@ -5,6 +5,9 @@
 #include "Wall.h"
 #include "Stair.h"
 #include "Prince.h"
+#include "KeyMonster.h"
+#include "BallMonster.h"
+
 #include "Coin.h"
 #include "StaticObject.h"
 #include <SFML/System/Vector2.hpp>
@@ -26,6 +29,8 @@ public:
 	void changeStatic(Toolbar_t type, sf::Vector2f position);
 	std::unique_ptr<Prince> m_prince;
 
+	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
+	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 
 private:
 	bool readLvlMap();
@@ -35,6 +40,7 @@ private:
 	std::vector<std::string> m_map;
 	int m_height;
 	int m_width;
+
 	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
 	bool m_erased;
 	//Prince m_prince;

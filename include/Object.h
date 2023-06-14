@@ -8,6 +8,8 @@ class Prince;
 class Wall;
 class Stair;
 class Coin;
+class KeyMonster;
+class BallMonster;
 
 class Object
 {
@@ -26,6 +28,8 @@ public:
 	virtual void handleCollision(Wall&, GameController&) = 0;
 	virtual void handleCollision(Stair&, GameController&) = 0;
 	virtual void handleCollision(Coin&, GameController&) = 0;
+	virtual void handleCollision(KeyMonster&, GameController&) = 0;
+	virtual void handleCollision(BallMonster&, GameController&) = 0;
 	sf::Vector2f getposition()const;
 	sf::Vector2f getprevPos()const;
 

@@ -47,10 +47,11 @@ sf::Vector2f dirFromKey()
         { sf::Keyboard::Up   , { 0, -1 } },
         { sf::Keyboard::Down , { 0, 1 } },
     };
+
     for (const auto& pair : keyToVectorMapping)
-    {
+    { 
         if (sf::Keyboard::isKeyPressed(pair.first))
-        {
+        { 
             return pair.second;
         }
     }

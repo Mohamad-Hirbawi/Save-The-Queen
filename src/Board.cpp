@@ -62,6 +62,12 @@ void Board::drawBoard(sf::RenderWindow& window)
 	}
 
 	m_prince->draw(window);
+
+	for(int index = 0 ; index < m_keyMonster.size(); index ++)
+		m_keyMonster[index]->draw(window);
+	
+	for (int index = 0; index < m_ballMonster.size(); index++)
+		m_ballMonster[index]->draw(window);
 }
 void Board::createStaticObject(char c, sf::Vector2f position)
 {
@@ -99,6 +105,12 @@ void Board::createMovingObject(char c, sf::Vector2f position)
 	{
 	case PRINCE_C:
 		m_prince = std::make_unique<Prince>(PRINCE, position);
+		break;
+	case KEYMONSTER_C:
+		m_keyMonster.push_back(std::make_unique<KeyMonster>(KEYMONSTER, position));
+		break;
+	case BALLMONSTER_C:
+		m_ballMonster.push_back(std::make_unique<BallMonster>(BALLMONSTER, position));
 		break;
 
 

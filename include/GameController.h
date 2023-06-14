@@ -26,6 +26,7 @@ private:
 	Board m_board;
 	bool isStaticObj(char c);
 	void move(sf::Time deltaTime);
+	void moveMonster(sf::Time deltaTime);
 	sf::Texture m_pTexture;
 	void checkCollision(MovingObject& thisObj, sf::Time deltaTime);
 

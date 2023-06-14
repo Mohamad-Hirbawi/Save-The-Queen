@@ -46,6 +46,12 @@ void Textures::setImagesForObj()
 	m_pTexture.push_back(newImage);
 	newImage.loadFromFile("coin.png");//prince
 	m_pTexture.push_back(newImage);
+	newImage.loadFromFile("KeyMonster.jpg");//prince
+	m_pTexture.push_back(newImage);
+	newImage.loadFromFile("BallMonster.png");//prince
+	m_pTexture.push_back(newImage);
+
+	
 	
 	//newImage.loadFromFile("key.png");
 	//m_pTexture.push_back(newImage);
