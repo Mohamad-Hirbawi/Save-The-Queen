@@ -17,7 +17,7 @@ const float BOLD_OUTLINE = 10.0;
 const std::string INFOSTR = "This game was done by Mohammad Hirbawi and Mustafa fachori.";
 const float  MOVEMENTSPEED = 170.0;//3
 
-const int CAP_CHAR_SIZE = 30;
+const int CAP_CHAR_SIZE = 20;
 const float CAP_OUTLINE_THICKNESS = 3.0;
 const int BUFF_DISTANCE = 10;
 const int MUSIC_ICON_POS = 40;
