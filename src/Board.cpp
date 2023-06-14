@@ -111,18 +111,12 @@ void Board::createMovingObject(char c, sf::Vector2f position)
 
 void Board::checkCollision(MovingObject& thisObj, GameController& game, const sf::Time& deltaTime)
 {
-
-	//sf::Vector2f pos = thisObj.getposition();
-	//pos = { pos.x,pos.y - 1 };
-
-	// check collision between moving objects and static objects
+	m_erased = false;
 	for (auto& unmovable : m_staticObj)
 	{
-
-		if (unmovable != nullptr && thisObj.collidesWith(*unmovable))
-		{
-			thisObj.handleCollision(*unmovable, game);
-		}
+		if(!m_erased)
+			if (unmovable != nullptr && thisObj.collidesWith(*unmovable))
+				thisObj.handleCollision(*unmovable, game);
 	}
 
 }
@@ -139,7 +133,8 @@ void Board::changeStatic(Toolbar_t type, sf::Vector2f position)
 				if ((*staticPtr)->getposition() == unmovable->getposition())
 				{
 					m_staticObj.erase(staticPtr);
-					break;
+					m_erased = true;
+					return;
 				}
 			}
 		}

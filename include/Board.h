@@ -39,6 +39,7 @@ private:
 	int m_height;
 	int m_width;
 	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
+	bool m_erased;
 	//Prince m_prince;
 };
 
