@@ -1,4 +1,5 @@
 ﻿configure_file ("PLAYBILL.TTF" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("SundayMorning.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Background.jpg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Background1.jpg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("conan.jpg" ${CMAKE_BINARY_DIR} COPYONLY)

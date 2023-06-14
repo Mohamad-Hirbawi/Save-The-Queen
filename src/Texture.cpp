@@ -67,13 +67,13 @@ void Textures::setImagesForObj()
 	//newImage.loadFromFile("shadow.png");
 	//m_pTexture.push_back(newImage);
 
-	//this->m_font.loadFromFile("SundayMorning.ttf");
+	m_font.loadFromFile("SundayMorning.ttf");
 
 }
 
 sf::Font* Textures::getFont()
 {
-	return &this->m_font;
+	return &m_font;
 }
 
 void Textures::setSounds()
