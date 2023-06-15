@@ -19,6 +19,12 @@ enum Menus_t
 	NEW, INFO, EXIT, BACK
 };
 
+const sf::Vector2f RIGHT = sf::Vector2f(1, 0);
+const sf::Vector2f LEFF = sf::Vector2f(-1, 0);
+const sf::Vector2f UP = sf::Vector2f(0,1);
+const sf::Vector2f DOWN = sf::Vector2f(0,-1);
+
+
 const int CAP_CHAR_SIZE = 20;
 const float CAP_OUTLINE_THICKNESS = 3.0;
 
