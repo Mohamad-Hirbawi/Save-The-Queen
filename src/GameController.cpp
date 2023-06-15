@@ -130,4 +130,7 @@ void GameController::eraseStaticObject(StaticObject& staticObj)
 void GameController::did()
 {
 	m_caption.dicreaseLife();
+	std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
+	m_board.m_prince = std::move(help);
+	//m_board.createMovingObject(PRINCE, m_board.getiInitailPrincePos() );
 }

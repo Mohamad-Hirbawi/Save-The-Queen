@@ -28,9 +28,9 @@ public:
 
 	void checkCollision(MovingObject& thisObj, GameController& game);
 	void eraseStaticObject(StaticObject& staticObj);
+	sf::Vector2f getiInitailPrincePos()const;
 
 	std::unique_ptr<Prince> m_prince;
-
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 
@@ -42,6 +42,7 @@ private:
 	std::vector<std::string> m_map;
 	int m_height;
 	int m_width;
+	sf::Vector2f m_initailPrince;
 
 	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
 	bool m_erased;

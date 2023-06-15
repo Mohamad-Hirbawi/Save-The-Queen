@@ -90,6 +90,7 @@ void Board::createMovingObject(char c, sf::Vector2f position)
 	{
 	case PRINCE_C:
 		m_prince = std::make_unique<Prince>(PRINCE, position);
+		m_initailPrince = position;
 		break;
 	case KEYMONSTER_C:
 		m_keyMonster.push_back(std::make_unique<KeyMonster>(KEYMONSTER, position));
@@ -132,4 +133,9 @@ void Board::eraseStaticObject(StaticObject& staticObj)
 			return;
 		}
 	}
+}
+
+sf::Vector2f Board::getiInitailPrincePos() const
+{
+	return m_initailPrince;
 }
