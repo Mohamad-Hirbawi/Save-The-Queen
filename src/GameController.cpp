@@ -114,12 +114,6 @@ void GameController::checkCollision(MovingObject& thisObj, sf::Time deltaTime)
 
 }
 
-void GameController::ChangeStaticObj(Toolbar_t type, sf::Vector2f position)
-{
-	m_board.changeStatic(type, position);
-
-}
-
 void GameController::increaseScore(const int number)
 {
 	m_caption.increaseScore(number);
@@ -128,4 +122,9 @@ void GameController::increaseScore(const int number)
 void GameController::increaseTime()
 {
 	m_caption.updateTime(BOUNUSTIME);
+}
+
+void GameController::eraseStaticObject(StaticObject& staticObj)
+{
+	m_board.eraseStaticObject(staticObj);
 }

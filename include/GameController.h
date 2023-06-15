@@ -14,9 +14,10 @@ public:
 
 	void run();
 	void creatObject();
-	void ChangeStaticObj(Toolbar_t type, sf::Vector2f position);
 	void increaseScore(const int number);
 	void increaseTime();
+
+	void eraseStaticObject(StaticObject& staticObj);
 
 private:
 	sf::Sprite m_gameWallp;
@@ -27,7 +28,6 @@ private:
 	Board m_board;
 	bool isStaticObj(char c);
 	void move(sf::Time deltaTime);
-	void moveMonster(sf::Time deltaTime);
 	sf::Texture m_pTexture;
 	void checkCollision(MovingObject& thisObj, sf::Time deltaTime);
 

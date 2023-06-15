@@ -6,6 +6,6 @@ IncreasingTime::IncreasingTime(Toolbar_t symbol, sf::Vector2f position)
 
 void IncreasingTime::handleCollision(Prince&, GameController& game)
 {
-	game.ChangeStaticObj(GIFT, m_icon.getPosition());
+	game.eraseStaticObject(*this);
 	game.increaseTime();
 }

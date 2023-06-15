@@ -27,8 +27,8 @@ public:
 
 
 	void checkCollision(MovingObject& thisObj, GameController& game, const sf::Time& deltaTime);
+	void eraseStaticObject(StaticObject& staticObj);
 
-	void changeStatic(Toolbar_t type, sf::Vector2f position);
 	std::unique_ptr<Prince> m_prince;
 
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;

@@ -124,28 +124,21 @@ void Board::checkCollision(MovingObject& thisObj, GameController& game, const sf
 
 }
 
-void Board::changeStatic(Toolbar_t type, sf::Vector2f position)
-{
-	for (auto& unmovable : m_staticObj)
-	{
-		if (unmovable != nullptr && unmovable->getposition() == position)
-		{
-			auto staticPtr = m_staticObj.begin();
-			for (; staticPtr != m_staticObj.end(); staticPtr++)
-			{
-				if ((*staticPtr)->getposition() == unmovable->getposition())
-				{
-					m_staticObj.erase(staticPtr);
-					m_erased = true;
-					return;
-				}
-			}
-		}
-
-	}
-}
-
 std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position)
 {
 	return std::make_unique <IncreasingTime>(GIFT, position);
+}
+
+void Board::eraseStaticObject(StaticObject& staticObj)
+{
+	auto staticPtr = m_staticObj.begin();
+	for (; staticPtr != m_staticObj.end(); staticPtr++)
+	{
+		if ((*staticPtr)->getposition() == staticObj.getposition())
+		{
+			m_staticObj.erase(staticPtr);
+			m_erased = true;
+			return;
+		}
+	}
 }

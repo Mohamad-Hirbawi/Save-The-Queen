@@ -5,6 +5,6 @@ Coin::Coin(Toolbar_t symbol, sf::Vector2f position) :StaticObject(symbol, positi
 
 void Coin::handleCollision(Prince& prince, GameController& game)
 {
-	game.ChangeStaticObj(COIN,m_icon.getPosition());
+	game.eraseStaticObject(*this);
 	game.increaseScore(EATCOIN);
 }
