@@ -65,6 +65,11 @@ void Caption::dicreaseLife()
 	m_life--;
 }
 
+void Caption::increaseLife()
+{
+	m_life++;
+}
+
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
 {
 	text.setFont(*Textures::instance().getFont());

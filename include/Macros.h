@@ -27,11 +27,12 @@ const sf::Vector2f DOWN = sf::Vector2f(0,1);
 
 //characters for textures
 const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^', COIN_C = '*',
-			KEYMONSTER_C = 'k', BALLMONSTER_C = 'b', GIFT_C = '$', EMPTY_C = ' ';
+			KEYMONSTER_C = 'k', BALLMONSTER_C = 'b', GIFT_C = '$', 
+			ADDLIFE_C = '&' ,EMPTY_C = ' ';
 
 enum  Toolbar_t
 {
-	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , GIFT, NONE
+	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME ,ADDLIFE, NONE
 };
 
 // for caption

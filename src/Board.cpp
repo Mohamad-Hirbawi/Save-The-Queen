@@ -78,8 +78,8 @@ void Board::createStaticObject(char c, sf::Vector2f position)
 	case COIN_C:
 		m_staticObj.push_back(std::make_unique<Coin>(COIN, position));
 		break;
-	case GIFT_C:
-		m_staticObj.push_back(selectGiftType(position));
+	default:
+		m_staticObj.push_back(selectGiftType(position,c));
 		break;
 	}
 }
@@ -116,9 +116,16 @@ void Board::checkCollision(MovingObject& thisObj, GameController& game)
 
 }
 
-std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position)
+std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char c)
 {
-	return std::make_unique <IncreasingTime>(GIFT, position);
+	switch (c)
+	{
+	case GIFT_C:
+		return std::make_unique <IncreasingTime>(INCREASETIME, position);
+
+	case ADDLIFE_C:
+		return std::make_unique <AddLife>(ADDLIFE, position);
+	}
 }
 
 void Board::eraseStaticObject(StaticObject& staticObj)

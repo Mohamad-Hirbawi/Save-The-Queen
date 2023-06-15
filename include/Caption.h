@@ -15,6 +15,8 @@ public:
 	void increaseScore(const int number);
 	void updateTime(float time);
 	void dicreaseLife();
+	void increaseLife();
+
 
 private:
 	void startCaptions();

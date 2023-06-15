@@ -85,7 +85,8 @@ void GameController::creatObject()
 
 bool GameController::isStaticObj(char c)
 {
-	if (c == WALL_C || c == STAIR_C || c == COIN_C || c == GIFT_C)
+	if (c == WALL_C || c == STAIR_C || c == COIN_C 
+		|| c == GIFT_C || c == ADDLIFE_C)
 		return true;
 	return false;
 
@@ -121,6 +122,10 @@ void GameController::increaseTime()
 {
 	m_caption.updateTime(BOUNUSTIME);
 }
+void GameController::addLife()
+{
+	m_caption.increaseLife();
+}
 
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {
@@ -132,5 +137,4 @@ void GameController::did()
 	m_caption.dicreaseLife();
 	std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
 	m_board.m_prince = std::move(help);
-	//m_board.createMovingObject(PRINCE, m_board.getiInitailPrincePos() );
 }

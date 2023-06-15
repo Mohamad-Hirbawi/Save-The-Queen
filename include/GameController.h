@@ -15,6 +15,7 @@ public:
 	void creatObject();
 	void increaseScore(const int number);
 	void increaseTime();
+	void addLife();
 
 	void eraseStaticObject(StaticObject& staticObj);
 	void did();
