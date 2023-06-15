@@ -8,9 +8,6 @@ const int WINDOW_HEIGHT = 700;
 
 
 // for start screen
-//const sf::Vector2f HEADER_POS = { WINDOW_WIDTH / 2 - 330, 10 };
-const sf::Vector2f CENTER = { WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 };
-//const sf::Vector2f RECT_SIZE = { 140.0, 60.0 };
 const int REG_CHAR_SIZE = 100;
 const float OUTLINE_THICKNESS = 5.0;
 const float BOLD_OUTLINE = 10.0;
@@ -24,18 +21,15 @@ enum Menus_t
 
 const int CAP_CHAR_SIZE = 20;
 const float CAP_OUTLINE_THICKNESS = 3.0;
-const int BUFF_DISTANCE = 10;
-const int MUSIC_ICON_POS = 40;
 
-const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^',COIN_C = '*', KEYMONSTER_C = 'k', BALLMONSTER_C = 'b', EMPTY_C = ' ',
-CAKE_C = '*', GIFT_C = '$', GATE_C = 'D',
-KEY_C = '%', SHADOW_C = '&', SUPERPACMAN_C = '@';
+const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^', COIN_C = '*',
+			KEYMONSTER_C = 'k', BALLMONSTER_C = 'b', GIFT_C = '$', EMPTY_C = ' ';
+
 
 
 enum  Toolbar_t
 {
-	PRINCE = 1, WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER ,KEY, CAKE, GATE, GIFT,
-	GATEOPEN, SHADOW, NONE
+	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , GIFT,NONE
 };
 
 

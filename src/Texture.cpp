@@ -30,12 +30,9 @@ sf::Texture* Textures::getIcon(const Toolbar_t symbol)
 void Textures::setImagesForObj()
 {
 	sf::Texture newImage;
+	// PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , GIFT, CAKE, GATE, GIFT,
+	// GATEOPEN, SHADOW, NONE
 
-	//	Pacman,WALL, KEY, Cake, GATE, BOUNUS, NONE
-
-	newImage.loadFromFile("wall.png");
-	m_pTexture.push_back(newImage);
-	
 	newImage.loadFromFile("prince.png");//prince
 	m_pTexture.push_back(newImage);
 
@@ -44,18 +41,19 @@ void Textures::setImagesForObj()
 
 	newImage.loadFromFile("Stair.png");//Stair
 	m_pTexture.push_back(newImage);
-	newImage.loadFromFile("coin.png");//prince
-	m_pTexture.push_back(newImage);
-	newImage.loadFromFile("KeyMonster.png");//prince
-	m_pTexture.push_back(newImage);
-	newImage.loadFromFile("BallMonster.png");//prince
+
+	newImage.loadFromFile("coin.png");//coin 
 	m_pTexture.push_back(newImage);
 
-	newImage.loadFromFile("IncreasTime.png");
+	newImage.loadFromFile("KeyMonster.png");//KeyMonster
 	m_pTexture.push_back(newImage);
 
+	newImage.loadFromFile("BallMonster.png");//BallMonster
+	m_pTexture.push_back(newImage);
 
-
+	newImage.loadFromFile("IncreasTime.png");//gift
+	m_pTexture.push_back(newImage);
+	
 	m_font.loadFromFile("SundayMorning.ttf");
 
 }
