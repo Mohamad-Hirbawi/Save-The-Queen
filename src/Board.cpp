@@ -1,7 +1,6 @@
 #include "Board.h"
 #include <GameController.h>
 
-
 Board::Board()
 {
 	m_read.open("board.txt", std::ios_base::in);
@@ -37,6 +36,7 @@ void Board::readLvlSize() {
 	//std::cout << m_height << " " << m_width << std::endl;
 
 }
+
 std::vector<std::string> Board::getMap() const
 {
 	return m_map;
@@ -60,7 +60,7 @@ void Board::drawBoard(sf::RenderWindow& window)
 		if (m_staticObj[i] != nullptr)
 			m_staticObj[i]->draw(window);
 	}
-
+	// throw if we dont have prince
 	m_prince->draw(window);
 
 	for(int index = 0 ; index < m_keyMonster.size(); index ++)
@@ -82,18 +82,9 @@ void Board::createStaticObject(char c, sf::Vector2f position)
 	case COIN_C:
 		m_staticObj.push_back(std::make_unique<Coin>(COIN, position));
 		break;
-		//case KEY_C:
-		//	m_staticObj.push_back(std::make_unique<Key>(KEY, position));
-		//	break;
-		//case CAKE_C:
-		//	m_staticObj.push_back(std::make_unique<Cake>(CAKE, position));
-		//	break;
-		//case GATE_C:
-		//	m_staticObj.push_back(std::make_unique<Gate>(GATE, position));
-		//	break;
-		//case GIFT_C:
-		//	m_staticObj.push_back(selectGiftType(position));
-		//	break;
+	case GIFT_C:
+		m_staticObj.push_back(selectGiftType(position));
+		break;
 
 
 	}
@@ -152,4 +143,9 @@ void Board::changeStatic(Toolbar_t type, sf::Vector2f position)
 		}
 
 	}
+}
+
+std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position)
+{
+	return std::make_unique <IncreasingTime>(GIFT, position);
 }

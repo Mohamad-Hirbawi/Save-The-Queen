@@ -7,6 +7,8 @@
 #include "Prince.h"
 #include "KeyMonster.h"
 #include "BallMonster.h"
+#include <Gift.h>
+#include <IncreasingTime.h>
 
 #include "Coin.h"
 #include "StaticObject.h"
@@ -35,7 +37,7 @@ public:
 private:
 	bool readLvlMap();
 	void readLvlSize();
-
+	std::unique_ptr<Gift> selectGiftType(sf::Vector2f position);
 	std::ifstream m_read;
 	std::vector<std::string> m_map;
 	int m_height;

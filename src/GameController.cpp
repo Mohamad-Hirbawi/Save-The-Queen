@@ -3,7 +3,8 @@
 
 void GameController::run() {
 
-	auto window = sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game", sf::Style::Titlebar | sf::Style::Close);
+	auto window = sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
+		"Game", sf::Style::Titlebar | sf::Style::Close);
 	m_menu.activateMenu(window);
 	creatObject();
 	m_timer.restart();
@@ -41,14 +42,10 @@ void GameController::run() {
 	}
 }
 
-void GameController::creatObject() {
-	//m_pTexture.loadFromFile("wall1.jpg");
-	//m_sprite.setTexture(m_pTexture);
-	//m_sprite.setScale(1.2, 1.3);
-	//m_cake = 0;
-
+void GameController::creatObject() 
+{
 	if (!m_pTexture.loadFromFile("Background1.jpg"))
-		std::cout << "wrong";
+		std::cout << "wrong";//throw
 	m_gameWallp.setTexture(m_pTexture);
 	m_gameWallp.setScale(0.5, 0.5);
 	std::cout << "true";
@@ -80,18 +77,6 @@ void GameController::creatObject() {
 			else   //moving object
 			{
 				m_board.createMovingObject(c, position);
-
-				//	std::unique_ptr<MovingObject> movable = createMovingObject(c, position);
-				//	if (c != SHADOW_C)
-				//	{
-				//		m_pacman.push_back(std::move(movable));
-				//		m_initailPacmanLocation = position;
-				//	}
-				//	else
-				//	{
-				//		m_shadow.push_back(std::move(movable));
-				//		m_initailShadowsLocation.push_back(position);
-				//	}
 			}
 		}
 	}
@@ -101,7 +86,7 @@ void GameController::creatObject() {
 
 bool GameController::isStaticObj(char c)
 {
-	if (c == WALL_C || c == STAIR_C || c == COIN_C)
+	if (c == WALL_C || c == STAIR_C || c == COIN_C || c == GIFT_C)
 		return true;
 	return false;
 
@@ -121,11 +106,7 @@ void GameController::move(sf::Time deltaTime)
 
 
 }
-void GameController::moveMonster(sf::Time deltaTime)
-{
-	
 
-}
 
 void GameController::checkCollision(MovingObject& thisObj, sf::Time deltaTime)
 {
@@ -142,4 +123,9 @@ void GameController::ChangeStaticObj(Toolbar_t type, sf::Vector2f position)
 void GameController::increaseScore(const int number)
 {
 	m_caption.increaseScore(number);
+}
+
+void GameController::increaseTime()
+{
+	m_caption.updateTime(BOUNUSTIME);
 }

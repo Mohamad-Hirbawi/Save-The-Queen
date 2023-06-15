@@ -13,11 +13,11 @@ public:
 	void resetartCaptions();
 	void drawCaptions(sf::RenderWindow& window);
 	void increaseScore(const int number);
+	void updateTime(float time);
 
 private:
 	void startCaptions();
 	void newLevel(const int time);
-	void updateTime(float time);
 	sf::Text drawInCaption(sf::Text text, const float x, const float y);
 
 

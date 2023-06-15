@@ -46,32 +46,15 @@ void Textures::setImagesForObj()
 	m_pTexture.push_back(newImage);
 	newImage.loadFromFile("coin.png");//prince
 	m_pTexture.push_back(newImage);
-	newImage.loadFromFile("KeyMonster.jpg");//prince
+	newImage.loadFromFile("KeyMonster.png");//prince
 	m_pTexture.push_back(newImage);
 	newImage.loadFromFile("BallMonster.png");//prince
 	m_pTexture.push_back(newImage);
 
-	
-	
-	//newImage.loadFromFile("key.png");
-	//m_pTexture.push_back(newImage);
+	newImage.loadFromFile("IncreasTime.png");
+	m_pTexture.push_back(newImage);
 
 
-	//newImage.loadFromFile("cake.png");
-	//m_pTexture.push_back(newImage);
-
-	//newImage.loadFromFile("gate.png");
-	//m_pTexture.push_back(newImage);
-
-	//newImage.loadFromFile("gift.png");
-	//m_pTexture.push_back(newImage);
-
-	//newImage.loadFromFile("gate2.png");
-	//m_pTexture.push_back(newImage);
-
-
-	//newImage.loadFromFile("shadow.png");
-	//m_pTexture.push_back(newImage);
 
 	m_font.loadFromFile("SundayMorning.ttf");
 
