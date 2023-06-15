@@ -10,7 +10,6 @@ class GameController
 {
 public:
 	GameController() {}
-	~GameController() {}
 
 	void run();
 	void creatObject();
@@ -18,19 +17,20 @@ public:
 	void increaseTime();
 
 	void eraseStaticObject(StaticObject& staticObj);
-
+	void did();
 private:
 	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;
 
 	sf::Sprite m_backgroundSprite;
-	Menu m_menu;
-	Board m_board;
+
 	bool isStaticObj(char c);
 	void move(sf::Time deltaTime);
 	sf::Texture m_pTexture;
-	void checkCollision(MovingObject& thisObj, sf::Time deltaTime);
+	void checkCollision(MovingObject& thisObj);
 
 	Caption m_caption;
+	Menu m_menu;
+	Board m_board;
 
 };

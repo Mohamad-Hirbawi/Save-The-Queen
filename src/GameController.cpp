@@ -8,7 +8,6 @@ void GameController::run() {
 	m_menu.activateMenu(window);
 	creatObject();
 	m_timer.restart();
-	m_caption.resetartCaptions();
 
 	while (window.isOpen()) {
 		window.clear();
@@ -94,24 +93,23 @@ bool GameController::isStaticObj(char c)
 
 void GameController::move(sf::Time deltaTime)
 {
-
 	m_board.m_prince->move(deltaTime);
-	checkCollision(*m_board.m_prince, m_timer.restart());
+	checkCollision(*m_board.m_prince);
 
 	for (int index = 0; index < m_board.m_keyMonster.size(); index++)
 	{
 		m_board.m_keyMonster[index]->move(deltaTime);
-		checkCollision(*m_board.m_keyMonster[index], m_timer.restart());
+		checkCollision(*m_board.m_keyMonster[index]);
 	}
-
-
 }
 
 
-void GameController::checkCollision(MovingObject& thisObj, sf::Time deltaTime)
+void GameController::checkCollision(MovingObject& thisObj)
 {
-	m_board.checkCollision(thisObj, *this, deltaTime); //check collisions with static objects
+	if (thisObj.collidesWith(*m_board.m_prince))
+		thisObj.handleCollision(*m_board.m_prince, *this);
 
+	m_board.checkCollision(thisObj, *this); //check collisions with static objects
 }
 
 void GameController::increaseScore(const int number)
@@ -127,4 +125,9 @@ void GameController::increaseTime()
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {
 	m_board.eraseStaticObject(staticObj);
+}
+
+void GameController::did()
+{
+	m_caption.dicreaseLife();
 }

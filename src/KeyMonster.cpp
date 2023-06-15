@@ -1,4 +1,5 @@
 ﻿#include "KeyMonster.h"
+#include "Prince.h"
 
 KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
 	:Monster(symbol, position), m_positionKeyMonster(position) 
@@ -6,7 +7,7 @@ KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
     m_startTime = std::chrono::steady_clock::now();
     int num = rand() % 2;
     if(num ==0)          m_dir = RIGHT;
-    else                 m_dir = LEFF;
+    else                 m_dir = LEFT;
     
 }
 
@@ -21,7 +22,7 @@ sf::Vector2f KeyMonster::getDirection()
     {
         m_startTime = currentTime;
         if (m_dir == RIGHT)
-            return LEFF;
+            return LEFT;
         else
             return RIGHT;
 
@@ -36,6 +37,11 @@ void KeyMonster::move(sf::Time deltaTime)
     m_prevPos = m_icon.getPosition();
     m_dir = getDirection();
     m_icon.move(m_dir * MOVEMENTSPEED * deltaTime.asSeconds());
+}
+
+void KeyMonster::handleCollision(Prince& prince, GameController& game)
+{
+    prince.handleCollision(*this, game);
 }
 
 void KeyMonster::handleCollision(Object& obj, GameController& game)

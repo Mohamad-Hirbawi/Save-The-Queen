@@ -24,7 +24,6 @@ private:
 	sf::Text m_helpText;
 
 	sf::RectangleShape m_background;
-	//std::vector<sf::Sprite> m_backgrounds;
 
 	sf::Texture m_pTexture;
 	sf::Texture m_infoTexture;

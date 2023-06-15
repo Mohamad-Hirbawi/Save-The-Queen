@@ -3,8 +3,7 @@
 
 Menu::Menu() :m_index(0)
 {
-	this->m_font.loadFromFile("PLAYBILL.TTF");
-
+	m_font.loadFromFile("PLAYBILL.TTF");
 
 	// intialize start button
 	m_helpText = drawInMenu(m_helpText, "New", WINDOW_WIDTH*0.48, WINDOW_HEIGHT*0.25);
@@ -25,13 +24,13 @@ Menu::Menu() :m_index(0)
 
 
 
-	this->m_pTexture.loadFromFile("Background.jpg");
-	this->m_startWallp.setTexture(m_pTexture);
-	this->m_startWallp.setScale(0.5, 0.5);
+	m_pTexture.loadFromFile("Background.jpg");
+	m_startWallp.setTexture(m_pTexture);
+	m_startWallp.setScale(0.5, 0.5);
 
-	this->m_infoTexture.loadFromFile("conan.jpg");
-	this->m_infosprite.setTexture(m_infoTexture);
-	this->m_infosprite.setScale(0.5, 0.5);
+	m_infoTexture.loadFromFile("conan.jpg");
+	m_infosprite.setTexture(m_infoTexture);
+	m_infosprite.setScale(0.5, 0.5);
 
 }
 

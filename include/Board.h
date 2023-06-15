@@ -9,10 +9,10 @@
 #include "BallMonster.h"
 #include <Gift.h>
 #include <IncreasingTime.h>
-
 #include "Coin.h"
 #include "StaticObject.h"
 #include <SFML/System/Vector2.hpp>
+
 class Board
 {
 public:
@@ -26,7 +26,7 @@ public:
 	void createMovingObject(char c, sf::Vector2f position);
 
 
-	void checkCollision(MovingObject& thisObj, GameController& game, const sf::Time& deltaTime);
+	void checkCollision(MovingObject& thisObj, GameController& game);
 	void eraseStaticObject(StaticObject& staticObj);
 
 	std::unique_ptr<Prince> m_prince;

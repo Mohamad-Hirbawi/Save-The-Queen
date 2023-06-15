@@ -7,11 +7,3 @@ void Stair::handleCollision(Prince& prince, GameController& game)
 {
 	prince.handleCollision(*this, game);
 }
-
-
-
-
-//void StairWall::handleCollision(Prince& prince, GameController& game)
-//{
-//	prince.handleCollision(*this, game);
-//}
