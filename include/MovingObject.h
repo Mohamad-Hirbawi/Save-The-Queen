@@ -9,7 +9,7 @@ public:
 
 	void moveToPrevPos();
 
-	virtual void move(sf::Time deltaTime) = 0;
+	virtual void move(sf::Time deltaTime, sf::Vector2f) = 0;
 	virtual void handleCollision(Object&, GameController&) override =0;
 	virtual void handleCollision(Prince&, GameController&) override = 0;
 	virtual void handleCollision(Wall&, GameController&) override=0;
@@ -18,7 +18,9 @@ public:
 	virtual void handleCollision(KeyMonster&, GameController&) override =0;
 	virtual void handleCollision(BallMonster&, GameController&) override =0;
 
-private:
+protected:
+	sf::Vector2f m_positionPrince;
+
 };
 
 

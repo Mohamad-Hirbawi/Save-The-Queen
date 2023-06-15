@@ -16,9 +16,9 @@ public:
 	virtual void handleCollision(BallMonster&, GameController&) override;
 
 
-	virtual void move(sf::Time deltaTime)override;
+	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
 
 private:
 	
-	sf::Vector2f m_positionPrince;
+
 };

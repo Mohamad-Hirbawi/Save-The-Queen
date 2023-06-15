@@ -94,12 +94,12 @@ bool GameController::isStaticObj(char c)
 
 void GameController::move(sf::Time deltaTime)
 {
-	m_board.m_prince->move(deltaTime);
+	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
 	checkCollision(*m_board.m_prince);
-
+	
 	for (int index = 0; index < m_board.m_keyMonster.size(); index++)
 	{
-		m_board.m_keyMonster[index]->move(deltaTime);
+		m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
 		checkCollision(*m_board.m_keyMonster[index]);
 	}
 }

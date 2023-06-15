@@ -6,7 +6,7 @@ class Monster : public MovingObject
 public:
 	Monster(Toolbar_t symbol, sf::Vector2f position);
 
-	virtual void move(sf::Time deltaTime) = 0;
+	virtual void move(sf::Time deltaTime, sf::Vector2f) = 0;
 	virtual void handleCollision(Prince&, GameController&) override =0;
 	virtual void handleCollision(Stair&, GameController&) override {};
 	void handleCollision(Object&, GameController&) override {};
