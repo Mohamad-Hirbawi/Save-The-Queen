@@ -8,10 +8,10 @@ Caption::Caption()
 
 void Caption::startCaptions()
 {
-	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.02, WINDOW_HEIGHT * 0.9);
+	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1);
 	m_text.push_back(m_helpText);// Score
 
-	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.2, WINDOW_HEIGHT * 0.9);
+	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.2);
 	m_text.push_back(m_helpText);// Time
 }
 
