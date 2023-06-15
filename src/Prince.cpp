@@ -2,7 +2,10 @@
 #include "GameController.h"
 
 Prince::Prince(Toolbar_t symbol, sf::Vector2f position)
-	:MovingObject(symbol, position), m_positionPrince(position) {}
+	:MovingObject(symbol, position) 
+{
+    m_positionPrince = position;
+}
 
 void Prince::handleCollision(Stair&, GameController&)
 {
@@ -58,7 +61,7 @@ sf::Vector2f dirFromKey()
 }
 
 
-void Prince::move(sf::Time deltaTime)
+void Prince::move(sf::Time deltaTime, sf::Vector2f)
 {
     m_prevPos = m_icon.getPosition();
     sf::Vector2f dir = dirFromKey();
@@ -68,5 +71,5 @@ void Prince::move(sf::Time deltaTime)
         m_icon.move(dirFromKey() * MOVEMENTSPEED * deltaTime.asSeconds());
 
     m_princeCollisStair = false;
-
+    m_positionPrince = m_icon.getPosition();
 }

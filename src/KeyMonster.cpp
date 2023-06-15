@@ -1,6 +1,6 @@
 ﻿#include "KeyMonster.h"
 #include "Prince.h"
-
+#include "Board.h"
 KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
 	:Monster(symbol, position), m_positionKeyMonster(position) 
 {
@@ -13,8 +13,11 @@ KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
 
 
 
-sf::Vector2f KeyMonster::getDirection()
+sf::Vector2f KeyMonster::getDirection(sf::Vector2f princePos)
 {
+    
+    if (getposition().y == princePos.y)
+        return { 0,0 };
     std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now();
     std::chrono::seconds elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_startTime);
 
@@ -32,10 +35,10 @@ sf::Vector2f KeyMonster::getDirection()
  
 }
 
-void KeyMonster::move(sf::Time deltaTime)
+void KeyMonster::move(sf::Time deltaTime, sf::Vector2f princePos)
 {
     m_prevPos = m_icon.getPosition();
-    m_dir = getDirection();
+    m_dir = getDirection(princePos);
     m_icon.move(m_dir * MOVEMENTSPEED * deltaTime.asSeconds());
 }
 
