@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 
 
-const int WINDOW_WIDTH = 1500;
-const int WINDOW_HEIGHT = 1000;
+const int WINDOW_WIDTH = 900;//1500
+const int WINDOW_HEIGHT = 700;//1000
 
 
 

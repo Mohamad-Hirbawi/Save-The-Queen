@@ -12,12 +12,17 @@ KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
 }
 
 
+sf::Vector2f KeyMonster::directionFollowPrince(sf::Vector2f princePos)
+{
+    if (getposition().y > princePos.y)
+        return RIGHT;
+    return LEFT;
+}
 
 sf::Vector2f KeyMonster::getDirection(sf::Vector2f princePos)
 {
-    
-    if (getposition().y == princePos.y)
-        return { 0,0 };
+    if (getposition().y - princePos.y > -15 && getposition().y - princePos.y <= 15)
+        return directionFollowPrince(princePos);
     std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now();
     std::chrono::seconds elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_startTime);
 

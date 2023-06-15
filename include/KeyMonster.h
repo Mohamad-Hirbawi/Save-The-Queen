@@ -15,6 +15,7 @@ public:
 
 private:
 	std::chrono::time_point<std::chrono::steady_clock> m_startTime;
+	sf::Vector2f directionFollowPrince(sf::Vector2f princePos);
 	sf::Vector2f getDirection(sf::Vector2f princePos);
 	sf::Vector2f m_dir;
 	sf::Clock m_changeDircectionAlarm;
