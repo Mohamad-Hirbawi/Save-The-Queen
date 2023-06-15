@@ -7,7 +7,7 @@ const int WINDOW_HEIGHT = 1000;
 
 
 
-// for start screen
+// for start screen(menu)
 const int REG_CHAR_SIZE = 100;
 const float OUTLINE_THICKNESS = 5.0;
 const float BOLD_OUTLINE = 10.0;
@@ -19,33 +19,28 @@ enum Menus_t
 	NEW, INFO, EXIT, BACK
 };
 
+//directions
 const sf::Vector2f RIGHT = sf::Vector2f(1, 0);
-const sf::Vector2f LEFF = sf::Vector2f(-1, 0);
-const sf::Vector2f UP = sf::Vector2f(0,1);
-const sf::Vector2f DOWN = sf::Vector2f(0,-1);
+const sf::Vector2f LEFT = sf::Vector2f(-1, 0);
+const sf::Vector2f UP = sf::Vector2f(0, -1);
+const sf::Vector2f DOWN = sf::Vector2f(0,1);
 
-
-const int CAP_CHAR_SIZE = 20;
-const float CAP_OUTLINE_THICKNESS = 3.0;
-
+//characters for textures
 const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^', COIN_C = '*',
 			KEYMONSTER_C = 'k', BALLMONSTER_C = 'b', GIFT_C = '$', EMPTY_C = ' ';
 
-
-
 enum  Toolbar_t
 {
-	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , GIFT,NONE
+	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , GIFT, NONE
 };
-
-
 
 // for caption
 const int EATCOIN = 1;
 const int TIMEOFGAME = 60;
 const int BOUNUSTIME = 20;
+const int CAP_CHAR_SIZE = 20;
 
 enum Captions
 {
-	SCORE, TIME
+	SCORE, TIME, LIFE
 };

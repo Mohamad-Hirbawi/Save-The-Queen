@@ -10,10 +10,6 @@ Object::Object(Toolbar_t symbol, sf::Vector2f position)
 {
 	auto texturePtr = Textures::instance().getIcon(symbol);
 	m_icon.setTexture(*texturePtr);
-
-	//m_icon.scale((float)(46 / m_icon.getGlobalBounds().width),
-	//	(float)(46 / m_icon.getGlobalBounds().height));//46
-
 	m_icon.setPosition(position);
 	m_prevPos = position;
 }

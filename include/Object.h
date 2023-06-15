@@ -16,12 +16,12 @@ class Object
 public:	
 
 	Object();
-	~Object() {}
 	Object(Toolbar_t symbol, sf::Vector2f position);
-	virtual void draw(sf::RenderWindow&);
+	void draw(sf::RenderWindow&);
 
 	bool collidesWith(const Object& obj) const;
-	
+	sf::Vector2f getposition()const;
+	sf::Vector2f getprevPos()const;
 
 	virtual void handleCollision(Object&, GameController&) = 0;
 	virtual void handleCollision(Prince&, GameController&) = 0;
@@ -30,8 +30,6 @@ public:
 	virtual void handleCollision(Coin&, GameController&) = 0;
 	virtual void handleCollision(KeyMonster&, GameController&) = 0;
 	virtual void handleCollision(BallMonster&, GameController&) = 0;
-	sf::Vector2f getposition()const;
-	sf::Vector2f getprevPos()const;
 
 protected:
 	sf::Sprite m_icon;

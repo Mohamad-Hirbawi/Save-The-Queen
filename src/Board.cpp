@@ -26,14 +26,10 @@ void Board::readLvlSize() {
 	this->m_read >> number;
 	if (m_read.eof())
 		return;
-	this->m_height = std::stoi(number);
-	this->m_read >> number;
-	this->m_width = std::stoi(number);
-	//	this->m_read >> number;
-	//this->m_leveltime = std::stoi(number);
-
-	this->m_read.ignore();
-	//std::cout << m_height << " " << m_width << std::endl;
+	m_height = std::stoi(number);
+	m_read >> number;
+	m_width = std::stoi(number);
+	m_read.ignore();
 
 }
 
@@ -85,8 +81,6 @@ void Board::createStaticObject(char c, sf::Vector2f position)
 	case GIFT_C:
 		m_staticObj.push_back(selectGiftType(position));
 		break;
-
-
 	}
 }
 
@@ -103,16 +97,13 @@ void Board::createMovingObject(char c, sf::Vector2f position)
 	case BALLMONSTER_C:
 		m_ballMonster.push_back(std::make_unique<BallMonster>(BALLMONSTER, position));
 		break;
-
-
-
 	}
 }
 
 
 
 
-void Board::checkCollision(MovingObject& thisObj, GameController& game, const sf::Time& deltaTime)
+void Board::checkCollision(MovingObject& thisObj, GameController& game)
 {
 	m_erased = false;
 	for (auto& unmovable : m_staticObj)

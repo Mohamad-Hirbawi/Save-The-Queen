@@ -1,23 +1,28 @@
 ﻿#include "Caption.h"
 
 Caption::Caption()
-	:m_score(0)
 {
+	resetartCaptions();
 	startCaptions();
 }
 
 void Caption::startCaptions()
 {
+	sf::Text m_helpText;
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1);
 	m_text.push_back(m_helpText);// Score
 
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.2);
 	m_text.push_back(m_helpText);// Time
+
+	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.3);
+	m_text.push_back(m_helpText);// Life
 }
 
 void Caption::resetartCaptions()
 {
 	m_score = 0;
+	m_life = 3;
 	newLevel(TIMEOFGAME);
 }
 
@@ -28,6 +33,9 @@ void Caption::drawCaptions(sf::RenderWindow& window)
 
 	m_text[SCORE].setString("Score: " + std::to_string(m_score));
 	window.draw(m_text[SCORE]);
+
+	m_text[LIFE].setString("Life: " + std::to_string(m_life));
+	window.draw(m_text[LIFE]);
 
 
 }
@@ -50,6 +58,11 @@ void Caption::updateTime(float time)
 
 	m_stageTime += time;
 	m_text[1].setString("Time left: " + std::to_string(m_stageTime));
+}
+
+void Caption::dicreaseLife()
+{
+	m_life--;
 }
 
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)

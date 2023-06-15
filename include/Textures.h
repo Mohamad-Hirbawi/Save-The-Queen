@@ -17,11 +17,9 @@ enum class Audioo
 class Textures
 {
 public:
-	~Textures();
 
 	static Textures& instance();
 	sf::Texture* getIcon(const Toolbar_t);
-	sf::SoundBuffer* getSound(Audioo);
 	sf::Font* getFont();
 
 
@@ -31,7 +29,6 @@ private:
 	Textures& operator=(const Textures&) = default;
 
 	void setImagesForObj();
-	void setSounds();
 	sf::Font m_font;
 
 

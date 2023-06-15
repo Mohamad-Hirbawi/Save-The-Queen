@@ -3,7 +3,7 @@
 #include "Prince.h"
 #include "KeyMonster.h"
 #include "BallMonster.h"
-#include "Monster.h"
+
 class StaticObject : public Object
 {
 public:

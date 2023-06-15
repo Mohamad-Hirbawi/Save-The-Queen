@@ -1,16 +1,9 @@
 #include "Textures.h"
-#include <SFML/Audio.hpp>
 
 // toolbar c-tor
 Textures::Textures()
 {
 	setImagesForObj();
-	setSounds();
-}
-
-// toolber d-tor
-Textures::~Textures()
-{
 }
 
 Textures& Textures::instance()
@@ -61,28 +54,4 @@ void Textures::setImagesForObj()
 sf::Font* Textures::getFont()
 {
 	return &m_font;
-}
-
-void Textures::setSounds()
-{
-	//sf::SoundBuffer newSound;
-
-	//newSound.loadFromFile("start.wav");
-	//m_sound.push_back(newSound);
-
-	//newSound.loadFromFile("losing.wav");
-	//m_sound.push_back(newSound);
-
-	//newSound.loadFromFile("Click.wav");
-	//m_sound.push_back(newSound);
-
-	//newSound.loadFromFile("win.wav");
-	//m_sound.push_back(newSound);
-
-}
-
-sf::SoundBuffer* Textures::getSound(Audioo audio)
-{
-	int index = (int)audio;
-	return &this->m_sound[index];
 }

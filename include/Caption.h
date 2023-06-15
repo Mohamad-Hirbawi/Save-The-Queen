@@ -14,6 +14,7 @@ public:
 	void drawCaptions(sf::RenderWindow& window);
 	void increaseScore(const int number);
 	void updateTime(float time);
+	void dicreaseLife();
 
 private:
 	void startCaptions();
@@ -22,9 +23,9 @@ private:
 
 
 	int m_score;
+	int m_life;
 	int m_stageTime;
 
-	sf::Text m_helpText;
 	std::vector<sf::Text> m_text;
 	std::chrono::time_point<std::chrono::steady_clock> m_startTime;
 
