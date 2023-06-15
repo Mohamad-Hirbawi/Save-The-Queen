@@ -41,7 +41,7 @@ void Caption::updateTime(float time)
 {
 	std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now(); 
 	std::chrono::seconds elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_startTime);
-
+	
 	if (elapsedTime >= std::chrono::seconds(1)) 
 	{
 		m_startTime = currentTime; 

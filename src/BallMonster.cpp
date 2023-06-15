@@ -7,6 +7,6 @@ BallMonster::BallMonster(Toolbar_t symbol, sf::Vector2f position)
 void BallMonster::move(sf::Time deltaTime)
 {
 	//m_prevPos = m_icon.getPosition();
-	//sf::Vector2f dir = getRandomDirection();
+	//sf::Vector2f dir = getDirection();
 	//m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds() * 10.f);
 }
