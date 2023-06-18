@@ -7,7 +7,7 @@ Prince::Prince(Toolbar_t symbol, sf::Vector2f position)
     m_positionPrince = position;
 }
 
-void Prince::handleCollision(Stair& stair, GameController&)
+void Prince::handleCollision(Stair& , GameController&)
 {
     
     //if(stair.getposition().y == m_icon.getPosition().y + 1);
