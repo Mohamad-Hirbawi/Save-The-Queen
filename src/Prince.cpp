@@ -30,8 +30,11 @@ void Prince::handleCollision(Wall&, GameController&)
 }
 
 void Prince::handleCollision(Coin&, GameController&)
-{
-	moveToPrevPos();
+{}
+
+void Prince::handleCollision(Door&, GameController&)
+{  
+    moveToPrevPos();
 }
 
 void Prince::handleCollision(KeyMonster&, GameController& game)
@@ -76,14 +79,13 @@ void Prince::move(sf::Time deltaTime, sf::Vector2f)
     if ((dir == RIGHT || dir == LEFT) && !m_princeCollisStair)
         m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
     else if (m_princeCollisStair)
-        m_icon.move(dirFromKey() * MOVEMENTSPEED * deltaTime.asSeconds());
-
-
-    //else if ((dir == RIGHT || dir == LEFT || dir == DOWN) &&
-    //    !m_princeCollisStair &&
-    //    stair.getposition().y == m_icon.getPosition().y +1 )
-    //    m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
+        m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
 
     m_princeCollisStair = false;
     m_positionPrince = m_icon.getPosition();
 }
+
+//void Prince::handleCollision(Wall&, GameController&)
+//{
+//    moveToPrevPos();
+//}

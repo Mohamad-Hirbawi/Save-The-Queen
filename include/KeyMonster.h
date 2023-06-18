@@ -9,8 +9,9 @@ public:
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
 
 	virtual void handleCollision(Prince&, GameController&) override;
-	void handleCollision(Object&, GameController&) override ;
-	void handleCollision(Wall&, GameController&) override ;
+	virtual void handleCollision(Object&, GameController&) override ;
+	virtual void handleCollision(Wall&, GameController&) override;
+	virtual void handleCollision(Door&, GameController&)override;
 
 
 private:

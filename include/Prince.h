@@ -1,6 +1,5 @@
 #pragma once
 #include "MovingObject.h"
-//#include "Stair.h"
 
 class Prince : public MovingObject
 {
@@ -13,6 +12,7 @@ public:
 	virtual void handleCollision(Object&, GameController&) override;
 	virtual void handleCollision(Wall&, GameController&) override;
 	virtual void handleCollision(Coin&, GameController&) override;
+	virtual void handleCollision(Door&, GameController&) override;
 	virtual void handleCollision(KeyMonster&, GameController&) override;
 	virtual void handleCollision(BallMonster&, GameController&) override;
 

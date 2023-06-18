@@ -12,6 +12,9 @@ public:
 	void handleCollision(Object&, GameController&) override {};
 	void handleCollision(Wall&, GameController&) override=0;
 	void handleCollision(Coin&, GameController&) override {};
+	virtual void handleCollision(Door&, GameController&) override {
+		moveToPrevPos();
+	};
 	void handleCollision(KeyMonster&, GameController&) override {};
 	void handleCollision(BallMonster&, GameController&) override {};
 
