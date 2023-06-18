@@ -3,7 +3,7 @@
 
 Coin::Coin(Toolbar_t symbol, sf::Vector2f position) :StaticObject(symbol, position) {}
 
-void Coin::handleCollision(Prince& prince, GameController& game)
+void Coin::handleCollision(Prince&, GameController& game)
 {
 	game.eraseStaticObject(*this);
 	game.increaseScore(EATCOIN);

@@ -1,7 +1,8 @@
 #include "Door.h"
 #include "GameController.h"
 
-Door::Door(Toolbar_t symbol, sf::Vector2f position) :StaticObject(symbol, position) {}
+Door::Door(Toolbar_t symbol, sf::Vector2f position) 
+	:StaticObject(symbol, position){}
 
 void Door::handleCollision(Prince& prince, GameController& game)
 {
