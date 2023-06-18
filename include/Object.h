@@ -34,6 +34,7 @@ public:
 	virtual void handleCollision(BallMonster&, GameController&) = 0;
 
 protected:
+	bool m_open;
 	sf::Sprite m_icon;
 	sf::Vector2f m_prevPos;
 	bool  m_princeCollisStair  = false;

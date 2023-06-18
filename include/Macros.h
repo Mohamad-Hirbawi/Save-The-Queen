@@ -32,12 +32,13 @@ const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^', COIN_C = '*',
 
 enum  Toolbar_t
 {
-	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME ,ADDLIFE ,DOOR, NONE
+	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME ,ADDLIFE ,DOOR,
+	OPENDOOR,NONE
 };
 
 // for loadFromFile and emplace_back Texture
 const std::string strTexture[] = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
-"BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png"};
+"BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","doorOpen.png" };
 
 const std::string strBackground[] = { "conan.jpg" ,"Background.jpg" };
 

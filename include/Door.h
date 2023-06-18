@@ -9,6 +9,5 @@ public:
 	void handleCollision(KeyMonster& keyMonster, GameController& game);
 
 private:
-
 };
 
