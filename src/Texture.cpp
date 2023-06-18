@@ -24,36 +24,13 @@ void Textures::setImagesForObj()
 {
 	sf::Texture newImage;
 	// PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME, ADDLIFE
-
-	newImage.loadFromFile("prince.png");//prince
-	m_pTexture.push_back(newImage);
-
-	newImage.loadFromFile("wall.png");// wall
-	m_pTexture.push_back(newImage);
-
-	newImage.loadFromFile("Stair.png");//Stair
-	m_pTexture.push_back(newImage);
-
-	newImage.loadFromFile("coin.png");//coin 
-	m_pTexture.push_back(newImage);
-
-	newImage.loadFromFile("KeyMonster.png");//KeyMonster
-	m_pTexture.push_back(newImage);
-
-	newImage.loadFromFile("BallMonster.png");//BallMonster
-	m_pTexture.push_back(newImage);
-
-	newImage.loadFromFile("IncreasTime.png");//gift
-	m_pTexture.push_back(newImage);
-
-	newImage.loadFromFile("addLife.png");//gift
-	m_pTexture.push_back(newImage);
-	
+	for (const auto& tuxt : strTexture){
+		newImage.loadFromFile(tuxt);
+		m_pTexture.emplace_back(newImage);
+	}
 	m_font.loadFromFile("SundayMorning.ttf");
 
 }
 
 sf::Font* Textures::getFont()
-{
-	return &m_font;
-}
+{return &m_font;}

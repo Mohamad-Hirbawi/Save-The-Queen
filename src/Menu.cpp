@@ -6,24 +6,29 @@ Menu::Menu() :m_index(0)
 	m_font.loadFromFile("PLAYBILL.TTF");
 
 	// intialize start button
-	m_helpText = drawInMenu(m_helpText, "New", WINDOW_WIDTH*0.48, WINDOW_HEIGHT*0.25);
-	m_text.push_back(m_helpText);
-
-
-	// intialize info button
-	m_helpText = drawInMenu(m_helpText, "Info", WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * 0.50);
-	m_text.push_back(m_helpText);
-
-	// intialize exit button
-	m_helpText = drawInMenu(m_helpText, "Exit", WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * 0.75);
-	m_text.push_back(m_helpText);
-
-	// intialize back button 6
+	int i = 1;
+	for (const auto text : strMenu)
+	{
+		m_helpText = drawInMenu(m_helpText, text, WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * i/ hLocation);
+		m_text.emplace_back(m_helpText);
+		i++;
+	}
 	m_helpText = drawInMenu(m_helpText, "Back", WINDOW_WIDTH * 0.10, WINDOW_HEIGHT * 0.85);
-	m_text.push_back(m_helpText);
+	m_text.emplace_back(m_helpText);
 
 
+	//for (const auto& tuxtBackg : strBackground)
+	//{
+	//	std:: cout << tuxtBackg<<" "
+	//	m_pTexture.loadFromFile(tuxtBackg);
+	//	m_startWallp.setTexture(m_pTexture);
+	//	m_startWallp.setScale(0.5, 0.5);
 
+	//}
+	//
+	//loadBackGroaund(m_pTexture, m_startWallp, "Background.jpg");
+	//loadBackGroaund(m_infoTexture, m_infosprite,"conan.png");
+	
 	m_pTexture.loadFromFile("Background.jpg");
 	m_startWallp.setTexture(m_pTexture);
 	m_startWallp.setScale(0.5, 0.5);
@@ -32,6 +37,11 @@ Menu::Menu() :m_index(0)
 	m_infosprite.setTexture(m_infoTexture);
 	m_infosprite.setScale(0.5, 0.5);
 
+}
+void Menu::loadBackGroaund(sf::Texture& Texture, sf::Sprite &sprite ,const std::string &str) {
+	Texture.loadFromFile(str);
+	sprite.setTexture(m_pTexture);
+	sprite.setScale(0.5, 0.5);
 }
 
 sf::Text Menu::drawInMenu(sf::Text text, std::string str, const float x, const float y)
@@ -69,25 +79,19 @@ void Menu::activateMenu(sf::RenderWindow& window)
 			sf::Vector2f Location;
 			switch (event.type)
 			{
-			case sf::Event::Closed:
-				window.close();
-				break;
+			case sf::Event::Closed:		window.close();		break;
+			
 			case sf::Event::MouseButtonReleased:
 				window.clear();
 				Location = window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 
 				if (handleClick(Location, window, m_index)) {
-					if (m_index == 1) //start
-						return;
-					
-				}
-				else
-					window.close();
-				break;
-			case sf::Event::MouseMoved:
-				Location = (sf::Vector2f)sf::Mouse::getPosition(window);
-				handleMove(Location);
-				break;
+					if (m_index == 1)		return; //start
+				}		 
+				else		window.close();					break;
+			
+			case sf::Event::MouseMoved:		Location = (sf::Vector2f)sf::Mouse::getPosition(window);
+				handleMove(Location);						break;
 			}
 		}
 	}
@@ -98,7 +102,6 @@ void Menu::infoFunc(sf::RenderWindow& window) {
 	window.clear(sf::Color::White);
 	window.draw(m_infosprite);
 	window.draw(m_text[BACK]);
-
 	sf::Text text;
 	text.setFont(m_font);
 	text.setFillColor(sf::Color::Black);
@@ -154,8 +157,8 @@ void Menu::handleMove(const sf::Vector2f& Location)
 	m_textHelp = m_text;
 	m_text.clear();
 	// mark/unmark button
-	m_text.push_back(doHandleClick(m_textHelp[NEW], Location));
-	m_text.push_back(doHandleClick(m_textHelp[INFO], Location));
-	m_text.push_back(doHandleClick(m_textHelp[EXIT], Location));
-	m_text.push_back(doHandleClick(m_textHelp[BACK], Location));
+	m_text.emplace_back(doHandleClick(m_textHelp[NEW], Location));
+	m_text.emplace_back(doHandleClick(m_textHelp[INFO], Location));
+	m_text.emplace_back(doHandleClick(m_textHelp[EXIT], Location));
+	m_text.emplace_back(doHandleClick(m_textHelp[BACK], Location));
 }

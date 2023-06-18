@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <string>
+
+const int WINDOW_WIDTH =1500;//1500
+const int WINDOW_HEIGHT = 1000;//1000
 
 
-const int WINDOW_WIDTH = 900;//1500
-const int WINDOW_HEIGHT = 700;//1000
-
-
-
+const int hLocation = 4;
 // for start screen(menu)
 const int REG_CHAR_SIZE = 100;
 const float OUTLINE_THICKNESS = 5.0;
@@ -34,6 +34,14 @@ enum  Toolbar_t
 {
 	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME ,ADDLIFE, NONE
 };
+
+// for loadFromFile and emplace_back Texture
+const std::string strTexture[] = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
+"BallMonster.png" ,"IncreasTime.png" ,"addLife.png","addLife.png"};
+
+const std::string strBackground[] = { "conan.jpg" ,"Background.jpg" };
+
+const std::string strMenu[] = { "New" ,"Info" ,"Exit"};
 
 // for caption
 const int EATCOIN = 1;

@@ -1,5 +1,6 @@
 #pragma once
 #include "MovingObject.h"
+//#include "Stair.h"
 
 class Prince : public MovingObject
 {
@@ -19,6 +20,4 @@ public:
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
 
 private:
-	
-
 };

@@ -10,13 +10,13 @@ void Caption::startCaptions()
 {
 	sf::Text m_helpText;
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1);
-	m_text.push_back(m_helpText);// Score
+	m_text.emplace_back(m_helpText);// Score
 
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.2);
-	m_text.push_back(m_helpText);// Time
+	m_text.emplace_back(m_helpText);// Time
 
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.3);
-	m_text.push_back(m_helpText);// Life
+	m_text.emplace_back(m_helpText);// Life
 }
 
 void Caption::resetartCaptions()

@@ -2,11 +2,17 @@
 #include <SFML/Graphics.hpp>
 
 #include "Macros.h"
+#include <string>
+
 
 class Menu
 {
 public:
 	Menu();
+	void loadBackGroaund(sf::Texture &Texture, sf::Sprite& sprite, const std::string& str);
+	//void loadBackGroaund(sf::Texture Texture, sf::Sprite sprite, const std::string& str);
+	//void loadBackGroaund(sf::Texture m_pTexture, sf::Sprite, std::string str);
+	//void loadBackGroaund(sf::Texture m_pTexture, std::string str);
 	void activateMenu(sf::RenderWindow&);
 
 

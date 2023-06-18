@@ -14,7 +14,7 @@ KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
 
 sf::Vector2f KeyMonster::directionFollowPrince(sf::Vector2f princePos)
 {
-    if (getposition().y > princePos.y)
+    if (getposition().x < princePos.x)
         return RIGHT;
     return LEFT;
 }
@@ -26,17 +26,13 @@ sf::Vector2f KeyMonster::getDirection(sf::Vector2f princePos)
     std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now();
     std::chrono::seconds elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_startTime);
 
-    if (elapsedTime >= std::chrono::seconds(2))
-    {
+    if (elapsedTime >= std::chrono::seconds(4)){
         m_startTime = currentTime;
-        if (m_dir == RIGHT)
-            return LEFT;
-        else
-            return RIGHT;
+        if (m_dir == RIGHT)    return LEFT;
+        else    return RIGHT;
 
     }
-    else
-        return m_dir;
+    else     return m_dir;
  
 }
 
@@ -60,7 +56,6 @@ void KeyMonster::handleCollision(Object& obj, GameController& game)
 void KeyMonster::handleCollision(Wall&, GameController&)
 {
     moveToPrevPos();
-
 }
 
 
