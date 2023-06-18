@@ -19,6 +19,7 @@ public:
 
 	void eraseStaticObject(StaticObject& staticObj);
 	void did();
+	bool haveKey();
 private:
 	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;

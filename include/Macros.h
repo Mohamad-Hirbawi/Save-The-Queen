@@ -51,5 +51,5 @@ const int CAP_CHAR_SIZE = 20;
 
 enum Captions
 {
-	SCORE, TIME, LIFE
+	SCORE, TIME, LIFE, Key
 };

@@ -16,11 +16,16 @@ void Caption::startCaptions()
 	m_text.emplace_back(m_helpText);// Time
 
 	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.3);
-	m_text.emplace_back(m_helpText);// Life
+	m_text.emplace_back(m_helpText);// Life	
+	
+	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.4);
+	m_text.emplace_back(m_helpText);// Key
+
 }
 
 void Caption::resetartCaptions()
 {
+	m_keys = 3;
 	m_score = 0;
 	m_life = 3;
 	newLevel(TIMEOFGAME);
@@ -36,6 +41,9 @@ void Caption::drawCaptions(sf::RenderWindow& window)
 
 	m_text[LIFE].setString("Life: " + std::to_string(m_life));
 	window.draw(m_text[LIFE]);
+
+	m_text[Key].setString("Key: " + std::to_string(m_keys));
+	window.draw(m_text[Key]);
 
 
 }
@@ -70,6 +78,16 @@ void Caption::increaseLife()
 	m_life++;
 }
 
+bool Caption::haveKey()
+{
+	if (m_keys > 0)
+	{
+		dicreaseKey();
+		return true;
+	}
+	return false;
+}
+
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
 {
 	text.setFont(*Textures::instance().getFont());
@@ -78,6 +96,11 @@ sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
 	text.setFillColor(sf::Color::White);
 
 	return text;
+}
+
+void Caption::dicreaseKey()
+{
+	m_keys--;
 }
 
 void Caption::newLevel(const int time)
