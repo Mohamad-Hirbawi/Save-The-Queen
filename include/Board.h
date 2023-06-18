@@ -19,7 +19,7 @@ class Board
 {
 public:
 	Board();
-	~Board() {}
+	//~Board() = default;
 	std::vector<std::string> getMap() const;
 	int getHeight()const;
 	int getWidth()const;

@@ -54,3 +54,4 @@ enum Captions
 {
 	SCORE, TIME, LIFE, Key
 };
+const int NUMCAPTIONS = 4;
