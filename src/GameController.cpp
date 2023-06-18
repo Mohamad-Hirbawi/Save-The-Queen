@@ -99,3 +99,8 @@ void GameController::did(){
 	std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
 	m_board.m_prince = std::move(help);
 }
+
+bool GameController::haveKey()
+{
+	return m_caption.haveKey();
+}
