@@ -3,7 +3,7 @@
 
 Board::Board()
 {
-	// חריגה
+	// throw
 	m_read.open("board.txt", std::ios_base::in);
 	readLvlMap();
 }
@@ -68,6 +68,8 @@ void Board::createStaticObject(char c, sf::Vector2f position)
 	case STAIR_C:	m_staticObj.emplace_back(std::make_unique<Stair>(STAIR, position));	break;
 
 	case COIN_C:	m_staticObj.emplace_back(std::make_unique<Coin>(COIN, position));	break;
+
+	case DDOR_C:	m_staticObj.emplace_back(std::make_unique<Door>(DOOR, position));	break;
 
 	default:		m_staticObj.emplace_back(selectGiftType(position,c));				break;
 	}

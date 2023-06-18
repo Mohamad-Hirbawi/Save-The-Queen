@@ -9,7 +9,7 @@ Menu::Menu() :m_index(0)
 	int i = 1;
 	for (const auto text : strMenu)
 	{
-		m_helpText = drawInMenu(m_helpText, text, WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * i/ hLocation);
+		m_helpText = drawInMenu(m_helpText, text, WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * i/ NUMMENU);
 		m_text.emplace_back(m_helpText);
 		i++;
 	}

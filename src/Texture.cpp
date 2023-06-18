@@ -23,7 +23,7 @@ sf::Texture* Textures::getIcon(const Toolbar_t symbol)
 void Textures::setImagesForObj()
 {
 	sf::Texture newImage;
-	// PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME, ADDLIFE
+	// PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME, ADDLIFE,DOOR
 	for (const auto& tuxt : strTexture){
 		newImage.loadFromFile(tuxt);
 		m_pTexture.emplace_back(newImage);

@@ -8,6 +8,7 @@ class Prince;
 class Wall;
 class Stair;
 class Coin;
+class Door;
 class KeyMonster;
 class BallMonster;
 
@@ -28,6 +29,7 @@ public:
 	virtual void handleCollision(Wall&, GameController&) = 0;
 	virtual void handleCollision(Stair&, GameController&) = 0;
 	virtual void handleCollision(Coin&, GameController&) = 0;
+	virtual void handleCollision(Door&, GameController&) = 0;
 	virtual void handleCollision(KeyMonster&, GameController&) = 0;
 	virtual void handleCollision(BallMonster&, GameController&) = 0;
 

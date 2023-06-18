@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "Wall.h"
+#include "Door.h"
 #include "Stair.h"
 #include "Prince.h"
 #include "KeyMonster.h"

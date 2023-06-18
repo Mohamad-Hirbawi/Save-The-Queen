@@ -58,4 +58,9 @@ void KeyMonster::handleCollision(Wall&, GameController&)
     moveToPrevPos();
 }
 
+void KeyMonster::handleCollision(Door&, GameController&)
+{
+    moveToPrevPos();
+}
+
 
