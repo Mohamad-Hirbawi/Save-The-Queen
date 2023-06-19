@@ -21,6 +21,7 @@ void Caption::resetartCaptions()
 	m_keys = 3;
 	m_score = 0;
 	m_life = 3;
+	m_bullets = 0;
 	newLevel(TIMEOFGAME);
 }
 
@@ -66,6 +67,16 @@ void Caption::increaseLife()
 {
 	m_life++;
 }
+
+
+void Caption::increaseBullet()
+{
+	m_bullets += 5;
+}
+
+int Caption::getBullet() const
+{
+	return m_bullets;
 
 bool Caption::haveKey()
 {

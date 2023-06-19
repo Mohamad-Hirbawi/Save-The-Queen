@@ -18,6 +18,10 @@ public:
 	virtual void handleCollision(Door&, GameController&) override =0;
 	virtual void handleCollision(KeyMonster&, GameController&) override =0;
 	virtual void handleCollision(BallMonster&, GameController&) override =0;
+	virtual void handleCollision(Bullet&, GameController&) override =0;
+	virtual void handleCollision(Gift&, GameController&) override =0;
+
+
 
 protected:
 	sf::Vector2f m_positionPrince;

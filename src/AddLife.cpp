@@ -8,4 +8,5 @@ void AddLife::handleCollision(Prince&, GameController& game)
 {
 	game.eraseStaticObject(*this);
 	game.addLife();
+
 }

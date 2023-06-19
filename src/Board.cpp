@@ -60,7 +60,7 @@ void Board::drawBoard(sf::RenderWindow& window)
 
 
 
-void Board::createStaticObject(char c, sf::Vector2f position)
+void Board::createStaticObject(const char &c, sf::Vector2f position)
 {
 	switch (c){
 	case WALL_C:	m_staticObj.emplace_back(std::make_unique<Wall>(WALL, position));	break;
@@ -75,7 +75,7 @@ void Board::createStaticObject(char c, sf::Vector2f position)
 	}
 }
 
-void Board::createMovingObject(char c, sf::Vector2f position)
+void Board::createMovingObject(const char & c, sf::Vector2f position)
 {
 	switch (c)
 	{
@@ -84,6 +84,9 @@ void Board::createMovingObject(char c, sf::Vector2f position)
 	case KEYMONSTER_C:		m_keyMonster.emplace_back(std::make_unique<KeyMonster>(KEYMONSTER, position));	break;
 	
 	case BALLMONSTER_C:	m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
+	
+	case BULLET_C:
+			m_bullet = std::make_unique<Bullet>(BULLET, position);	break;
 	}
 }
 

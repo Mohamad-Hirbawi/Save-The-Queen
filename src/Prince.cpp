@@ -79,7 +79,9 @@ void Prince::move(sf::Time deltaTime, sf::Vector2f)
     if ((dir == RIGHT || dir == LEFT) && !m_princeCollisStair)
         m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
     else if (m_princeCollisStair)
+
         m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
+
 
     m_princeCollisStair = false;
     m_positionPrince = m_icon.getPosition();

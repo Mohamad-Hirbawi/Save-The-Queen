@@ -9,6 +9,7 @@ public:
 
 
 private:
+	//int m_numBallGift = 0;
 
 };
 

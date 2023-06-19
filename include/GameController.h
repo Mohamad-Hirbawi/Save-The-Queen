@@ -19,12 +19,17 @@ public:
 	void increaseTime();
 	void addLife();
 
+
 	void eraseStaticObject(StaticObject& staticObj);
 	void did();
+
+	void increaseBullet();
 	bool haveKey();
 	bool isLosing();
+  
 private:
 	sf::RenderWindow window;
+	void addBullet(sf::Time deltaTime);
 	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;
 

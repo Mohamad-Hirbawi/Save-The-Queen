@@ -11,6 +11,8 @@ class Coin;
 class Door;
 class KeyMonster;
 class BallMonster;
+class Bullet;
+class Gift;
 
 class Object
 {
@@ -32,6 +34,10 @@ public:
 	virtual void handleCollision(Door&, GameController&) = 0;
 	virtual void handleCollision(KeyMonster&, GameController&) = 0;
 	virtual void handleCollision(BallMonster&, GameController&) = 0;
+	virtual void handleCollision(Bullet&, GameController&)  = 0;
+	virtual void handleCollision(Gift&, GameController&)  = 0;
+
+
 
 protected:
 	bool m_open;
