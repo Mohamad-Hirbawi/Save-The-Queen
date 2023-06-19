@@ -24,8 +24,7 @@ void GameController::run() {
 				else if (evnt.key.code == sf::Keyboard::X)
 				{
 					if (m_caption.getBullet() > 0) {
-						addBullet(m_timer.restart());
-					
+						creatBullet();
 					}
 				}
 			default:	break;
@@ -109,10 +108,6 @@ void GameController::addLife()
 {m_caption.increaseLife();}
 
 
-void GameController::addBullet(sf::Time deltaTime) {
-	creatBullet();
-}
-
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
 
@@ -146,5 +141,7 @@ void GameController::increaseBullet()
 {m_caption.increaseBullet();}
 
 void GameController::creatBullet() 
-{m_board.createMovingObject('b', m_board.m_prince->getposition());}
+{m_board.createMovingObject('b', m_board.m_prince->getposition());
+m_caption.dicreaseBullet();
+}
 

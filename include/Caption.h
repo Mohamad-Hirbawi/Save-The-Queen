@@ -15,6 +15,7 @@ public:
 	void increaseScore(const int number);
 	void updateTime(float time);
 	void dicreaseLife();
+	void dicreaseBullet();
 	void increaseLife();
 	void newLevel(const int time);
 

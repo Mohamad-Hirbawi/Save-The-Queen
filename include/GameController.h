@@ -25,15 +25,14 @@ public:
 	void dead();
 
 	void increaseBullet();
-	void creatBullet();
 	bool haveKey();
 	bool isLosing();
   
 private:
 	sf::RenderWindow window;
-	void addBullet(sf::Time deltaTime);
 	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;
+	void creatBullet();
 
 	sf::Sprite m_backgroundSprite;
 	void losing();

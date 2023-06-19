@@ -56,6 +56,6 @@ const int ADDBULEET = 5;
 
 enum Captions
 {
-	SCORE, TIME, LIFE, Key
+	SCORE, TIME, LIFE, Key, BULLETS
 };
-const int NUMCAPTIONS = 4;
+const int NUMCAPTIONS = 5;

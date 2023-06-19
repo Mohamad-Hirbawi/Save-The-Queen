@@ -9,7 +9,7 @@ Caption::Caption()
 void Caption::startCaptions()
 {
 	sf::Text m_helpText;
-	for (int i = 1; i <= NUMCAPTIONS-1; i++)
+	for (int i = 1; i <= NUMCAPTIONS; i++)
 	{
 		m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1 *i);
 		m_text.emplace_back(m_helpText);
@@ -33,6 +33,7 @@ void Caption::drawCaptions(sf::RenderWindow& window)
 	m_text[SCORE].setString("Score: " + std::to_string(m_score));
 	m_text[LIFE].setString("Life: " + std::to_string(m_life));
 	m_text[Key].setString("Key: " + std::to_string(m_keys));
+	m_text[BULLETS].setString("Bullets: " + std::to_string(m_bullets));
 
 	for (int index = 0; index < NUMCAPTIONS; index++)
 		window.draw(m_text[index]);
@@ -61,6 +62,11 @@ void Caption::updateTime(float time)
 void Caption::dicreaseLife()
 {
 	m_life--;
+}
+
+void Caption::dicreaseBullet()
+{
+	m_bullets--;
 }
 
 void Caption::increaseLife()
