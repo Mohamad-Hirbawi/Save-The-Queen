@@ -25,12 +25,9 @@ void GameController::run() {
 			default:	break;
 			}
 		}
+		if (m_caption.getTime() <= 0)		dead();
+
 		move(m_timer.restart());
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-		{
-			 we need to add func that check with wich object the bukket coolis
-			m_board.createMovingObject('b', m_board.m_prince->getposition());
-		}*/
 		window.display();
 	}
 
@@ -110,18 +107,16 @@ void GameController::addBullet(sf::Time deltaTime) {
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
 
-void GameController::did(){
+void GameController::dead(){
 	m_caption.dicreaseLife();
 	if (m_caption.getLife() > 0)
 	{
+		m_caption.newLevel(TIMEOFGAME);
 		std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
 		m_board.m_prince = std::move(help);
 	}
-	else
-	{
-		losing();
-		//return EXIT_SUCCESS;
-	}
+	else		losing();
+
 }
 
 void GameController::losing()

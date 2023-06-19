@@ -88,9 +88,14 @@ bool Caption::haveKey()
 	return false;
 }
 
-int Caption::getLife()
+int Caption::getLife()const
 {
 	return m_life;
+}
+
+int Caption::getTime() const
+{
+	return m_stageTime;
 }
 
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)

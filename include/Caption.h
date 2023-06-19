@@ -16,16 +16,17 @@ public:
 	void updateTime(float time);
 	void dicreaseLife();
 	void increaseLife();
+	void newLevel(const int time);
 
 	void increaseBullet();
 	int getBullet()const;
 	bool haveKey();
-	int getLife();
+	int getLife()const;
+	int getTime()const;
 
 
 private:
 	void startCaptions();
-	void newLevel(const int time);
 	sf::Text drawInCaption(sf::Text text, const float x, const float y);
 	void dicreaseKey();
 

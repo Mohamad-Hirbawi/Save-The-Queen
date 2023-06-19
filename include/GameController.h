@@ -9,7 +9,8 @@
 class GameController
 {
 public:
-	GameController(){
+	GameController()
+	{
 		window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game", sf::Style::Titlebar | sf::Style::Close);
 	}
 
@@ -21,7 +22,7 @@ public:
 
 
 	void eraseStaticObject(StaticObject& staticObj);
-	void did();
+	void dead();
 
 	void increaseBullet();
 	bool haveKey();
