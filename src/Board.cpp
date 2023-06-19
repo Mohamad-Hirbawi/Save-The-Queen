@@ -50,12 +50,17 @@ void Board::drawBoard(sf::RenderWindow& window)
 	}
 	// throw if we dont have prince
 	m_prince->draw(window);
+	drawObjects(m_keyMonster, window);
+	drawObjects(m_ballMonster, window);
+	//drawObjects(m_giftBullet, window);
 
-	for(int index = 0 ; index < m_keyMonster.size(); index ++)
+	/*for(int index = 0 ; index < m_keyMonster.size(); index ++)
 		m_keyMonster[index]->draw(window);
 	
 	for (int index = 0; index < m_ballMonster.size(); index++)
-		m_ballMonster[index]->draw(window);
+		m_ballMonster[index]->draw(window);*/
+
+
 }
 
 
@@ -79,14 +84,13 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 {
 	switch (c)
 	{
-	case PRINCE_C:		m_prince = std::make_unique<Prince>(PRINCE, position); m_initailPrince = position;	break;
+	case PRINCE_C:	m_prince = std::make_unique<Prince>(PRINCE, position); m_initailPrince = position;	break;
 
-	case KEYMONSTER_C:		m_keyMonster.emplace_back(std::make_unique<KeyMonster>(KEYMONSTER, position));	break;
+	case KEYMONSTER_C:	m_keyMonster.emplace_back(std::make_unique<KeyMonster>(KEYMONSTER, position));	break;
 	
 	case BALLMONSTER_C:	m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
 	
-	case BULLET_C:
-			m_bullet = std::make_unique<Bullet>(BULLET, position);	break;
+	//case BULLET_C: m_bullet = std::make_unique<Bullet>(BULLET, position);	break;
 	}
 }
 
@@ -106,13 +110,18 @@ void Board::checkCollision(MovingObject& thisObj, GameController& game)
 
 }
 
-std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char c)
+std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char& c)
 {
 	switch (c)
 	{
 	case GIFT_C:	return std::make_unique <IncreasingTime>(INCREASETIME, position);
 
 	case ADDLIFE_C:	return std::make_unique <AddLife>(ADDLIFE, position);
+	
+	case  GIFTBULLET_C: return std::make_unique <GiftBuleet>(GIFTBULLET, position);
+	default:
+		;
+
 	}
 }
 

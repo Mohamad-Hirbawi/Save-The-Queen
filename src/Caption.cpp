@@ -75,9 +75,10 @@ void Caption::increaseBullet()
 }
 
 int Caption::getBullet() const
-{
-	return m_bullets;
-}
+
+{return m_bullets;}
+
+
 bool Caption::haveKey()
 {
 	if (m_keys > 0)

@@ -36,7 +36,7 @@ private:
 
 	sf::Sprite m_backgroundSprite;
 	void losing();
-	bool isStaticObj(char c);
+	bool isStaticObj(const char &c);
 	bool m_lose;
 	void move(sf::Time deltaTime);
 	sf::Texture m_pTexture;
