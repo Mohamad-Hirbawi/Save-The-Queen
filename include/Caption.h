@@ -17,6 +17,7 @@ public:
 	void dicreaseLife();
 	void increaseLife();
 	bool haveKey();
+	int getLife();
 
 private:
 	void startCaptions();

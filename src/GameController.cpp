@@ -2,11 +2,10 @@
 #include <iostream>
 
 void GameController::run() {
-
-	auto window = sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
-		"Game", sf::Style::Titlebar | sf::Style::Close);
+	m_lose = false;
 	m_menu.activateMenu(window);
 	creatObject();
+	m_caption.resetartCaptions();
 	m_timer.restart();
 
 	while (window.isOpen()) {
@@ -26,6 +25,7 @@ void GameController::run() {
 		move(m_timer.restart());
 		window.display();
 	}
+
 }
 
 void GameController::creatObject() 
@@ -96,11 +96,32 @@ void GameController::eraseStaticObject(StaticObject& staticObj)
 
 void GameController::did(){
 	m_caption.dicreaseLife();
-	std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
-	m_board.m_prince = std::move(help);
+	if (m_caption.getLife() > 0)
+	{
+		std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
+		m_board.m_prince = std::move(help);
+	}
+	else
+	{
+		losing();
+		//return EXIT_SUCCESS;
+	}
+}
+
+void GameController::losing()
+{
+	window.clear();
+	m_board.clearBoard();
+	run();
+	m_lose = true;
 }
 
 bool GameController::haveKey()
 {
 	return m_caption.haveKey();
+}
+
+bool GameController::isLosing()
+{
+	return m_lose;
 }

@@ -40,7 +40,7 @@ sf::Text Menu::drawInMenu(sf::Text text, std::string str, const float x, const f
 
 void Menu::activateMenu(sf::RenderWindow& window)
 {
-
+	m_index = 0;
 	while (window.isOpen())
 	{
 		if (m_index == 0)// Menu 

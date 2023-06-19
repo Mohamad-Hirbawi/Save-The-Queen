@@ -92,6 +92,8 @@ void Board::createMovingObject(char c, sf::Vector2f position)
 
 void Board::checkCollision(MovingObject& thisObj, GameController& game)
 {
+	if (game.isLosing())
+		return;
 	m_erased = false;
 	for (auto& unmovable : m_staticObj){
 		if(!m_erased)
@@ -126,4 +128,14 @@ void Board::eraseStaticObject(StaticObject& staticObj)
 sf::Vector2f Board::getiInitailPrincePos() const
 {
 	return m_initailPrince;
+}
+
+void Board::clearBoard()
+{
+	m_prince.reset();
+	m_ballMonster.clear();
+	m_keyMonster.clear();
+	//m_map.clear();
+	m_staticObj.clear();
+	m_initailPrince = sf::Vector2f(0, 0);
 }

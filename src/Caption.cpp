@@ -77,6 +77,11 @@ bool Caption::haveKey()
 	return false;
 }
 
+int Caption::getLife()
+{
+	return m_life;
+}
+
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
 {
 	text.setFont(*Textures::instance().getFont());
