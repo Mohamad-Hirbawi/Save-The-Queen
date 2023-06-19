@@ -39,12 +39,12 @@ void Prince::handleCollision(Door&, GameController&)
 
 void Prince::handleCollision(KeyMonster&, GameController& game)
 {
-    game.did();
+    game.dead();
 }
 
 void Prince::handleCollision(BallMonster&, GameController& game)
 {
-    game.did();
+    game.dead();
 }
 
 sf::Vector2f dirFromKey()
