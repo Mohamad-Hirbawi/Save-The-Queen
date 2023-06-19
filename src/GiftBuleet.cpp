@@ -8,8 +8,7 @@ void GiftBuleet::handleCollision(Prince& , GameController&game)
 {
 	game.eraseStaticObject(*this);
 	game.increaseBullet();
-	m_numBallGift += 3;
-	
+
 	
 }
 

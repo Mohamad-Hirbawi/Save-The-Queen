@@ -40,7 +40,7 @@ enum  Toolbar_t
 // for loadFromFile and emplace_back Texture
 const std::string strTexture[] = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
 
-"BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png" ,"giftBullet.png", "openDoor.png" };
+"BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png" ,"giftBullet.png", "buleet.jpg",};
 
 const std::string strBackground[] = { "conan.jpg" ,"Background.jpg" };
 

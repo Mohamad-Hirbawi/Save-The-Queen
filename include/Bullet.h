@@ -1,6 +1,6 @@
 #pragma once
 #include "MovingObject.h"
-//#include "Stair.h"
+#include "Prince.h"
 
 class Bullet : public MovingObject
 {
@@ -23,4 +23,5 @@ public:
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
 
 private:
+
 };
