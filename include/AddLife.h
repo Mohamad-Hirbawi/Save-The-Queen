@@ -1,6 +1,5 @@
 #pragma once
 #include"Gift.h"
-
 class AddLife : public Gift
 {
 public:

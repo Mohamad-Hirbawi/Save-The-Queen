@@ -17,9 +17,13 @@ public:
 	void increaseTime();
 	void addLife();
 
+
 	void eraseStaticObject(StaticObject& staticObj);
 	void did();
+	void increaseBullet();
 private:
+	void addBullet(sf::Time deltaTime);
+
 	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;
 

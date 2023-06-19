@@ -9,6 +9,7 @@ void GameController::run() {
 	creatObject();
 	m_timer.restart();
 
+
 	while (window.isOpen()) {
 		window.clear();
 		window.draw(m_gameWallp);
@@ -19,11 +20,18 @@ void GameController::run() {
 			switch (evnt.type)
 			{case sf::Event::Closed:		window.close();		break;
 			case sf::Event::KeyPressed:
-				if (evnt.key.code == sf::Keyboard::Escape)	{ window.close(); break;}
+				if (evnt.key.code == sf::Keyboard::Escape) { window.close(); break; }
+				else if (evnt.key.code == sf::Keyboard::X)
+					addBullet(m_timer.restart());
 			default:	break;
 			}
 		}
 		move(m_timer.restart());
+		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+		{
+			 we need to add func that check with wich object the bukket coolis
+			m_board.createMovingObject('b', m_board.m_prince->getposition());
+		}*/
 		window.display();
 	}
 }
@@ -66,6 +74,7 @@ bool GameController::isStaticObj(char c)
 void GameController::move(sf::Time deltaTime)
 {
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
+
 	checkCollision(*m_board.m_prince);
 
 	for (int index = 0; index < m_board.m_keyMonster.size(); index++){
@@ -91,6 +100,13 @@ void GameController::increaseTime()
 void GameController::addLife()
 {m_caption.increaseLife();}
 
+
+void GameController::addBullet(sf::Time deltaTime) {
+	if (m_caption.getBullet() > 0){
+		m_board.createMovingObject('b', m_board.m_prince->getposition());
+		m_board.m_bullet->move(deltaTime, m_board.m_prince.get()->getposition());
+	}
+}
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
 
@@ -98,4 +114,9 @@ void GameController::did(){
 	m_caption.dicreaseLife();
 	std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
 	m_board.m_prince = std::move(help);
+}
+
+void GameController::increaseBullet()
+{
+	m_caption.increaseBullet();
 }

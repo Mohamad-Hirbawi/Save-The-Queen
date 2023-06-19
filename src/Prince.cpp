@@ -78,6 +78,13 @@ void Prince::move(sf::Time deltaTime, sf::Vector2f)
     else if (m_princeCollisStair)
         m_icon.move(dirFromKey() * MOVEMENTSPEED * deltaTime.asSeconds());
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+        //game.addBullet();
+   
+    }
+   
+
+
 
     //else if ((dir == RIGHT || dir == LEFT || dir == DOWN) &&
     //    !m_princeCollisStair &&
