@@ -49,6 +49,7 @@ void Prince::handleCollision(BallMonster&, GameController& game)
 
 sf::Vector2f dirFromKey()
 {
+    sf::Vector2f direction;
     static const
         std::initializer_list<std::pair<sf::Keyboard::Key, sf::Vector2f>>
         keyToVectorMapping =
@@ -63,11 +64,12 @@ sf::Vector2f dirFromKey()
     { 
         if (sf::Keyboard::isKeyPressed(pair.first))
         { 
+            direction = pair.second;
             return pair.second;
         }
     }
 
-    return { 0, 0 };
+    return direction;
 }
 
 
@@ -81,11 +83,9 @@ void Prince::move(sf::Time deltaTime, sf::Vector2f)
         m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
         m_dirPrince = dir;
     }
-    else if (m_princeCollisStair)
-
-        m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
-
-
+    else if (m_princeCollisStair)    m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
+     
+    m_dirPrince = dir;
     m_princeCollisStair = false;
     m_positionPrince = m_icon.getPosition();
 }

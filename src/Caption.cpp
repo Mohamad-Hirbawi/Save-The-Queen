@@ -71,7 +71,7 @@ void Caption::increaseLife()
 
 void Caption::increaseBullet()
 {
-	m_bullets += 5;
+	m_bullets += ADDBULEET;
 }
 
 int Caption::getBullet() const

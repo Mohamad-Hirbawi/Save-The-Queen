@@ -51,6 +51,8 @@ const int EATCOIN = 1;
 const int TIMEOFGAME = 60;
 const int BOUNUSTIME = 20;
 const int CAP_CHAR_SIZE = 20;
+const int ADDBULEET = 5;
+
 
 enum Captions
 {
