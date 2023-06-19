@@ -12,6 +12,7 @@ const float OUTLINE_THICKNESS = 5.0;
 const float BOLD_OUTLINE = 10.0;
 const std::string INFOSTR = "This game was done by Mohammad Hirbawi and Mustafa fachori.";
 const float  MOVEMENTSPEED = 170.0;//3
+const float  BULEETSPEED = 300.0;//3
 const int NUMMENU = 4;
 
 enum Menus_t
@@ -43,7 +44,6 @@ const std::string strTexture[] = { "prince.png", "wall.png","Stair.png","coin.pn
 "BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png" ,"giftBullet.png", "buleet.jpg",};
 
 const std::string strBackground[] = { "conan.jpg" ,"Background.jpg" };
-
 const std::string strMenu[] = { "New" ,"Info" ,"Exit"};
 
 // for caption
@@ -52,10 +52,9 @@ const int TIMEOFGAME = 60;
 const int BOUNUSTIME = 20;
 const int CAP_CHAR_SIZE = 20;
 const int ADDBULEET = 5;
-
+const int NUMCAPTIONS = 5;
 
 enum Captions
 {
 	SCORE, TIME, LIFE, Key, BULLETS
 };
-const int NUMCAPTIONS = 5;
