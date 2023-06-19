@@ -25,6 +25,7 @@ public:
 	void dead();
 
 	void increaseBullet();
+	void creatBullet();
 	bool haveKey();
 	bool isLosing();
   

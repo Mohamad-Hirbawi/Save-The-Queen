@@ -22,6 +22,8 @@ public:
 
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
 
+	sf::Vector2f dirFromKey();
+
 private:
 
 };

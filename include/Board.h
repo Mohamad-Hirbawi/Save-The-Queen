@@ -37,7 +37,7 @@ public:
 	std::unique_ptr<Prince> m_prince;
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
-	std::unique_ptr<Bullet>m_bullet;
+	std::vector <std ::unique_ptr<Bullet>> m_bullet;
 	//std::vector < std::unique_ptr<Bullet>>m_giftBullet;
 
 private:

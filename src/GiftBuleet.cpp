@@ -8,6 +8,8 @@ void GiftBuleet::handleCollision(Prince& , GameController&game)
 {
 	game.eraseStaticObject(*this);
 	game.increaseBullet();
+	//game.creatBullet();
+	
 
 	
 }

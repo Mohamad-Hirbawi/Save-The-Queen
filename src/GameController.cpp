@@ -8,7 +8,7 @@ void GameController::run() {
 	m_caption.resetartCaptions();
 	m_timer.restart();
 
-
+	
 	while (window.isOpen()) {
 		window.clear();
 		window.draw(m_gameWallp);
@@ -20,8 +20,14 @@ void GameController::run() {
 			{case sf::Event::Closed:		window.close();		break;
 			case sf::Event::KeyPressed:
 				if (evnt.key.code == sf::Keyboard::Escape) { window.close(); break; }
+				
 				else if (evnt.key.code == sf::Keyboard::X)
-					addBullet(m_timer.restart());
+				{
+					if (m_caption.getBullet() > 0) {
+						addBullet(m_timer.restart());
+					
+					}
+				}
 			default:	break;
 			}
 		}
@@ -79,6 +85,10 @@ void GameController::move(sf::Time deltaTime)
 		m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
 		checkCollision(*m_board.m_keyMonster[index]);
 	}
+	for (int i = 0; i < m_board.m_bullet.size(); i++)
+		m_board.m_bullet[i]->move(deltaTime, m_board.m_prince.get()->getposition());
+
+
 }
 
 
@@ -100,11 +110,9 @@ void GameController::addLife()
 
 
 void GameController::addBullet(sf::Time deltaTime) {
-	if (m_caption.getBullet() > 0){
-		m_board.createMovingObject('b', m_board.m_prince->getposition());
-		m_board.m_bullet->move(deltaTime, m_board.m_prince.get()->getposition());
-	}
+	creatBullet();
 }
+
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
 
@@ -129,16 +137,14 @@ void GameController::losing()
 }
 
 bool GameController::haveKey()
-{
-	return m_caption.haveKey();
-}
+{return m_caption.haveKey();}
 
 bool GameController::isLosing()
-{
-	return m_lose;
-}
+{return m_lose;}
 
 void GameController::increaseBullet()
-{
-	m_caption.increaseBullet();
-}
+{m_caption.increaseBullet();}
+
+void GameController::creatBullet() 
+{m_board.createMovingObject('b', m_board.m_prince->getposition());}
+

@@ -7,6 +7,8 @@ Board::Board()
 	m_read.open("board.txt", std::ios_base::in);
 	readLvlMap();
 }
+
+
 bool Board::readLvlMap() {
 	readLvlSize();
 
@@ -20,6 +22,7 @@ bool Board::readLvlMap() {
 	return true;
 
 }
+
 void Board::readLvlSize() {
 	std::string number;
 	this->m_read >> number;
@@ -52,22 +55,8 @@ void Board::drawBoard(sf::RenderWindow& window)
 	m_prince->draw(window);
 	drawObjects(m_keyMonster, window);
 	drawObjects(m_ballMonster, window);
-	
-	if(m_bullet) //throw if we dont have BULEET
-		m_bullet->draw(window);
-
-	//drawObjects(m_giftBullet, window);
-
-	/*for(int index = 0 ; index < m_keyMonster.size(); index ++)
-		m_keyMonster[index]->draw(window);
-	
-	for (int index = 0; index < m_ballMonster.size(); index++)
-		m_ballMonster[index]->draw(window);*/
-
-
+	drawObjects(m_bullet, window);
 }
-
-
 
 void Board::createStaticObject(const char &c, sf::Vector2f position)
 {
@@ -94,12 +83,10 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	
 	case BALLMONSTER_C:	m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
 	
-	case BULLET_C: m_bullet = std::make_unique<Bullet>(BULLET, position);	break;
+	case BULLET_C:
+			m_bullet.emplace_back(std::make_unique<Bullet>(BULLET, position));	break;
 	}
 }
-
-
-
 
 void Board::checkCollision(MovingObject& thisObj, GameController& game)
 {
