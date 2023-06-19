@@ -19,8 +19,7 @@ void Bullet::move(sf::Time deltaTime, sf::Vector2f)
 {
 	sf::Vector2f dir;
 	m_prevPos = m_icon.getPosition();
-
-	m_icon.move(RIGHT *MOVEMENTSPEED * deltaTime.asSeconds());
+	m_icon.move(RIGHT * BULEETSPEED * deltaTime.asSeconds());
 
 		//m_icon.move(LEFT * MOVEMENTSPEED * deltaTime.asSeconds());
 
