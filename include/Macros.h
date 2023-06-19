@@ -29,18 +29,18 @@ const sf::Vector2f DOWN = sf::Vector2f(0,1);
 const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^', COIN_C = '*',
 
 			KEYMONSTER_C = 'k', BALLMONSTER_C = 'm', GIFT_C = '$', 
-			ADDLIFE_C = '&' , BULLET_C = 'b', DDOR_C ='d', EMPTY_C = ' ';
+			ADDLIFE_C = '&' , GIFTBULLET_C = 'g', DDOR_C ='d', EMPTY_C = ' ', BULLET_C = 'b';
 enum  Toolbar_t
 {
 	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME ,ADDLIFE ,DOOR,
-	OPENDOOR, BULLET,NONE
+	OPENDOOR, GIFTBULLET ,BULLET ,NONE
 
 };
 
 // for loadFromFile and emplace_back Texture
 const std::string strTexture[] = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
 
-"BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png" ,"Bullet.jpg"};
+"BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png" ,"giftBullet.png", "openDoor.png" };
 
 const std::string strBackground[] = { "conan.jpg" ,"Background.jpg" };
 

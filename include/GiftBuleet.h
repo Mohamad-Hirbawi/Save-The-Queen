@@ -2,10 +2,10 @@
 #include"Gift.h"
 
 
-class BulletGift : public Gift
+class GiftBuleet : public Gift
 {
 public:
-	BulletGift(Toolbar_t symbol, sf::Vector2f position);
+	GiftBuleet(Toolbar_t symbol, sf::Vector2f position);
 	virtual void handleCollision(Prince&, GameController&) override;
 
 private:

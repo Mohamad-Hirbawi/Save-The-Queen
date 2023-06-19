@@ -12,6 +12,7 @@
 #include <Gift.h>
 #include <IncreasingTime.h>
 #include <AddLife.h>
+#include <GiftBuleet.h>
 #include "Coin.h"
 #include "StaticObject.h"
 #include <SFML/System/Vector2.hpp>
@@ -37,11 +38,12 @@ public:
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 	std::unique_ptr<Bullet>m_bullet;
+	//std::vector < std::unique_ptr<Bullet>>m_giftBullet;
 
 private:
 	bool readLvlMap();
 	void readLvlSize();
-	std::unique_ptr<Gift> selectGiftType(sf::Vector2f position, const char c);
+	std::unique_ptr<Gift> selectGiftType(sf::Vector2f position, const char& c);
 	std::ifstream m_read;
 	std::vector<std::string> m_map;
 	int m_height;
@@ -53,3 +55,12 @@ private:
 	//Prince m_prince;
 };
 
+
+template<typename T>
+void drawObjects(const std::vector<std::unique_ptr<T>>& objects, sf::RenderWindow& window)
+{
+	for (int index = 0; index < objects.size(); index++)
+	{
+		objects[index]->draw(window);
+	}
+}

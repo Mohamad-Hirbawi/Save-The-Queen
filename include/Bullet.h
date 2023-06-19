@@ -17,6 +17,7 @@ public:
 	virtual void handleCollision(BallMonster&, GameController&) override {};
 	virtual void handleCollision(Bullet&, GameController&) override {};
 	virtual void handleCollision(Gift&, GameController&) override {};
+	virtual void handleCollision(Door&, GameController&) override {};
 
 
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
