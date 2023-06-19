@@ -3,7 +3,7 @@
 
 Board::Board()
 {
-	// חריגה
+	// throw
 	m_read.open("board.txt", std::ios_base::in);
 	readLvlMap();
 }
@@ -69,6 +69,8 @@ void Board::createStaticObject(const char &c, sf::Vector2f position)
 
 	case COIN_C:	m_staticObj.emplace_back(std::make_unique<Coin>(COIN, position));	break;
 
+	case DDOR_C:	m_staticObj.emplace_back(std::make_unique<Door>(DOOR, position));	break;
+
 	default:		m_staticObj.emplace_back(selectGiftType(position,c));				break;
 	}
 }
@@ -93,6 +95,8 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 
 void Board::checkCollision(MovingObject& thisObj, GameController& game)
 {
+	if (game.isLosing())
+		return;
 	m_erased = false;
 	for (auto& unmovable : m_staticObj){
 		if(!m_erased)
@@ -127,4 +131,14 @@ void Board::eraseStaticObject(StaticObject& staticObj)
 sf::Vector2f Board::getiInitailPrincePos() const
 {
 	return m_initailPrince;
+}
+
+void Board::clearBoard()
+{
+	m_prince.reset();
+	m_ballMonster.clear();
+	m_keyMonster.clear();
+	//m_map.clear();
+	m_staticObj.clear();
+	m_initailPrince = sf::Vector2f(0, 0);
 }

@@ -8,6 +8,7 @@ class Prince;
 class Wall;
 class Stair;
 class Coin;
+class Door;
 class KeyMonster;
 class BallMonster;
 class Bullet;
@@ -30,6 +31,7 @@ public:
 	virtual void handleCollision(Wall&, GameController&) = 0;
 	virtual void handleCollision(Stair&, GameController&) = 0;
 	virtual void handleCollision(Coin&, GameController&) = 0;
+	virtual void handleCollision(Door&, GameController&) = 0;
 	virtual void handleCollision(KeyMonster&, GameController&) = 0;
 	virtual void handleCollision(BallMonster&, GameController&) = 0;
 	virtual void handleCollision(Bullet&, GameController&)  = 0;
@@ -38,6 +40,7 @@ public:
 
 
 protected:
+	bool m_open;
 	sf::Sprite m_icon;
 	sf::Vector2f m_prevPos;
 	bool  m_princeCollisStair  = false;

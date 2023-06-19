@@ -9,38 +9,19 @@ Menu::Menu() :m_index(0)
 	int i = 1;
 	for (const auto text : strMenu)
 	{
-		m_helpText = drawInMenu(m_helpText, text, WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * i/ hLocation);
+		m_helpText = drawInMenu(m_helpText, text, WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * i/ NUMMENU);
 		m_text.emplace_back(m_helpText);
 		i++;
 	}
 	m_helpText = drawInMenu(m_helpText, "Back", WINDOW_WIDTH * 0.10, WINDOW_HEIGHT * 0.85);
 	m_text.emplace_back(m_helpText);
 
-
-	//for (const auto& tuxtBackg : strBackground)
-	//{
-	//	std:: cout << tuxtBackg<<" "
-	//	m_pTexture.loadFromFile(tuxtBackg);
-	//	m_startWallp.setTexture(m_pTexture);
-	//	m_startWallp.setScale(0.5, 0.5);
-
-	//}
-	//
-	//loadBackGroaund(m_pTexture, m_startWallp, "Background.jpg");
-	//loadBackGroaund(m_infoTexture, m_infosprite,"conan.png");
-	
-	m_pTexture.loadFromFile("Background.jpg");
-	m_startWallp.setTexture(m_pTexture);
-	m_startWallp.setScale(0.5, 0.5);
-
-	m_infoTexture.loadFromFile("conan.jpg");
-	m_infosprite.setTexture(m_infoTexture);
-	m_infosprite.setScale(0.5, 0.5);
-
+	loadBackGroaund(m_infoTexture, m_infosprite, "conan.jpg");
+	loadBackGroaund(m_pTexture, m_startWallp, "Background.jpg");
 }
 void Menu::loadBackGroaund(sf::Texture& Texture, sf::Sprite &sprite ,const std::string &str) {
 	Texture.loadFromFile(str);
-	sprite.setTexture(m_pTexture);
+	sprite.setTexture(Texture);
 	sprite.setScale(0.5, 0.5);
 }
 
@@ -59,7 +40,7 @@ sf::Text Menu::drawInMenu(sf::Text text, std::string str, const float x, const f
 
 void Menu::activateMenu(sf::RenderWindow& window)
 {
-
+	m_index = 0;
 	while (window.isOpen())
 	{
 		if (m_index == 0)// Menu 

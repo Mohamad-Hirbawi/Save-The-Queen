@@ -9,18 +9,16 @@ Caption::Caption()
 void Caption::startCaptions()
 {
 	sf::Text m_helpText;
-	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1);
-	m_text.emplace_back(m_helpText);// Score
-
-	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.2);
-	m_text.emplace_back(m_helpText);// Time
-
-	m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.3);
-	m_text.emplace_back(m_helpText);// Life
+	for (int i = 1; i <= NUMCAPTIONS; i++)
+	{
+		m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1 *i);
+		m_text.emplace_back(m_helpText);
+	}
 }
 
 void Caption::resetartCaptions()
 {
+	m_keys = 3;
 	m_score = 0;
 	m_life = 3;
 	m_bullets = 0;
@@ -30,14 +28,14 @@ void Caption::resetartCaptions()
 void Caption::drawCaptions(sf::RenderWindow& window)
 {
 	updateTime(0); 
-	window.draw(m_text[TIME]);
 
+	m_text[TIME].setString("Time left: " + std::to_string(m_stageTime));
 	m_text[SCORE].setString("Score: " + std::to_string(m_score));
-	window.draw(m_text[SCORE]);
-
 	m_text[LIFE].setString("Life: " + std::to_string(m_life));
-	window.draw(m_text[LIFE]);
+	m_text[Key].setString("Key: " + std::to_string(m_keys));
 
+	for (int index = 0; index < NUMCAPTIONS; index++)
+		window.draw(m_text[index]);
 
 }
 
@@ -57,8 +55,7 @@ void Caption::updateTime(float time)
 		m_stageTime--; 
 	}
 
-	m_stageTime += time;
-	m_text[1].setString("Time left: " + std::to_string(m_stageTime));
+	m_stageTime += int(time);
 }
 
 void Caption::dicreaseLife()
@@ -71,6 +68,7 @@ void Caption::increaseLife()
 	m_life++;
 }
 
+
 void Caption::increaseBullet()
 {
 	m_bullets += 5;
@@ -79,6 +77,20 @@ void Caption::increaseBullet()
 int Caption::getBullet() const
 {
 	return m_bullets;
+
+bool Caption::haveKey()
+{
+	if (m_keys > 0)
+	{
+		dicreaseKey();
+		return true;
+	}
+	return false;
+}
+
+int Caption::getLife()
+{
+	return m_life;
 }
 
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
@@ -89,6 +101,11 @@ sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
 	text.setFillColor(sf::Color::White);
 
 	return text;
+}
+
+void Caption::dicreaseKey()
+{
+	m_keys--;
 }
 
 void Caption::newLevel(const int time)
