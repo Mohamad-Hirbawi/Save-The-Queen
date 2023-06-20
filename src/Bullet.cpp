@@ -1,9 +1,12 @@
 ﻿#include "Bullet.h"
 
-Bullet::Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction)
-	:MovingObject(symbol, position), m_direction(direction)
-{}
+//Bullet::Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction)
+//	:MovingObject(symbol, position), m_direction(direction)
+//{}
 
+Bullet::Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction)
+	: MovingObject(symbol, position), m_direction(direction) 
+{}
 void Bullet::handleCollision(Object& obj, GameController& game)
 {
 	obj.handleCollision(*this, game);

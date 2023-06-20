@@ -8,6 +8,7 @@
 #include "Prince.h"
 #include "KeyMonster.h"
 #include "BallMonster.h"
+#include "BeastMonster.h"
 #include "Bullet.h"
 #include <Gift.h>
 #include <IncreasingTime.h>
@@ -38,6 +39,7 @@ public:
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 	std::vector <std ::unique_ptr<Bullet>> m_bullet;
+	std::unique_ptr<BeastMonster> m_beastMonster;
 	//std::vector < std::unique_ptr<Bullet>>m_giftBullet;
 
 private:

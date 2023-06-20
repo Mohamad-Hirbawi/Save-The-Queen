@@ -52,7 +52,9 @@ void Board::drawBoard(sf::RenderWindow& window)
 			m_staticObj[i]->draw(window);
 	}
 	// throw if we dont have prince
+
 	m_prince->draw(window);
+	m_beastMonster->draw(window);
 	drawObjects(m_keyMonster, window);
 	drawObjects(m_ballMonster, window);
 	drawObjects(m_bullet, window);
@@ -77,14 +79,15 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 {
 	switch (c)
 	{
-	case PRINCE_C:	m_prince = std::make_unique<Prince>(PRINCE, position); m_initailPrince = position;	break;
+	case PRINCE_C: m_prince = std::make_unique<Prince>(PRINCE, position); m_initailPrince = position;	break;
 
-	case KEYMONSTER_C:	m_keyMonster.emplace_back(std::make_unique<KeyMonster>(KEYMONSTER, position));	break;
+	case KEYMONSTER_C: m_keyMonster.emplace_back(std::make_unique<KeyMonster>(KEYMONSTER, position));	break;
 	
-	case BALLMONSTER_C:	m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
+	case BALLMONSTER_C: m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
 	
-	case BULLET_C:
-			m_bullet.emplace_back(std::make_unique<Bullet>(BULLET, m_prince->getposition(),position));	break;
+	case BULLET_C: m_bullet.emplace_back(std::make_unique<Bullet>(BULLET, m_prince->getposition(),position));	break;
+
+	case BEASTMONSTER_C: m_beastMonster = std::make_unique<BeastMonster>(BEASTMONSTER, position); break;
 	}
 }
 

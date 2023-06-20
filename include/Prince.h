@@ -16,6 +16,7 @@ public:
 	virtual void handleCollision(Door&, GameController&) override;
 	virtual void handleCollision(KeyMonster&, GameController&) override;
 	virtual void handleCollision(BallMonster&, GameController&) override;
+	virtual void handleCollision(BeastMonster&, GameController&) override {};
 	virtual void handleCollision(Bullet&, GameController&) override {};
 
 

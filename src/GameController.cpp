@@ -72,6 +72,7 @@ void GameController::move(sf::Time deltaTime)
 {
 
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
+	m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
 	checkCollision(*m_board.m_prince);
@@ -88,6 +89,10 @@ void GameController::move(sf::Time deltaTime)
 	}
 	for (int i = 0; i < m_board.m_bullet.size(); i++)
 		m_board.m_bullet[i]->move(deltaTime, m_board.m_prince.get()->getposition());
+
+	for (int i = 0; i < m_board.m_ballMonster.size(); i++)
+		m_board.m_ballMonster[i]->move(deltaTime,m_board.m_prince->getposition());
+
 		//templateMove(m_board.m_bullet, deltaTime, i);
 	//m_board.m_bullet[i]->move(deltaTime, m_board.m_prince->getposition());
 

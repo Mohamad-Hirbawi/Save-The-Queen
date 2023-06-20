@@ -21,12 +21,14 @@ sf::Vector2f KeyMonster::directionFollowPrince(sf::Vector2f princePos)
 
 sf::Vector2f KeyMonster::getDirection(sf::Vector2f princePos)
 {
-    if (getposition().y - princePos.y > -15 && getposition().y - princePos.y <= 15)
+    if (std::abs(getposition().y - princePos.y) <= 15)
         return directionFollowPrince(princePos);
+ 
     std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now();
+    
     std::chrono::seconds elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_startTime);
 
-    if (elapsedTime >= std::chrono::seconds(4)){
+    if (elapsedTime >= std::chrono::seconds(2)){
         m_startTime = currentTime;
         if (m_dir == RIGHT)    return LEFT;
         else    return RIGHT;
