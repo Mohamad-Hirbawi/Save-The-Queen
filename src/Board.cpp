@@ -98,9 +98,12 @@ void Board::checkCollision(MovingObject& thisObj, GameController& game)
 		return;
 	m_erased = false;
 	for (auto& unmovable : m_staticObj){
-		if(!m_erased)
+		{
+			if (m_erased)
+				return;
 			if (unmovable != nullptr && thisObj.collidesWith(*unmovable))
-				thisObj.handleCollision(*unmovable, game);
+					thisObj.handleCollision(*unmovable, game);
+		}
 	}
 
 }
@@ -181,19 +184,7 @@ void Board::move(sf::Time deltaTime, GameController& game)
 {
 	moveObject(m_keyMonster, game, m_prince, deltaTime , *this);
 
-	//for (int index = 0; index < m_keyMonster.size(); index++) {
-	//	m_keyMonster[index]->move(deltaTime, m_prince.get()->getposition());
+	moveObject(m_bullet, game, m_prince, deltaTime , *this);
 
-	//	checkCollision(*m_keyMonster[index], game); //check collisions with static objects
-
-	//	if (m_keyMonster[index]->collidesWith(*m_prince))
-	//		m_keyMonster[index]->handleCollision(*m_prince, game);
-
-
-	//	checkCollisionMoving(*m_keyMonster[index], game);
-
-	//	//templateMove(m_board.m_keyMonster, deltaTime ,index);
-	//	//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince->getposition());
-
-	//}
+	moveObject(m_ballMonster, game, m_prince, deltaTime , *this);
 }

@@ -25,9 +25,7 @@ void GameController::run() {
 			}
 		}
 		if (m_caption.getTime() <= 0)		dead();
-		sf::Time deltaTime = m_timer.restart();
-		m_board.move(deltaTime,*this);
-		move(deltaTime);
+		move(m_timer.restart());
 		window.display();
 	}
 
@@ -71,41 +69,13 @@ bool GameController::isStaticObj(const char& c)
 
 void GameController::move(sf::Time deltaTime)
 {
-
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
 	checkCollision(*m_board.m_prince);
 
 	m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
-
-	//m_board.m_prince->move(deltaTime, m_board.m_prince->getposition());
-
-	//for (int index = 0; index < m_board.m_keyMonster.size(); index++){
-	//	m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
-	//	checkCollision(*m_board.m_keyMonster[index]);
-	//
-	//	//templateMove(m_board.m_keyMonster, deltaTime ,index);
-	//	//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince->getposition());
-
-	//}
-	for (int i = 0; i < m_board.m_bullet.size(); i++)
-	{
-		m_board.m_bullet[i]->move(deltaTime, m_board.m_prince.get()->getposition());
-    		checkCollision(*m_board.m_bullet[i]);
-	}
-
-	for (int i = 0; i < m_board.m_ballMonster.size(); i++)
-	{
-		m_board.m_ballMonster[i]->move(deltaTime, m_board.m_prince->getposition());
-		//checkCollision(*m_board.m_bullet[i]);
-	}
-
-		//templateMove(m_board.m_bullet, deltaTime, i);
-	//m_board.m_bullet[i]->move(deltaTime, m_board.m_prince->getposition());
-
-
-
+	m_board.move(deltaTime, *this);
 }
 
 
@@ -135,12 +105,6 @@ void GameController::setLastDirection(sf::Vector2f direction)
 	m_lastPrinceDirection = direction;
 }
 
-
-//void GameController::eraseStaticObject(StaticObject& staticObj)
-//{m_board.eraseStaticObject(staticObj);}
-//
-
-
 void GameController::eraseObject(Object& movingObject , Toolbar_t typeVector /*, const std::vector <std::unique_ptr<MovingObject>>& vector*/)
 {
 	m_board.m_erased = m_board.eraseMoving(movingObject, typeVector);
@@ -159,12 +123,6 @@ void GameController::dead(){
 	else		losing();
 
 }
-
-//
-//std::vector<std::unique_ptr<Bullet>> GameController::getBuelltVector()
-//{
-//	return m_board.m_bullet;
-//}
 
 void GameController::losing()
 {
