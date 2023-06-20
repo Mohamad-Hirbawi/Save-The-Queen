@@ -88,10 +88,14 @@ void GameController::move(sf::Time deltaTime)
 
 	}
 	for (int i = 0; i < m_board.m_bullet.size(); i++)
+	{
 		m_board.m_bullet[i]->move(deltaTime, m_board.m_prince.get()->getposition());
+    		checkCollision(*m_board.m_bullet[i]);
+	}
 
 	for (int i = 0; i < m_board.m_ballMonster.size(); i++)
 		m_board.m_ballMonster[i]->move(deltaTime,m_board.m_prince->getposition());
+
 
 		//templateMove(m_board.m_bullet, deltaTime, i);
 	//m_board.m_bullet[i]->move(deltaTime, m_board.m_prince->getposition());
@@ -103,9 +107,17 @@ void GameController::move(sf::Time deltaTime)
 
 void GameController::checkCollision(MovingObject& thisObj)
 {
+	m_board.checkCollision(thisObj, *this); //check collisions with static objects
+
 	if (thisObj.collidesWith(*m_board.m_prince))
 		thisObj.handleCollision(*m_board.m_prince, *this);
-	m_board.checkCollision(thisObj, *this); //check collisions with static objects
+	
+	//for (auto index = 0; index < m_board.m_keyMonster.size(); index++)
+	//	if (thisObj.collidesWith(*m_board.m_keyMonster[index]))
+	//		thisObj.handleCollision(*m_board.m_keyMonster[index], *this);
+
+	m_board.checkCollisionMoving(thisObj, *this);
+
 }
 
 void GameController::increaseScore(const int number)
@@ -126,6 +138,15 @@ void GameController::setLastDirection(sf::Vector2f direction)
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
 
+
+
+void GameController::eraseMovingObject(MovingObject & movingObject , Toolbar_t typeVector /*, const std::vector <std::unique_ptr<MovingObject>>& vector*/)
+{
+	m_board.eraseMoving(movingObject, typeVector);
+}
+
+
+
 void GameController::dead(){
 	m_caption.dicreaseLife();
 	if (m_caption.getLife() > 0)
@@ -137,6 +158,12 @@ void GameController::dead(){
 	else		losing();
 
 }
+
+//
+//std::vector<std::unique_ptr<Bullet>> GameController::getBuelltVector()
+//{
+//	return m_board.m_bullet;
+//}
 
 void GameController::losing()
 {

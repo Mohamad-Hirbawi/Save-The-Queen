@@ -4,6 +4,7 @@
 #include "KeyMonster.h"
 #include "BallMonster.h"
 #include "Monster.h"
+#include "Bullet.h"
 
 class StaticObject : public Object
 {

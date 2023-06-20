@@ -3,9 +3,12 @@
 #include "Menu.h"
 #include "Board.h"
 #include "Caption.h"
-
+#include "Bullet.h"
 #include <SFML/Graphics.hpp>
 
+
+
+class Bullet;
 class GameController
 {
 public:
@@ -22,8 +25,9 @@ public:
 	void setLastDirection(sf::Vector2f direction);
 
 	void eraseStaticObject(StaticObject& staticObj);
+	void eraseMovingObject(MovingObject& movingObject, Toolbar_t  /*,const std::vector <std::unique_ptr<MovingObject>> &vector*/);
 	void dead();
-
+	//std::vector <std::unique_ptr<Bullet>> getBuelltVector();
 	void increaseBullet();
 	bool haveKey();
 	bool isLosing();
