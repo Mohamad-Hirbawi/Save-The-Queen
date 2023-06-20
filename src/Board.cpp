@@ -91,6 +91,7 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	}
 }
 
+// template
 void Board::checkCollision(MovingObject& thisObj, GameController& game)
 {
 	if (game.isLosing())
