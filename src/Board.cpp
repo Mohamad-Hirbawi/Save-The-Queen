@@ -103,6 +103,19 @@ void Board::checkCollision(MovingObject& thisObj, GameController& game)
 
 }
 
+void Board::checkCollisionMoving(MovingObject& thisObj, GameController& game)
+{
+	if (game.isLosing())
+		return;
+	m_erased = false;
+	for (auto& unmovable : m_keyMonster){
+		if(!m_erased)
+			if (unmovable != nullptr && thisObj.collidesWith(*unmovable))
+				thisObj.handleCollision(*unmovable, game);
+	}
+
+}
+
 std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char& c)
 {
 	switch (c)
@@ -142,27 +155,24 @@ void Board::eraseStaticObject(StaticObject& staticObj)
 	}
 }
 
-//// template
-//void Board::	(Bullet& movingObject, const std::vector <std::unique_ptr<Bullet>> &vec)
-//{
-//
-//	//auto movingPtr = m_bullet.begin();
-//	//for (; movingPtr != m_bullet.end(); movingPtr++)
-//	//{
-//	//	if ((*movingPtr)->getposition() ==  movingObject.getposition()){
-//	//		m_bullet.erase(movingPtr);
-//	//		m_erased = true;	return;
-//	//	}
-//	//}
-//}
-
 sf::Vector2f Board::getiInitailPrincePos() const
 {
 	return m_initailPrince;
 }
 
-bool Board::eraseMoving(MovingObject& movingObject)
+bool Board::eraseMoving(MovingObject& movingObject, Toolbar_t typeVector)
 {
+	switch (typeVector)
+	{
+	case KEYMONSTER:
+		return eraseMovingObject(movingObject, m_keyMonster);
+	case BALLMONSTER:
+		return eraseMovingObject(movingObject, m_ballMonster);
+	case BULLET:
+		return eraseMovingObject(movingObject, m_bullet);
+	default:
+		break;
+	}//throw
 	return eraseMovingObject(movingObject, m_bullet);
 
 }
@@ -172,7 +182,6 @@ void Board::clearBoard()
 	m_prince.reset();
 	m_ballMonster.clear();
 	m_keyMonster.clear();
-	//m_map.clear();
 	m_staticObj.clear();
 	m_initailPrince = sf::Vector2f(0, 0);
 }
