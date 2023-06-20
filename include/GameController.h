@@ -22,7 +22,7 @@ public:
 	void setLastDirection(sf::Vector2f direction);
 
 	void eraseStaticObject(StaticObject& staticObj);
-	void eraseMovingObjectBullt(MovingObject& movingObject);
+	void eraseMovingObject(MovingObject& movingObject);
 	void dead();
 
 	void increaseBullet();

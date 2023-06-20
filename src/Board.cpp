@@ -142,22 +142,29 @@ void Board::eraseStaticObject(StaticObject& staticObj)
 	}
 }
 
-// template
-void Board::eraseMovingObjectBullt(MovingObject& movingObject)
-{
-	auto movingPtr = m_bullet.begin();
-	for (; movingPtr != m_bullet.end(); movingPtr++)
-	{
-		if ((*movingPtr)->getposition() == movingObject.getposition()){
-			m_bullet.erase(movingPtr);
-			m_erased = true;	return;
-		}
-	}
-}
+//// template
+//void Board::	(Bullet& movingObject, const std::vector <std::unique_ptr<Bullet>> &vec)
+//{
+//
+//	//auto movingPtr = m_bullet.begin();
+//	//for (; movingPtr != m_bullet.end(); movingPtr++)
+//	//{
+//	//	if ((*movingPtr)->getposition() ==  movingObject.getposition()){
+//	//		m_bullet.erase(movingPtr);
+//	//		m_erased = true;	return;
+//	//	}
+//	//}
+//}
 
 sf::Vector2f Board::getiInitailPrincePos() const
 {
 	return m_initailPrince;
+}
+
+bool Board::eraseMoving(MovingObject& movingObject)
+{
+	return eraseMovingObject(movingObject, m_bullet);
+
 }
 
 void Board::clearBoard()

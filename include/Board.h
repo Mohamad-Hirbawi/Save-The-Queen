@@ -32,14 +32,17 @@ public:
 
 	void checkCollision(MovingObject& thisObj, GameController& game);
 	void eraseStaticObject(StaticObject& staticObj);
-	void eraseMovingObjectBullt(MovingObject& );
+	//void eraseMovingObject(Bullet& );
+	//void eraseMovingObject(Bullet& movingObject, const std::vector <std::unique_ptr<Bullet>> &vec);
 	sf::Vector2f getiInitailPrincePos()const;
+	bool eraseMoving(MovingObject& movingObject);
 	void clearBoard();
 	std::unique_ptr<Prince> m_prince;
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 	std::vector <std ::unique_ptr<Bullet>> m_bullet;
 	//std::vector < std::unique_ptr<Bullet>>m_giftBullet;
+	bool m_erased;
 
 private:
 	bool readLvlMap();
@@ -53,7 +56,6 @@ private:
 	sf::Vector2f m_initailPrince;
 
 	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
-	bool m_erased;
 	//Prince m_prince;
 };
 
@@ -65,4 +67,21 @@ void drawObjects(const std::vector<std::unique_ptr<T>>& objects, sf::RenderWindo
 	{
 		objects[index]->draw(window);
 	}
+}
+
+template<typename T1, typename T2 >
+bool  eraseMovingObject(T1& object ,  std::vector<std::unique_ptr<T2>> &vec) {
+
+	auto movingPtr = vec.begin();
+	for (; movingPtr != vec.end(); movingPtr++)
+	{
+		if ((*movingPtr)->getposition() == object.getposition()) {
+			vec.erase(movingPtr);
+			return true; 
+			//m_erased = true;	return;
+		}
+	}
+	return false;
+
+	
 }

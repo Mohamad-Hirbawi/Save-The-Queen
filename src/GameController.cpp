@@ -125,8 +125,12 @@ void GameController::setLastDirection(sf::Vector2f direction)
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
 
-void GameController::eraseMovingObjectBullt(MovingObject& movingObject)
-{m_board.eraseMovingObjectBullt(movingObject);}
+
+void GameController::eraseMovingObject(MovingObject& movingObject)
+{
+	m_board.eraseMoving(movingObject);
+	
+}
 
 void GameController::dead(){
 	m_caption.dicreaseLife();
