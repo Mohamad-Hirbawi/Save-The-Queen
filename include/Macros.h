@@ -58,3 +58,8 @@ enum Captions
 {
 	SCORE, TIME, LIFE, Key, BULLETS
 };
+
+const std::string STRCAPTIONARR[] = { "Score: ","Time left: " ,"Life: ","Key: ","Bullets: " };
+
+
+
