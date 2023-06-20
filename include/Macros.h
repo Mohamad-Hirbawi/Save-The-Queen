@@ -12,7 +12,7 @@ const float OUTLINE_THICKNESS = 5.0;
 const float BOLD_OUTLINE = 10.0;
 const std::string INFOSTR = "This game was done by Mohammad Hirbawi and Mustafa fachori.";
 const float  MOVEMENTSPEED = 170.0;//3
-const float  MONSTERSPEED= 80.0;//3
+const float  MONSTERSPEED= 40.0;//3
 const float  BULEETSPEED = 300.0;//3
 const int NUMMENU = 4;
 

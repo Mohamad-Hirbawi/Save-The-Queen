@@ -43,7 +43,7 @@ void KeyMonster::move(sf::Time deltaTime, sf::Vector2f princePos)
 {
     m_prevPos = m_icon.getPosition();
     m_dir = getDirection(princePos);
-    m_icon.move(m_dir * MOVEMENTSPEED * deltaTime.asSeconds());
+    m_icon.move(m_dir * MONSTERSPEED * deltaTime.asSeconds());
 }
 
 void KeyMonster::handleCollision(Prince& prince, GameController& game)

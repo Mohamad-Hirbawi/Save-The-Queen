@@ -72,10 +72,11 @@ void GameController::move(sf::Time deltaTime)
 {
 
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
+	checkCollision(*m_board.m_prince);
+
 	m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
-	checkCollision(*m_board.m_prince);
 
 	//m_board.m_prince->move(deltaTime, m_board.m_prince->getposition());
 
@@ -112,9 +113,6 @@ void GameController::checkCollision(MovingObject& thisObj)
 	if (thisObj.collidesWith(*m_board.m_prince))
 		thisObj.handleCollision(*m_board.m_prince, *this);
 	
-	//for (auto index = 0; index < m_board.m_keyMonster.size(); index++)
-	//	if (thisObj.collidesWith(*m_board.m_keyMonster[index]))
-	//		thisObj.handleCollision(*m_board.m_keyMonster[index], *this);
 
 	m_board.checkCollisionMoving(thisObj, *this);
 
@@ -142,7 +140,7 @@ void GameController::eraseStaticObject(StaticObject& staticObj)
 
 void GameController::eraseMovingObject(MovingObject & movingObject , Toolbar_t typeVector /*, const std::vector <std::unique_ptr<MovingObject>>& vector*/)
 {
-	m_board.eraseMoving(movingObject, typeVector);
+	m_board.m_erased = m_board.eraseMoving(movingObject, typeVector);
 }
 
 
