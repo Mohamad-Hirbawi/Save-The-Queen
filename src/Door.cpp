@@ -26,6 +26,13 @@ void Door::handleCollision(KeyMonster& keyMonster, GameController& game)
 	keyMonster.handleCollision(*this, game);
 }
 
+void Door::handleCollision(Bullet& bullet, GameController& game)
+{
+	if (m_open)
+		return;
+	bullet.handleCollision(*this, game);
+}
+
 //void Door::handleCollision(BallMonster& ballMonster, GameController& game)
 //{
 //	//ballMonster.handleCollision(*this, game);
