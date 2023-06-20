@@ -17,11 +17,14 @@ void Bullet::handleCollision(Object& obj, GameController& game)
 
 void Bullet::handleCollision(Wall& wall, GameController& game)
 {
-	game.eraseMovingObject(*this);
+	
+	game.eraseMovingObject(*this , BULLET);
 }
 
-void Bullet::handleCollision(KeyMonster&, GameController&)
+void Bullet::handleCollision(KeyMonster& keyMonster, GameController& game)
 {
+	game.eraseMovingObject(*this, BULLET);
+	keyMonster.handleCollision(*this, game);
 }
 
 void Bullet::handleCollision(BallMonster&, GameController&)
@@ -30,7 +33,7 @@ void Bullet::handleCollision(BallMonster&, GameController&)
 
 void Bullet::handleCollision(Door&, GameController& game)
 {
-	game.eraseMovingObject(*this);
+	game.eraseMovingObject(*this, BULLET);
 }
 
 

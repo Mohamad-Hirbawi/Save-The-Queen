@@ -11,7 +11,7 @@ public:
 	virtual void handleCollision(Prince&, GameController&) override;
 	virtual void handleCollision(Object&, GameController&) override ;
 
-	//virtual void handleCollision(Bullet&, GameController&) override {};
+	virtual void handleCollision(Bullet&, GameController&) override;
 	virtual void handleCollision(Wall&, GameController&) override;
 	virtual void handleCollision(Door&, GameController&)override;
 

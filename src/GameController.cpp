@@ -102,9 +102,17 @@ void GameController::move(sf::Time deltaTime)
 
 void GameController::checkCollision(MovingObject& thisObj)
 {
+	m_board.checkCollision(thisObj, *this); //check collisions with static objects
+
 	if (thisObj.collidesWith(*m_board.m_prince))
 		thisObj.handleCollision(*m_board.m_prince, *this);
-	m_board.checkCollision(thisObj, *this); //check collisions with static objects
+	
+	//for (auto index = 0; index < m_board.m_keyMonster.size(); index++)
+	//	if (thisObj.collidesWith(*m_board.m_keyMonster[index]))
+	//		thisObj.handleCollision(*m_board.m_keyMonster[index], *this);
+
+	m_board.checkCollisionMoving(thisObj, *this);
+
 }
 
 void GameController::increaseScore(const int number)
@@ -126,11 +134,13 @@ void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
 
 
-void GameController::eraseMovingObject(MovingObject& movingObject)
+
+void GameController::eraseMovingObject(MovingObject & movingObject , Toolbar_t typeVector /*, const std::vector <std::unique_ptr<MovingObject>>& vector*/)
 {
-	m_board.eraseMoving(movingObject);
-	
+	m_board.eraseMoving(movingObject, typeVector);
 }
+
+
 
 void GameController::dead(){
 	m_caption.dicreaseLife();
@@ -143,6 +153,12 @@ void GameController::dead(){
 	else		losing();
 
 }
+
+//
+//std::vector<std::unique_ptr<Bullet>> GameController::getBuelltVector()
+//{
+//	return m_board.m_bullet;
+//}
 
 void GameController::losing()
 {

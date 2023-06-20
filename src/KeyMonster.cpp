@@ -1,6 +1,7 @@
 ﻿#include "KeyMonster.h"
 #include "Prince.h"
 #include "Board.h"
+#include "GameController.h"
 KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
 	:Monster(symbol, position), m_positionKeyMonster(position) 
 {
@@ -51,6 +52,11 @@ void KeyMonster::handleCollision(Prince& prince, GameController& game)
 void KeyMonster::handleCollision(Object& obj, GameController& game)
 {
     obj.handleCollision(*this, game);
+}
+
+void KeyMonster::handleCollision(Bullet&, GameController& game)
+{
+    game.eraseMovingObject(*this, KEYMONSTER);
 }
 
 void KeyMonster::handleCollision(Wall&, GameController&)
