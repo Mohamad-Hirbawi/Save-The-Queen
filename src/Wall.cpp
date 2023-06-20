@@ -16,3 +16,9 @@ void Wall::handleCollision(BallMonster& ballMonster, GameController&game)
 {
 	ballMonster.handleCollision(*this, game);
 }
+
+void Wall::handleCollision(Bullet& bullet, GameController& game)
+{
+	bullet.handleCollision(*this, game);
+
+}

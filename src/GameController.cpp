@@ -87,7 +87,11 @@ void GameController::move(sf::Time deltaTime)
 
 	}
 	for (int i = 0; i < m_board.m_bullet.size(); i++)
+	{
 		m_board.m_bullet[i]->move(deltaTime, m_board.m_prince.get()->getposition());
+		checkCollision(*m_board.m_bullet[i]);
+
+	}
 		//templateMove(m_board.m_bullet, deltaTime, i);
 	//m_board.m_bullet[i]->move(deltaTime, m_board.m_prince->getposition());
 
@@ -120,6 +124,9 @@ void GameController::setLastDirection(sf::Vector2f direction)
 
 void GameController::eraseStaticObject(StaticObject& staticObj)
 {m_board.eraseStaticObject(staticObj);}
+
+void GameController::eraseMovingObjectBullt(MovingObject& movingObject)
+{m_board.eraseMovingObjectBullt(movingObject);}
 
 void GameController::dead(){
 	m_caption.dicreaseLife();

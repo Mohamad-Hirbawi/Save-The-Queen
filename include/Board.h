@@ -32,6 +32,7 @@ public:
 
 	void checkCollision(MovingObject& thisObj, GameController& game);
 	void eraseStaticObject(StaticObject& staticObj);
+	void eraseMovingObjectBullt(MovingObject& );
 	sf::Vector2f getiInitailPrincePos()const;
 	void clearBoard();
 	std::unique_ptr<Prince> m_prince;
@@ -44,6 +45,7 @@ private:
 	bool readLvlMap();
 	void readLvlSize();
 	std::unique_ptr<Gift> selectGiftType(sf::Vector2f position, const char& c);
+	std::unique_ptr<Bullet> selectBulltType(sf::Vector2f position);
 	std::ifstream m_read;
 	std::vector<std::string> m_map;
 	int m_height;

@@ -83,8 +83,10 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	
 	case BALLMONSTER_C:	m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
 	
-	case BULLET_C:
-			m_bullet.emplace_back(std::make_unique<Bullet>(BULLET, m_prince->getposition(),position));	break;
+	case BULLET_C:	m_bullet.emplace_back(selectBulltType(position));
+		////if (position == RIGHT)
+		//	m_bullet.emplace_back(std::make_unique<Bullet>(BULLET, m_prince->getposition(),position));	
+		break;
 	}
 }
 
@@ -116,6 +118,18 @@ std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char& c)
 	}
 }
 
+std::unique_ptr<Bullet> Board::selectBulltType(sf::Vector2f position)
+{
+	sf::Vector2f princePos = m_prince->getposition();
+	if (position == RIGHT)
+		princePos.x += 50;
+	else
+		princePos.x -= 25;
+		
+	return std::make_unique<Bullet>(BULLET, princePos, position);
+
+}
+
 void Board::eraseStaticObject(StaticObject& staticObj)
 {
 	auto staticPtr = m_staticObj.begin();
@@ -123,6 +137,19 @@ void Board::eraseStaticObject(StaticObject& staticObj)
 	{
 		if ((*staticPtr)->getposition() == staticObj.getposition()){
 			m_staticObj.erase(staticPtr);
+			m_erased = true;	return;
+		}
+	}
+}
+
+// template
+void Board::eraseMovingObjectBullt(MovingObject& movingObject)
+{
+	auto movingPtr = m_bullet.begin();
+	for (; movingPtr != m_bullet.end(); movingPtr++)
+	{
+		if ((*movingPtr)->getposition() == movingObject.getposition()){
+			m_bullet.erase(movingPtr);
 			m_erased = true;	return;
 		}
 	}
