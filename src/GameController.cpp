@@ -77,7 +77,7 @@ bool GameController::isStaticObj(const char& c)
 void GameController::move(sf::Time deltaTime)
 {
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
-
+	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 	checkCollision(*m_board.m_prince);
 
 	for (int index = 0; index < m_board.m_keyMonster.size(); index++){
@@ -106,6 +106,11 @@ void GameController::increaseTime()
 
 void GameController::addLife()
 {m_caption.increaseLife();}
+
+void GameController::setLastDirection(sf::Vector2f direction)
+{
+	m_lastPrinceDirection = direction;
+}
 
 
 void GameController::eraseStaticObject(StaticObject& staticObj)
@@ -141,7 +146,7 @@ void GameController::increaseBullet()
 {m_caption.increaseBullet();}
 
 void GameController::creatBullet() 
-{m_board.createMovingObject('b', m_board.m_prince->getposition());
+{m_board.createMovingObject('b', m_lastPrinceDirection);
 m_caption.dicreaseBullet();
 }
 
