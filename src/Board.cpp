@@ -145,37 +145,26 @@ std::unique_ptr<Bullet> Board::selectBulltType(sf::Vector2f position)
 
 }
 
-void Board::eraseStaticObject(StaticObject& staticObj)
-{
-	auto staticPtr = m_staticObj.begin();
-	for (; staticPtr != m_staticObj.end(); staticPtr++)
-	{
-		if ((*staticPtr)->getposition() == staticObj.getposition()){
-			m_staticObj.erase(staticPtr);
-			m_erased = true;	return;
-		}
-	}
-}
-
 sf::Vector2f Board::getiInitailPrincePos() const
 {
 	return m_initailPrince;
 }
 
-bool Board::eraseMoving(MovingObject& movingObject, Toolbar_t typeVector)
+bool Board::eraseMoving(Object& movingObject, Toolbar_t typeVector)
 {
 	switch (typeVector)
 	{
 	case KEYMONSTER:
-		return eraseMovingObject(movingObject, m_keyMonster);
+		return eraseObject(movingObject, m_keyMonster);
 	case BALLMONSTER:
-		return eraseMovingObject(movingObject, m_ballMonster);
+		return eraseObject(movingObject, m_ballMonster);
 	case BULLET:
-		return eraseMovingObject(movingObject, m_bullet);
-	default:
-		break;
-	}//throw
-	return eraseMovingObject(movingObject, m_bullet);
+		return eraseObject(movingObject, m_bullet);
+	case STATICS:
+		return eraseObject(movingObject, m_staticObj);
+	}
+	//throw
+	//return eraseObject(movingObject, m_bullet);
 
 }
 

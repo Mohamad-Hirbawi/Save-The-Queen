@@ -25,7 +25,7 @@ public:
 	void setLastDirection(sf::Vector2f direction);
 
 	void eraseStaticObject(StaticObject& staticObj);
-	void eraseMovingObject(MovingObject& movingObject, Toolbar_t  /*,const std::vector <std::unique_ptr<MovingObject>> &vector*/);
+	void eraseObject(Object& movingObject, Toolbar_t  /*,const std::vector <std::unique_ptr<MovingObject>> &vector*/);
 	void dead();
 	//std::vector <std::unique_ptr<Bullet>> getBuelltVector();
 	void increaseBullet();

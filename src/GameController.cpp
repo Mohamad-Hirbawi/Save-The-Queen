@@ -95,8 +95,10 @@ void GameController::move(sf::Time deltaTime)
 	}
 
 	for (int i = 0; i < m_board.m_ballMonster.size(); i++)
-		m_board.m_ballMonster[i]->move(deltaTime,m_board.m_prince->getposition());
-
+	{
+		m_board.m_ballMonster[i]->move(deltaTime, m_board.m_prince->getposition());
+		//checkCollision(*m_board.m_bullet[i]);
+	}
 
 		//templateMove(m_board.m_bullet, deltaTime, i);
 	//m_board.m_bullet[i]->move(deltaTime, m_board.m_prince->getposition());
@@ -133,12 +135,12 @@ void GameController::setLastDirection(sf::Vector2f direction)
 }
 
 
-void GameController::eraseStaticObject(StaticObject& staticObj)
-{m_board.eraseStaticObject(staticObj);}
+//void GameController::eraseStaticObject(StaticObject& staticObj)
+//{m_board.eraseStaticObject(staticObj);}
+//
 
 
-
-void GameController::eraseMovingObject(MovingObject & movingObject , Toolbar_t typeVector /*, const std::vector <std::unique_ptr<MovingObject>>& vector*/)
+void GameController::eraseObject(Object& movingObject , Toolbar_t typeVector /*, const std::vector <std::unique_ptr<MovingObject>>& vector*/)
 {
 	m_board.m_erased = m_board.eraseMoving(movingObject, typeVector);
 }
