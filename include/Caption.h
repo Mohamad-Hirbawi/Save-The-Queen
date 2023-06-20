@@ -27,16 +27,13 @@ public:
 
 
 private:
+	void funcDrwCap(Captions cap, const std::string& str, const int& caption);
 	void startCaptions();
 	sf::Text drawInCaption(sf::Text text, const float x, const float y);
 	void dicreaseKey();
-
-	int m_keys;
-	int m_score;
-	int m_life;
-	int m_stageTime;
-	int m_bullets;
 	std::vector<sf::Text> m_text;
 	std::chrono::time_point<std::chrono::steady_clock> m_startTime;
-
+	int intCaption[NUMCAPTIONS];
+	
+	
 };

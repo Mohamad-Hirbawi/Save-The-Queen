@@ -18,31 +18,50 @@ void Caption::startCaptions()
 
 void Caption::resetartCaptions()
 {
-	m_keys = 3;
-	m_score = 0;
-	m_life = 3;
-	m_bullets = 0;
+	intCaption [Key] = 3;
+	intCaption [SCORE] = 0;
+	intCaption[LIFE] = 3;
+	intCaption[BULLETS]= 0;
 	newLevel(TIMEOFGAME);
 }
 
 void Caption::drawCaptions(sf::RenderWindow& window)
 {
 	updateTime(0); 
+	for(int index =0 ; index < NUMCAPTIONS; index++)
+	{ 
+		m_text[index].setString(STRCAPTIONARR[index] + std::to_string(intCaption[index]));
 
-	m_text[TIME].setString("Time left: " + std::to_string(m_stageTime));
-	m_text[SCORE].setString("Score: " + std::to_string(m_score));
-	m_text[LIFE].setString("Life: " + std::to_string(m_life));
-	m_text[Key].setString("Key: " + std::to_string(m_keys));
-	m_text[BULLETS].setString("Bullets: " + std::to_string(m_bullets));
+	}
+	//funcDrwCap(TIME, "Time left: ", m_stageTime);
+	//funcDrwCap(SCORE, "Score: ", m_score);
+	//funcDrwCap(LIFE, "Life: ", intCaption [LIFE]);
+	//funcDrwCap(Key, "Key: ", m_keys);
+	//funcDrwCap(BULLETS, "Bullets: ", intCaption [BULLETS]);
+
+
+	//m_text[TIME].setString("Time left: " + std::to_string(m_stageTime));
+
+	//m_text[SCORE].setString("Score: " + std::to_string(m_score));
+
+	//m_text[LIFE].setString("Life: " + std::to_string(intCaption [LIFE]));
+
+	//m_text[Key].setString("Key: " + std::to_string(m_keys));
+
+	//m_text[BULLETS].setString("Bullets: " + std::to_string(intCaption [BULLETS]));
 
 	for (int index = 0; index < NUMCAPTIONS; index++)
 		window.draw(m_text[index]);
 
 }
+void Caption ::funcDrwCap(Captions cap, const std::string& str, const int& caption) {
+
+	m_text[cap].setString(str + std::to_string(caption));
+}
 
 void Caption::increaseScore(const int number)
 {
-	m_score += number;
+	intCaption [SCORE]+= number;
 }
 
 void Caption::updateTime(float time)
@@ -53,41 +72,41 @@ void Caption::updateTime(float time)
 	if (elapsedTime >= std::chrono::seconds(1)) 
 	{
 		m_startTime = currentTime; 
-		m_stageTime--; 
+		intCaption[TIME]--;
 	}
 
-	m_stageTime += int(time);
+	intCaption[TIME]+= int(time);
 }
 
 void Caption::dicreaseLife()
 {
-	m_life--;
+	intCaption [LIFE]--;
 }
 
 void Caption::dicreaseBullet()
 {
-	m_bullets--;
+	intCaption [BULLETS]--;
 }
 
 void Caption::increaseLife()
 {
-	m_life++;
+	intCaption [LIFE]++;
 }
 
 
 void Caption::increaseBullet()
 {
-	m_bullets += ADDBULEET;
+	intCaption [BULLETS] += ADDBULEET;
 }
 
 int Caption::getBullet() const
 
-{return m_bullets;}
+{return intCaption[BULLETS];}
 
 
 bool Caption::haveKey()
 {
-	if (m_keys > 0)
+	if (intCaption[Key] > 0)
 	{
 		dicreaseKey();
 		return true;
@@ -97,12 +116,12 @@ bool Caption::haveKey()
 
 int Caption::getLife()const
 {
-	return m_life;
+	return intCaption [LIFE];
 }
 
 int Caption::getTime() const
 {
-	return m_stageTime;
+	return intCaption[TIME];
 }
 
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
@@ -117,11 +136,11 @@ sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
 
 void Caption::dicreaseKey()
 {
-	m_keys--;
+	intCaption[Key]--;
 }
 
 void Caption::newLevel(const int time)
 {
-	m_stageTime = time;
+	intCaption[TIME] = time;
 	m_startTime = std::chrono::steady_clock::now();
 }

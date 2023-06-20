@@ -20,13 +20,7 @@ void GameController::run() {
 			{case sf::Event::Closed:		window.close();		break;
 			case sf::Event::KeyPressed:
 				if (evnt.key.code == sf::Keyboard::Escape) { window.close(); break; }
-				
-				else if (evnt.key.code == sf::Keyboard::X)
-				{
-					if (m_caption.getBullet() > 0) {
-						creatBullet();
-					}
-				}
+				else if (evnt.key.code == sf::Keyboard::X && m_caption.getBullet() > 0)		creatBullet();
 			default:	break;
 			}
 		}
@@ -76,16 +70,27 @@ bool GameController::isStaticObj(const char& c)
 
 void GameController::move(sf::Time deltaTime)
 {
+
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
+
 	checkCollision(*m_board.m_prince);
+
+	//m_board.m_prince->move(deltaTime, m_board.m_prince->getposition());
 
 	for (int index = 0; index < m_board.m_keyMonster.size(); index++){
 		m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
 		checkCollision(*m_board.m_keyMonster[index]);
+	
+		//templateMove(m_board.m_keyMonster, deltaTime ,index);
+		//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince->getposition());
+
 	}
 	for (int i = 0; i < m_board.m_bullet.size(); i++)
 		m_board.m_bullet[i]->move(deltaTime, m_board.m_prince.get()->getposition());
+		//templateMove(m_board.m_bullet, deltaTime, i);
+	//m_board.m_bullet[i]->move(deltaTime, m_board.m_prince->getposition());
+
 
 
 }
@@ -146,7 +151,9 @@ void GameController::increaseBullet()
 {m_caption.increaseBullet();}
 
 void GameController::creatBullet() 
+
 {m_board.createMovingObject('b', m_lastPrinceDirection);
 m_caption.dicreaseBullet();
+
 }
 

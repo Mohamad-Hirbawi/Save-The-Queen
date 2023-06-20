@@ -48,3 +48,11 @@ private:
 	Board m_board;
 
 };
+//template<typename T>
+//void templateMove(const std::vector<std::unique_ptr<T>>& movigObjects, sf::Time deltaTime, const int & index) {
+//
+//	movigObjects[index]->move(deltaTime, movigObjects->getposition());
+//	//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
+//
+//
+//}
