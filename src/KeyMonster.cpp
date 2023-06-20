@@ -58,7 +58,7 @@ void KeyMonster::handleCollision(Object& obj, GameController& game)
 
 void KeyMonster::handleCollision(Bullet&, GameController& game)
 {
-    game.eraseMovingObject(*this, KEYMONSTER);
+    game.eraseObject(*this, KEYMONSTER);
 }
 
 void KeyMonster::handleCollision(Wall&, GameController&)

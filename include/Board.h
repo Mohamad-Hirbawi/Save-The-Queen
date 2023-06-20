@@ -33,18 +33,14 @@ public:
 
 	void checkCollision(MovingObject& thisObj, GameController& game);
 	void checkCollisionMoving(MovingObject& thisObj, GameController& game);
-	void eraseStaticObject(StaticObject& staticObj);
-	//void eraseMovingObject(Bullet& );
-	//void eraseMovingObject(Bullet& movingObject, const std::vector <std::unique_ptr<Bullet>> &vec);
 	sf::Vector2f getiInitailPrincePos()const;
-	bool eraseMoving(MovingObject& movingObject, Toolbar_t typeVector);
+	bool eraseMoving(Object& movingObject, Toolbar_t typeVector);
 	void clearBoard();
 	std::unique_ptr<Prince> m_prince;
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 	std::vector <std ::unique_ptr<Bullet>> m_bullet;
 	std::unique_ptr<BeastMonster> m_beastMonster;
-	//std::vector < std::unique_ptr<Bullet>>m_giftBullet;
 	bool m_erased;
 
 private:
@@ -73,7 +69,7 @@ void drawObjects(const std::vector<std::unique_ptr<T>>& objects, sf::RenderWindo
 }
 
 template<typename T1, typename T2 >
-bool  eraseMovingObject(T1& object ,  std::vector<std::unique_ptr<T2>> &vec) {
+bool  eraseObject(T1& object ,  std::vector<std::unique_ptr<T2>> &vec) {
 
 	auto movingPtr = vec.begin();
 	for (; movingPtr != vec.end(); movingPtr++)

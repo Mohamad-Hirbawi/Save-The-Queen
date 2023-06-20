@@ -6,11 +6,8 @@ GiftBuleet::GiftBuleet(Toolbar_t symbol, sf::Vector2f position)
 
 void GiftBuleet::handleCollision(Prince& , GameController&game)
 {
-	game.eraseStaticObject(*this);
+	game.eraseObject(*this, STATICS);
 	game.increaseBullet();
-	//game.creatBullet();
-	
-
 	
 }
 
