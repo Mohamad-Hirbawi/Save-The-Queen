@@ -19,7 +19,7 @@ public:
 	void increaseScore(const int number);
 	void increaseTime();
 	void addLife();
-
+	void setLastDirection(sf::Vector2f direction);
 
 	void eraseStaticObject(StaticObject& staticObj);
 	void dead();
@@ -29,6 +29,7 @@ public:
 	bool isLosing();
   
 private:
+	sf::Vector2f m_lastPrinceDirection;
 	sf::RenderWindow window;
 	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;

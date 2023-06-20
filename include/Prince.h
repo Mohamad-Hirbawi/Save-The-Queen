@@ -23,4 +23,5 @@ public:
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
 
 private:
+	bool prim;
 };

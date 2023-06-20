@@ -84,7 +84,7 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	case BALLMONSTER_C:	m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
 	
 	case BULLET_C:
-			m_bullet.emplace_back(std::make_unique<Bullet>(BULLET, position));	break;
+			m_bullet.emplace_back(std::make_unique<Bullet>(BULLET, m_prince->getposition(),position));	break;
 	}
 }
 
