@@ -5,7 +5,7 @@
 class Bullet : public MovingObject
 {
 public:
-	Bullet(Toolbar_t symbol, sf::Vector2f position);
+	Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction);
 	
 
 	virtual void handleCollision(Prince&, GameController&) override {};
@@ -25,5 +25,5 @@ public:
 	sf::Vector2f dirFromKey();
 
 private:
-
+	sf::Vector2f m_direction;
 };

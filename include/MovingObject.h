@@ -21,11 +21,10 @@ public:
 	virtual void handleCollision(Bullet&, GameController&) override =0;
 	virtual void handleCollision(Gift&, GameController&) override =0;
 
-
+	sf::Vector2f m_dirPrince;
 
 protected:
 	sf::Vector2f m_positionPrince;
-	sf::Vector2f m_dirPrince;
 
 
 };
