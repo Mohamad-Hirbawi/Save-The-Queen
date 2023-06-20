@@ -176,3 +176,24 @@ void Board::clearBoard()
 	m_staticObj.clear();
 	m_initailPrince = sf::Vector2f(0, 0);
 }
+
+void Board::move(sf::Time deltaTime, GameController& game)
+{
+	moveObject(m_keyMonster, game, m_prince, deltaTime , *this);
+
+	//for (int index = 0; index < m_keyMonster.size(); index++) {
+	//	m_keyMonster[index]->move(deltaTime, m_prince.get()->getposition());
+
+	//	checkCollision(*m_keyMonster[index], game); //check collisions with static objects
+
+	//	if (m_keyMonster[index]->collidesWith(*m_prince))
+	//		m_keyMonster[index]->handleCollision(*m_prince, game);
+
+
+	//	checkCollisionMoving(*m_keyMonster[index], game);
+
+	//	//templateMove(m_board.m_keyMonster, deltaTime ,index);
+	//	//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince->getposition());
+
+	//}
+}

@@ -25,8 +25,9 @@ void GameController::run() {
 			}
 		}
 		if (m_caption.getTime() <= 0)		dead();
-
-		move(m_timer.restart());
+		sf::Time deltaTime = m_timer.restart();
+		m_board.move(deltaTime,*this);
+		move(deltaTime);
 		window.display();
 	}
 
@@ -80,14 +81,14 @@ void GameController::move(sf::Time deltaTime)
 
 	//m_board.m_prince->move(deltaTime, m_board.m_prince->getposition());
 
-	for (int index = 0; index < m_board.m_keyMonster.size(); index++){
-		m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
-		checkCollision(*m_board.m_keyMonster[index]);
-	
-		//templateMove(m_board.m_keyMonster, deltaTime ,index);
-		//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince->getposition());
+	//for (int index = 0; index < m_board.m_keyMonster.size(); index++){
+	//	m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
+	//	checkCollision(*m_board.m_keyMonster[index]);
+	//
+	//	//templateMove(m_board.m_keyMonster, deltaTime ,index);
+	//	//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince->getposition());
 
-	}
+	//}
 	for (int i = 0; i < m_board.m_bullet.size(); i++)
 	{
 		m_board.m_bullet[i]->move(deltaTime, m_board.m_prince.get()->getposition());
