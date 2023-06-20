@@ -1,13 +1,18 @@
 ﻿#include "Bullet.h"
 #include "GameController.h"
 
+//Bullet::Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction)
+//	:MovingObject(symbol, position), m_direction(direction)
+//{}
+
 Bullet::Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction)
-	:MovingObject(symbol, position), m_direction(direction)
+	: MovingObject(symbol, position), m_direction(direction) 
 {}
 
 void Bullet::handleCollision(Prince&, GameController&)
 {
 }
+
 
 void Bullet::handleCollision(Object& obj, GameController& game)
 {
