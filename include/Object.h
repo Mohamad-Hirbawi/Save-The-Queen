@@ -26,7 +26,7 @@ public:
 	bool collidesWith(const Object& obj) const;
 	sf::Vector2f getposition()const;
 	sf::Vector2f getprevPos()const;
-
+	void moveToPrevPos();
 	virtual void handleCollision(Object&, GameController&) = 0;
 	virtual void handleCollision(Prince&, GameController&) = 0;
 	virtual void handleCollision(Wall&, GameController&) = 0;

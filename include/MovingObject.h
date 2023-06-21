@@ -7,7 +7,7 @@ public:
 	MovingObject() {}
 	MovingObject(Toolbar_t symbol, sf::Vector2f position);
 
-	void moveToPrevPos();
+	//void moveToPrevPos();
 
 	virtual void move(sf::Time deltaTime, sf::Vector2f) = 0;
 	virtual void handleCollision(Object&, GameController&) override =0;
