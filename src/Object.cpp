@@ -42,3 +42,8 @@ void Object::moveToPrevPos()
 {
 	m_icon.setPosition(m_prevPos);
 }
+
+bool Object::isDoorOpen() const
+{
+	return m_open;
+}

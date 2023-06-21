@@ -38,7 +38,7 @@ public:
 	virtual void handleCollision(BallMonster&, GameController&) = 0;
 	virtual void handleCollision(Bullet&, GameController&)  = 0;
 	virtual void handleCollision(Gift&, GameController&)  = 0;
-
+	bool isDoorOpen()const;
 
 
 protected:
