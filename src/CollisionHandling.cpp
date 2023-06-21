@@ -36,12 +36,15 @@ namespace // anonymous namespace — the standard way to make function "static"
     void KeyMonsterWithDoor (Object& keyMonster,
         Object& door, GameController& game)
     {
+        if (door.isDoorOpen())
+            return;
         keyMonster.moveToPrevPos();
     }
 
     void DoorWithKeyMonster(Object& door,
         Object& keyMonster, GameController& game)
     {
+
         KeyMonsterWithDoor(keyMonster, door,game);
     }
 
@@ -49,7 +52,6 @@ namespace // anonymous namespace — the standard way to make function "static"
         Object& wall, GameController& game)
     {
         game.eraseObject(bullet, BULLET);
-        bullet.moveToPrevPos();
     }
 
     void WallWithBullet(Object& wall,
@@ -62,7 +64,6 @@ namespace // anonymous namespace — the standard way to make function "static"
         Object& door, GameController& game)
     {
         if (door.isDoorOpen())
-            //if (m_open)
             return;
         game.eraseObject(bullet, BULLET);
     }
@@ -76,15 +77,17 @@ namespace // anonymous namespace — the standard way to make function "static"
 
   
     
-    //void KeyMonsterWithBullet (Object& keyMonster,
-    //    Object& bullet)
-    //{
-    //    keyMonster.moveToPrevPos();
-    //} //void BulletWithKeyMonster(Object& bullet,
-    //    Object& keyMonster)
-    //{
-    //    keyMonster.moveToPrevPos();
-    //}
+    void KeyMonsterWithBullet (Object& keyMonster,
+        Object& bullet, GameController& game)
+    {
+        game.eraseObject(bullet, BULLET);
+        game.eraseObject(keyMonster, KEYMONSTER);
+    } 
+    void BulletWithKeyMonster(Object& bullet,
+        Object& keyMonster, GameController& game)
+    {
+         BulletWithKeyMonster(keyMonster, bullet, game);
+    }
 
     
 
@@ -102,14 +105,15 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Wall), typeid(KeyMonster))] = &WallWithKeyMonster; 
         phm[Key(typeid(KeyMonster), typeid(Door))] = &KeyMonsterWithDoor;
         phm[Key(typeid(Door), typeid(KeyMonster))] = &DoorWithKeyMonster;
+
         phm[Key(typeid(Bullet), typeid(Wall))] = &BulletWithWall;
         phm[Key(typeid(Wall), typeid(Bullet))] = &WallWithBullet;
         phm[Key(typeid(Bullet), typeid(Door))] = &BulletWithDoor;
         phm[Key(typeid(Door), typeid(Bullet))] = &DoorWithBullet;
 
 
-        //phm[Key(typeid(KeyMonster), typeid(Bullet))] = &KeyMonsterWithBullet;
-        //phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
+        phm[Key(typeid(KeyMonster), typeid(Bullet))] = &KeyMonsterWithBullet;
+        phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
 
         //...
         return phm;

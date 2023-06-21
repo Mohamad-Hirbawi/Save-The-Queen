@@ -74,10 +74,9 @@ void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2,
 	for (; begin1 != end1; ++begin1)
 		for (auto second = begin2; second != end2; ++second)
 		{
+			fn(*begin1, *second);
 			if (game.ifErased())
 				return;
-
-			fn(*begin1, *second);
 		}
 }
 
