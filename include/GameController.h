@@ -23,6 +23,7 @@ public:
 	void increaseTime();
 	void addLife();
 	void setLastDirection(sf::Vector2f direction);
+	bool ifErased();
 
 	void eraseStaticObject(StaticObject& staticObj);
 	void eraseObject(Object& movingObject, Toolbar_t  /*,const std::vector <std::unique_ptr<MovingObject>> &vector*/);
@@ -67,11 +68,17 @@ private:
 
 // STL-like algorithm to run over all pairs
 template <typename FwdIt1,typename FwdIt2, typename Fn>
-void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2, Fn fn)
+void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2,
+	GameController&game,Fn fn)
 {
 	for (; begin1 != end1; ++begin1)
 		for (auto second = begin2; second != end2; ++second)
+		{
+			if (game.ifErased())
+				return;
+
 			fn(*begin1, *second);
+		}
 }
 
 

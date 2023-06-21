@@ -1,3 +1,4 @@
+#pragma once
 #include "CollisionHandling.h"
 
 #include <functional>
@@ -10,7 +11,7 @@
 #include "Wall.h"
 #include "Door.h"
 #include "Bullet.h"
-
+#include "GameController.h"
 //#include "SpaceShip.h"
 //#include "SpaceStation.h"
 //#include "Asteroid.h"
@@ -21,45 +22,74 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     // primary collision-processing functions
     void KeyMonsterWithWall(Object& keyMonster,
-        Object& wall)
+        Object& wall , GameController&game)
     {
         keyMonster.moveToPrevPos();
     }
 
     void WallWithKeyMonster(Object& wall,
-        Object& keyMonster)
+        Object& keyMonster , GameController& game)
     {
-        keyMonster.moveToPrevPos();
+        KeyMonsterWithWall(keyMonster,wall,game);
     }
 
     void KeyMonsterWithDoor (Object& keyMonster,
-        Object& door)
+        Object& door, GameController& game)
     {
         keyMonster.moveToPrevPos();
     }
 
     void DoorWithKeyMonster(Object& door,
-        Object& keyMonster)
+        Object& keyMonster, GameController& game)
     {
-        keyMonster.moveToPrevPos();
-    } 
-    
-    void KeyMonsterWithBullet (Object& keyMonster,
-        Object& bullet)
-    {
-        keyMonster.moveToPrevPos();
+        KeyMonsterWithDoor(keyMonster, door,game);
     }
 
-    void BulletWithKeyMonster(Object& bullet,
-        Object& keyMonster)
+    void BulletWithWall(Object& bullet,
+        Object& wall, GameController& game)
     {
-        keyMonster.moveToPrevPos();
+        game.eraseObject(bullet, BULLET);
+        bullet.moveToPrevPos();
     }
+
+    void WallWithBullet(Object& wall,
+        Object& bullet, GameController& game)
+    {
+        BulletWithWall(bullet, wall, game);
+    }
+
+    void BulletWithDoor(Object& bullet,
+        Object& door, GameController& game)
+    {
+        if (door.isDoorOpen())
+            //if (m_open)
+            return;
+        game.eraseObject(bullet, BULLET);
+    }
+
+    void DoorWithBullet(Object& door,
+        Object& bullet, GameController& game)
+    {
+        BulletWithDoor(bullet, door, game);
+    }
+
+
+  
+    
+    //void KeyMonsterWithBullet (Object& keyMonster,
+    //    Object& bullet)
+    //{
+    //    keyMonster.moveToPrevPos();
+    //} //void BulletWithKeyMonster(Object& bullet,
+    //    Object& keyMonster)
+    //{
+    //    keyMonster.moveToPrevPos();
+    //}
 
     
 
 
-    using HitFunctionPtr = std::function<void(Object&, Object&)>;
+    using HitFunctionPtr = std::function<void(Object&, Object& , GameController &)>;
     // typedef void (*HitFunctionPtr)(Object&, Object&);
     using Key = std::pair<std::type_index, std::type_index>;
     // std::unordered_map is better, but it requires defining good hash function for pair
@@ -72,10 +102,14 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Wall), typeid(KeyMonster))] = &WallWithKeyMonster; 
         phm[Key(typeid(KeyMonster), typeid(Door))] = &KeyMonsterWithDoor;
         phm[Key(typeid(Door), typeid(KeyMonster))] = &DoorWithKeyMonster;
-        phm[Key(typeid(KeyMonster), typeid(Bullet))] = &KeyMonsterWithBullet;
-        phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
-        phm[Key(typeid(KeyMonster), typeid(Bullet))] = &KeyMonsterWithBullet;
-        phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
+        phm[Key(typeid(Bullet), typeid(Wall))] = &BulletWithWall;
+        phm[Key(typeid(Wall), typeid(Bullet))] = &WallWithBullet;
+        phm[Key(typeid(Bullet), typeid(Door))] = &BulletWithDoor;
+        phm[Key(typeid(Door), typeid(Bullet))] = &DoorWithBullet;
+
+
+        //phm[Key(typeid(KeyMonster), typeid(Bullet))] = &KeyMonsterWithBullet;
+        //phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
 
         //...
         return phm;
@@ -95,10 +129,10 @@ namespace // anonymous namespace — the standard way to make function "static"
 
 }
 
-void processCollision(Object& object1, Object& object2)
+void processCollision(Object& object1, Object& object2, GameController& game)
 {
     auto phf = lookup(typeid(object1), typeid(object2));
 
-    if (phf)        phf(object1, object2);
+    if (phf)        phf(object1, object2, game);
 
 }

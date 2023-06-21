@@ -106,11 +106,14 @@ void GameController::setLastDirection(sf::Vector2f direction)
 	m_lastPrinceDirection = direction;
 }
 
-void GameController::eraseObject(Object& movingObject , Toolbar_t typeVector /*, const std::vector <std::unique_ptr<MovingObject>>& vector*/)
+void GameController::eraseObject(Object& movingObject , Toolbar_t typeVector )
 {
 	m_board.m_erased = m_board.eraseMoving(movingObject, typeVector);
 }
-
+bool GameController::ifErased()
+{
+	return m_board.m_erased;
+}
 
 
 void GameController::dead(){
@@ -152,23 +155,23 @@ m_caption.dicreaseBullet();
 void GameController::checkCollis()
 {
 	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
-		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), [this](auto& a, auto& b)
+		m_board.m_staticObj.begin(),m_board.m_staticObj.end(),*this, [this](auto& a, auto& b)
 		{
 			if (collide(*a, *b))
 			{
-				processCollision(*a, *b);
+				processCollision(*a, *b,*this);
 			}
 		});
-	/*
-	/*for_each_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
-		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), [this](auto& a, auto& b)
+	
+	for_each_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
+		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
 		{
 			if (collide(*a, *b))
 			{
-				processCollision(*a, *b);
+				processCollision(*a, *b, *this);
 			}
 		});	
-	
+	/*
 	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
 		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), [this](auto& a, auto& b)
 		{
