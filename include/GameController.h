@@ -18,6 +18,7 @@ public:
 	}
 	GameController(const GameController&) = delete;
 	void run();
+	void updateView();
 	void creatObject();
 	void increaseScore(const int number);
 	void increaseTime();
@@ -55,6 +56,13 @@ private:
 	Caption m_caption;
 	Menu m_menu;
 	Board m_board;
+
+	sf::View m_view;
+	int m_playerPosX;
+	int m_playerPosY;
+	int m_viewX;
+	int m_viewY;
+
 
 };
 //template<typename T>

@@ -28,11 +28,34 @@ void GameController::run() {
 
 		move(m_timer.restart());
 		checkCollis();
+		m_view = window.getView();
+		updateView();
 		window.display();
 	}
 
 }
 
+void GameController::updateView() {
+
+
+	sf::View view = window.getView();
+	m_playerPosX = m_viewX = m_board.m_prince->getposition().x;
+	m_playerPosY = m_viewY = m_board.m_prince->getposition().y;
+
+	if (m_playerPosX > WINDOW_WIDTH - VIEWSIZE / 2)
+		m_viewX = WINDOW_WIDTH - VIEWSIZE / 2;
+	else if (m_playerPosX < VIEWSIZE / 2)
+		m_viewX = VIEWSIZE / 2;
+
+	if (m_playerPosY < WINDOW_HEIGHT / 2)
+		m_viewY = VIEWSIZE / 2;
+	else if (m_playerPosY > WINDOW_HEIGHT - VIEWSIZE / 2)
+		m_viewY = WINDOW_HEIGHT - VIEWSIZE / 2;
+
+	view.setSize(VIEWSIZE, VIEWSIZE);
+	view.setCenter(m_viewX, m_viewY);
+	window.setView(view);
+}
 void GameController::creatObject() 
 {
 	// חריגה
