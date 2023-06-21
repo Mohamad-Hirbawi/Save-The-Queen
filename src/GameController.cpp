@@ -25,6 +25,7 @@ void GameController::run() {
 			}
 		}
 		if (m_caption.getTime() <= 0)		dead();
+
 		move(m_timer.restart());
 		checkCollis();
 		window.display();
@@ -180,26 +181,26 @@ void GameController::checkCollis()
 				processCollision(*a, *b, *this);
 			}
 		});
-	/*
+	
 	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
-		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), [this](auto& a, auto& b)
+		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
 		{
 			if (collide(*a, *b))
 			{
-				processCollision(*a, *b);
+				processCollision(*a, *b, *this);
 			}
 		});
 	
 
 
 	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
-		m_board.m_bullet.begin(),m_board.m_bullet.end(), [this](auto& a, auto& b)
+		m_board.m_bullet.begin(),m_board.m_bullet.end(), *this, [this](auto& a, auto& b)
 		{
 			if (collide(*a, *b))
 			{
-				processCollision(*a, *b);
+				processCollision(*a, *b, *this);
 			}
-		});*/
+		});
 
 }
 

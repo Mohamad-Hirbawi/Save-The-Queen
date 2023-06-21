@@ -74,6 +74,32 @@ namespace // anonymous namespace — the standard way to make function "static"
         BulletWithDoor(bullet, door, game);
     }
 
+    void BallMonsterWithWall(Object& ballMonster,
+        Object& wall, GameController& game)
+    {
+        ballMonster.moveToPrevPos();
+    }
+
+    void WallWithBallMonster(Object& wall,
+        Object& ballMonster, GameController& game)
+    {
+        BallMonsterWithWall(ballMonster, wall, game);
+    }
+
+    void BallMonsterWithDoor(Object& ballMonster,
+        Object& door, GameController& game)
+    {
+        if (door.isDoorOpen())
+            return;
+        ballMonster.moveToPrevPos();
+    }
+
+    void DoorWithBallMonster(Object& door,
+        Object& ballMonster, GameController& game)
+    {
+        BallMonsterWithDoor(ballMonster, door, game);
+    }
+
 
   
     
@@ -87,6 +113,18 @@ namespace // anonymous namespace — the standard way to make function "static"
         Object& keyMonster, GameController& game)
     {
          BulletWithKeyMonster(keyMonster, bullet, game);
+    }
+
+    void BallMonsterWithBullet(Object& ballMonster,
+        Object& bullet, GameController& game)
+    {
+        game.eraseObject(bullet, BULLET);
+        game.eraseObject(ballMonster, BALLMONSTER);
+    } 
+    void BulletWithBallMonster(Object& bullet,
+        Object& ballMonster, GameController& game)
+    {
+        BallMonsterWithBullet(ballMonster, bullet, game);
     }
 
     
@@ -111,9 +149,18 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Bullet), typeid(Door))] = &BulletWithDoor;
         phm[Key(typeid(Door), typeid(Bullet))] = &DoorWithBullet;
 
+        phm[Key(typeid(BallMonster), typeid(Wall))] = &BallMonsterWithWall;
+        phm[Key(typeid(Wall), typeid(BallMonster))] = &WallWithBallMonster;
+        phm[Key(typeid(BallMonster), typeid(Door))] = &BallMonsterWithDoor;
+        phm[Key(typeid(Door), typeid(BallMonster))] = &DoorWithBallMonster;
+
+
+
 
         phm[Key(typeid(KeyMonster), typeid(Bullet))] = &KeyMonsterWithBullet;
         phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
+        phm[Key(typeid(BallMonster), typeid(Bullet))] = &BallMonsterWithBullet;
+        phm[Key(typeid(Bullet), typeid(BallMonster))] = &BulletWithBallMonster;
 
         //...
         return phm;
