@@ -127,6 +127,59 @@ namespace // anonymous namespace — the standard way to make function "static"
         BallMonsterWithBullet(ballMonster, bullet, game);
     }
 
+    /*
+       
+    void KeyMonsterWithPrince(Object& keyMonster,
+        Object& prince, GameController& game)
+    {
+        game.dead();
+    }
+
+    void PrinceWithKeyMonster(Object& prince,
+        Object& keyMonster, GameController& game)
+    {
+        KeyMonsterWithPrince(keyMonster, prince, game);
+    } 
+    void BulletWithPrince(Object& bullet,
+        Object& prince, GameController& game)
+    {
+        game.dead();
+    }
+
+    void PrinceWithBullet(Object& prince,
+        Object& bullet, GameController& game)
+    {
+        BulletWithPrince(bullet, prince, game);
+    }
+    //
+      // prince collision-processing functions
+    void PrinceWithWall(Object& prince,
+        Object& wall, GameController& game)
+    {
+        prince.moveToPrevPos();
+    }
+
+    void WallWithPrince(Object& wall,
+        Object& prince, GameController& game)
+    {
+        PrinceWithWall(prince, wall, game);
+    }
+
+    void PrinceWithDoor(Object& prince,
+        Object& door, GameController& game)
+    {
+        if (door.isDoorOpen())
+            return;
+        prince.moveToPrevPos();
+    }
+
+    void DoorWithPrince(Object& door,
+        Object& prince, GameController& game)
+    {
+        PrinceWithDoor(prince, door, game);
+    }
+
+    */
     
 
 
@@ -161,6 +214,22 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
         phm[Key(typeid(BallMonster), typeid(Bullet))] = &BallMonsterWithBullet;
         phm[Key(typeid(Bullet), typeid(BallMonster))] = &BulletWithBallMonster;
+
+        /*
+        
+        phm[Key(typeid(KeyMonster), typeid(Prince))] = &KeyMonsterWithPrince;
+        phm[Key(typeid(Prince), typeid(KeyMonster))] = &PrinceWithKeyMonster;
+        phm[Key(typeid(Bullet), typeid(Prince))] = &BulletWithPrince;
+        phm[Key(typeid(Prince), typeid(Bullet))] = &PrinceWithBullet;
+
+
+        phm[Key(typeid(Prince), typeid(Wall))] = &PrinceWithWall;
+        phm[Key(typeid(Wall), typeid(Prince))] = &WallWithPrince;
+        phm[Key(typeid(Prince), typeid(Door))] = &PrinceWithDoor;
+        phm[Key(typeid(Door), typeid(Prince))] = &DoorWithPrince;
+
+
+        */
 
         //...
         return phm;

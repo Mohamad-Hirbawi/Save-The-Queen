@@ -201,6 +201,37 @@ void GameController::checkCollis()
 				processCollision(*a, *b, *this);
 			}
 		});
+	//for_one_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+//	*m_board.m_prince.get(),
+//	[this](auto& a, auto& b)
+//	{
+//		if (collide(*a, b))
+//		{
+//			processCollision(*a, b, *this);
+
+//		}
+//	});
+//for_one_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
+//	*m_board.m_prince.get(),
+//	[this](auto& a, auto& b)
+//	{
+//		if (collide(*a, b))
+//		{
+//			processCollision(*a, b, *this);
+
+//		}
+//	});
+
+//for_one_pair(m_board.m_staticObj.begin(), m_board.m_staticObj.end(),
+//	*m_board.m_prince.get(),
+//	[this](auto& a, auto& b)
+//	{
+//		if (collide(*a, b))
+//		{
+//			processCollision(*a, b, *this);
+
+//		}
+//	});
 
 }
 
