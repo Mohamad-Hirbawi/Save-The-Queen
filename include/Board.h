@@ -37,6 +37,7 @@ public:
 	bool eraseMoving(Object& movingObject, Toolbar_t typeVector);
 	void clearBoard();
 	std::unique_ptr<Prince> m_prince;
+	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 	std::vector <std ::unique_ptr<Bullet>> m_bullet;
@@ -54,7 +55,6 @@ private:
 	int m_width;
 	sf::Vector2f m_initailPrince;
 
-	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
 	//Prince m_prince;
 };
 
@@ -93,7 +93,7 @@ void moveObject (std::vector<std::unique_ptr<T1>>& vec ,GameController& game ,
 	{
 		vec[index]->move(deltaTime, prince.get()->getposition());
 
-		bord.checkCollision(*vec[index], game); //check collisions with static objects
+		//bord.checkCollision(*vec[index], game); //check collisions with static objects
 
 		if (!bord.m_erased && vec[index]->collidesWith(*prince))
 			vec[index]->handleCollision(*prince, game);

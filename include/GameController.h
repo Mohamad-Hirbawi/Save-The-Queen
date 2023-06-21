@@ -5,7 +5,7 @@
 #include "Caption.h"
 #include "Bullet.h"
 #include <SFML/Graphics.hpp>
-
+#include "CollisionHandling.h"
 
 
 class Bullet;
@@ -16,7 +16,7 @@ public:
 	{
 		window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game", sf::Style::Titlebar | sf::Style::Close);
 	}
-
+	GameController(const GameController&) = delete;
 	void run();
 	void creatObject();
 	void increaseScore(const int number);
@@ -39,6 +39,10 @@ private:
 	sf::Clock m_timer;
 	void creatBullet();
 
+	void checkCollis();
+
+	bool collide(Object&, Object&);
+
 	sf::Sprite m_backgroundSprite;
 	void losing();
 	bool isStaticObj(const char &c);
@@ -59,4 +63,22 @@ private:
 //	//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
 //
 //
+//}
+
+// STL-like algorithm to run over all pairs
+template <typename FwdIt1,typename FwdIt2, typename Fn>
+void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2, Fn fn)
+{
+	for (; begin1 != end1; ++begin1)
+		for (auto second = begin2; second != end2; ++second)
+			fn(*begin1, *second);
+}
+
+
+//// STL-like algorithm to run over all pairs
+//template <typename FwdIt1,typename FwdIt2, typename Fn>
+//void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 second, Fn fn)
+//{
+//	for (; begin1 != end1; ++begin1)
+//			fn(*begin1, *second);
 //}

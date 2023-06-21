@@ -37,3 +37,8 @@ sf::Vector2f Object::getprevPos() const
 	 	return m_prevPos;
 
 }
+
+void Object::moveToPrevPos()
+{
+	m_icon.setPosition(m_prevPos);
+}

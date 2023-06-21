@@ -10,7 +10,7 @@ Textures& Textures::instance()
 {
 	static Textures inst;
 	return inst;
-	// TODO: insert return statement here
+	// singelton
 }
 
 sf::Texture* Textures::getIcon(const Toolbar_t symbol)
@@ -24,7 +24,7 @@ void Textures::setImagesForObj()
 {
 	sf::Texture newImage;
 	// PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME, ADDLIFE,DOOR
-	for (const auto& tuxt : strTexture){
+	for (const auto& tuxt : strTexture) {
 		newImage.loadFromFile(tuxt);
 		m_pTexture.emplace_back(newImage);
 	}
@@ -33,4 +33,6 @@ void Textures::setImagesForObj()
 }
 
 sf::Font* Textures::getFont()
-{return &m_font;}
+{
+	return &m_font;
+}
