@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-const int WINDOW_WIDTH =900;//1500
-const int WINDOW_HEIGHT = 700;//1000
+const int WINDOW_WIDTH =1500;//1500
+const int WINDOW_HEIGHT = 1000;//1000
 const int VIEWSIZE = 1000;
 
 // for start screen(menu)
@@ -36,18 +36,18 @@ const sf::Vector2f STANDIGSTIL= sf::Vector2f(0,0);
 const char PRINCE_C = 'a', WALL_C = '#', STAIR_C = '^', COIN_C = '*',
 			KEYMONSTER_C = 'k', BALLMONSTER_C = 'm', GIFT_C = '$', 
 			ADDLIFE_C = '&' , GIFTBULLET_C = 'g', DDOR_C ='d', EMPTY_C = ' ', 
-			BULLET_C = 'b', BEASTMONSTER_C = 'B';
+			BULLET_C = 'b', BEASTMONSTER_C = 'B', QUEEN_C = 'q';
 enum  Toolbar_t
 {
 	PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME ,ADDLIFE ,DOOR,
-	OPENDOOR, GIFTBULLET ,BULLET, BEASTMONSTER ,STATICS,NONE
+	OPENDOOR, GIFTBULLET ,BULLET, BEASTMONSTER ,QUEEN, STATICS ,NONE
 
 };
 
 // for loadFromFile and emplace_back Texture
 const std::string strTexture[] = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
 "BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png",
-"giftBullet.png", "buleet.jpg", "beastMonster.png",};
+"giftBullet.png", "buleet.jpg", "beastMonster.png","Queen.png",};
 
 const std::string strBackground[] = { "conan.jpg" ,"Background.jpg" };
 const std::string strMenu[] = { "New" ,"Info" ,"Exit"};

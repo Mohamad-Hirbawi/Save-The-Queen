@@ -56,6 +56,8 @@ void Board::drawBoard(sf::RenderWindow& window)
 	m_prince->draw(window);
 	if(m_beastMonster)
 		m_beastMonster->draw(window);
+	m_queen->draw(window);
+
 	drawObjects(m_keyMonster, window);
 	drawObjects(m_ballMonster, window);
 	drawObjects(m_bullet, window);
@@ -87,6 +89,9 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	case BALLMONSTER_C: m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
 	
 	case BEASTMONSTER_C: m_beastMonster = std::make_unique<BeastMonster>(BEASTMONSTER, position); break;
+	
+	case QUEEN_C: m_queen= std::make_unique<Queen>(QUEEN, position); break;
+
 	case BULLET_C:	m_bullet.emplace_back(selectBulltType(position));
 		break;
 	}

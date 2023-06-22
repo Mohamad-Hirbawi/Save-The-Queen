@@ -12,6 +12,7 @@ public:
 	virtual void move(sf::Time deltaTime, sf::Vector2f) = 0;
 	virtual void handleCollision(Object&, GameController&) override =0;
 	virtual void handleCollision(Prince&, GameController&) override = 0;
+	virtual void handleCollision(Queen&, GameController&) override {};
 	virtual void handleCollision(Wall&, GameController&) override=0;
 	virtual void handleCollision(Stair&, GameController&) override =0;
 	virtual void handleCollision(Coin&, GameController&) override =0;
