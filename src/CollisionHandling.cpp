@@ -139,6 +139,18 @@ namespace // anonymous namespace — the standard way to make function "static"
         Object& keyMonster, GameController& game)
     {
         KeyMonsterWithPrince(keyMonster, prince, game);
+    }
+    
+    void BallMonsterWithPrince(Object& ballMonster,
+        Object& prince, GameController& game)
+    {
+        game.dead();
+    }
+
+    void PrinceWithBallMonster(Object& prince,
+        Object& ballMonster, GameController& game)
+    {
+        BallMonsterWithPrince(ballMonster, prince, game);
     } 
 
    
@@ -292,13 +304,14 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Bullet), typeid(BallMonster))] = &BulletWithBallMonster;
 
        
-        
+        // prince with moving
         phm[Key(typeid(KeyMonster), typeid(Prince))] = &KeyMonsterWithPrince;
         phm[Key(typeid(Prince), typeid(KeyMonster))] = &PrinceWithKeyMonster;
         phm[Key(typeid(Bullet), typeid(Prince))] = &BulletWithPrince;
         phm[Key(typeid(Prince), typeid(Bullet))] = &PrinceWithBullet;
-
-
+        phm[Key(typeid(BallMonster), typeid(Prince))] = &BallMonsterWithPrince;
+        phm[Key(typeid(Prince), typeid(BallMonster))] = &PrinceWithBallMonster;
+        // prince with static
         phm[Key(typeid(Prince), typeid(Wall))] = &PrinceWithWall;
         phm[Key(typeid(Wall), typeid(Prince))] = &WallWithPrince;
         phm[Key(typeid(Prince), typeid(Door))] = &PrinceWithDoor;

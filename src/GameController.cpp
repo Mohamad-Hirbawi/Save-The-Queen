@@ -245,6 +245,17 @@ void GameController::checkCollis()
 		}
 	});	if (ifErased())
 		return;
+	for_one_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
+	m_board.m_prince.get(), *this,
+	[this](auto& a, auto& b)
+	{
+		if (collide(*a, *b))
+		{
+			processCollision(*a, *b, *this);
+
+		}
+	});	if (ifErased())
+		return;
 for_one_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
 	m_board.m_prince.get(), *this,
 	[this](auto& a, auto& b)

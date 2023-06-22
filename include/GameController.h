@@ -89,13 +89,7 @@ void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2,
 }
 
 
-//// STL-like algorithm to run over all pairs
-//template <typename FwdIt1,typename FwdIt2, typename Fn>
-//void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 second, Fn fn)
-//{
-//	for (; begin1 != end1; ++begin1)
-//			fn(*begin1, *second);
-//}
+
 
 // STL-like algorithm to run over all pairs
 template <typename FwdIt1, typename FwdIt2, typename Fn>
@@ -109,3 +103,11 @@ void for_one_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 second,
 			return;
 	}
 }
+
+//// STL-like algorithm to run over all pairs
+//template <typename FwdIt1,typename FwdIt2, typename Fn>
+//void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 second, Fn fn)
+//{
+//	for (; begin1 != end1; ++begin1)
+//			fn(*begin1, *second);
+//}
