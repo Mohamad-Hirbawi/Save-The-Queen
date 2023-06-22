@@ -124,6 +124,13 @@ void Caption::increaseKey()
 	intCaption[Keys]++;
 }
 
+bool Caption::checkEmptyCoin()
+{
+	if (intCaption[NUMCOIN] == 0)
+		return true;
+	return false;
+}
+
 void Caption::newLevel(const int time)
 {
 	intCaption[TIME] = time;

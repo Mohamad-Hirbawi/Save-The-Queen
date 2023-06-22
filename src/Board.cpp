@@ -69,6 +69,8 @@ void Board::createStaticObject(const char &c, sf::Vector2f position)
 
 	case KEY_C:		m_staticObj.emplace_back(std::make_unique<Opener>(KEY, position));	break;
 
+	case GATE_C:	m_staticObj.emplace_back(std::make_unique<Gate>(GATE, position));	break;
+
 	default:		m_staticObj.emplace_back(selectGiftType(position,c));				break;
 	}
 }
@@ -87,8 +89,7 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	
 	case QUEEN_C: m_queen= std::make_unique<Queen>(QUEEN, position); break;
 
-	case BULLET_C:	m_bullet.emplace_back(selectBulltType(position));
-		break;
+	case BULLET_C:	m_bullet.emplace_back(selectBulltType(position));break;
 	}
 }
 
