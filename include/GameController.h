@@ -14,50 +14,45 @@ class GameController
 public:
 	GameController();
 	void run();
-	void updateView();
-	void creatObject();
 	void increaseScore(const int number);
 	void increaseTime();
 	void addLife();
-	void setLastDirection(sf::Vector2f direction);
 	bool ifErased();
 
-	void eraseStaticObject(StaticObject& staticObj);
-	void eraseObject(Object& movingObject, Toolbar_t  /*,const std::vector <std::unique_ptr<MovingObject>> &vector*/);
+	void eraseObject(Object& movingObject, Toolbar_t);
 	void dead();
-	//std::vector <std::unique_ptr<Bullet>> getBuelltVector();
+
 	void increaseBullet();
 	bool haveKey();
 	bool isLosing();
 	bool collide(Object&, Object&);
 
 private:
+	void creatObject();
+	void setLastDirection(sf::Vector2f direction);
+	void creatBullet();
+	void updateView();
+	void checkCollis();
+	void losing();
+	bool isStaticObj(const char& c);
+	void move(sf::Time deltaTime);
+
 	sf::Vector2f m_lastPrinceDirection;
 	sf::RenderWindow window;
-	sf::Sprite m_gameWallp;
 	sf::Clock m_timer;
-	void creatBullet();
 
-	void checkCollis();
-
-
-	sf::Sprite m_backgroundSprite;
-	void losing();
-	bool isStaticObj(const char &c);
+	sf::Sprite m_gameWallp;
 	bool m_lose;
-	void move(sf::Time deltaTime);
 	sf::Texture m_pTexture;
-	void checkCollision(MovingObject& thisObj);
 
 	Caption m_caption;
 	Menu m_menu;
 	Board m_board;
 
 	sf::View m_view;
-	int m_playerPosX;
-	int m_playerPosY;
-	int m_viewX;
-	int m_viewY;
+
+	/// non private non puplick
+
 
 
 };

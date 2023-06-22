@@ -2,9 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-const int WINDOW_WIDTH =1000;//1500
-const int WINDOW_HEIGHT = 800;//1000
-const int VIEWSIZE = 1000;
+const float WINDOW_WIDTH =1000,//1500
+	 WINDOW_HEIGHT = 800,//1000
+	 VIEWSIZE = 700;//1000
 
 // for start screen(menu)
 const int REG_CHAR_SIZE = 100;

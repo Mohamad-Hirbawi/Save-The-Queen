@@ -20,7 +20,6 @@ bool Board::readLvlMap() {
 		m_map.emplace_back(line);
 	}
 	return true;
-
 }
 
 void Board::readLvlSize() {
@@ -51,7 +50,7 @@ void Board::drawBoard(sf::RenderWindow& window)
 	m_prince->draw(window);//throw
 	if(m_beastMonster)
 		m_beastMonster->draw(window);
-	m_queen->draw(window);
+	//m_queen->draw(window);
 
 	drawObjects(m_keyMonster, window);
 	drawObjects(m_ballMonster, window);
@@ -92,35 +91,6 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	}
 }
 
-// template
-void Board::checkCollision(MovingObject& thisObj, GameController& game)
-{
-	if (game.isLosing())
-		return;
-	m_erased = false;
-	for (auto& unmovable : m_staticObj){
-		{
-			if (m_erased)
-				return;
-			if (unmovable != nullptr && thisObj.collidesWith(*unmovable))
-					thisObj.handleCollision(*unmovable, game);
-		}
-	}
-
-}
-
-void Board::checkCollisionMoving(MovingObject& thisObj, GameController& game)
-{
-	if (game.isLosing())
-		return;
-	m_erased = false;
-	for (auto& unmovable : m_keyMonster){
-		if(!m_erased)
-			if (unmovable != nullptr && thisObj.collidesWith(*unmovable))
-				thisObj.handleCollision(*unmovable, game);
-	}
-
-}
 
 std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char& c)
 {
@@ -154,7 +124,7 @@ sf::Vector2f Board::getiInitailPrincePos() const
 	return m_initailPrince;
 }
 
-bool Board::eraseMoving(Object& movingObject, Toolbar_t typeVector)
+bool Board::erase(Object& movingObject, Toolbar_t typeVector)
 {
 	switch (typeVector)
 	{
@@ -181,6 +151,10 @@ void Board::clearBoard()
 	m_bullet.clear();
 	m_initailPrince = sf::Vector2f(0, 0);
 }
+
+void Board::setErased(bool erase)	{m_erased = erase;}
+
+bool Board::getErased() const	{return m_erased;}
 
 void Board::move(sf::Time deltaTime, GameController& game)
 {
