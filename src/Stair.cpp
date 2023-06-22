@@ -2,12 +2,6 @@
 
 Stair::Stair(Toolbar_t symbol, sf::Vector2f position) :StaticObject(symbol, position) {}
 
-
-void Stair::handleCollision(Prince& prince, GameController& game)
-{
-	prince.handleCollision(*this, game);
-}
-
 bool Stair::isBottomCollision(const sf::Sprite& playerIcon) const
 {
     sf::FloatRect playerRect = playerIcon.getGlobalBounds(); // المستطيل الخاص باللاعب

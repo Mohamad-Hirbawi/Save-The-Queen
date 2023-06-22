@@ -12,9 +12,7 @@ public:
 	sf::Vector2f getDirection(sf::Vector2f princePos);
 
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override ;
-	virtual void handleCollision(Prince&, GameController&) override;
-	virtual void handleCollision(Wall&, GameController&) override {};
-	//virtual void handleCollision(Bullet&, GameController&) override {};
+
 
 private:
 	std::chrono::time_point<std::chrono::steady_clock> m_startTime;

@@ -1,46 +1,8 @@
 ﻿#include "Bullet.h"
-#include "GameController.h"
-
-//Bullet::Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction)
-//	:MovingObject(symbol, position), m_direction(direction)
-//{}
-
+ 
 Bullet::Bullet(Toolbar_t symbol, sf::Vector2f position, sf::Vector2f direction)
 	: MovingObject(symbol, position), m_direction(direction) 
 {}
-
-void Bullet::handleCollision(Prince&, GameController&)
-{
-}
-
-
-void Bullet::handleCollision(Object& obj, GameController& game)
-{
-	obj.handleCollision(*this, game);
-
-}
-
-void Bullet::handleCollision(Wall& wall, GameController& game)
-{
-	
-	game.eraseObject(*this , BULLET);
-}
-
-void Bullet::handleCollision(KeyMonster& keyMonster, GameController& game)
-{
-	game.eraseObject(*this, BULLET);
-	keyMonster.handleCollision(*this, game);
-}
-
-void Bullet::handleCollision(BallMonster&, GameController&)
-{
-}
-
-void Bullet::handleCollision(Door&, GameController& game)
-{
-	game.eraseObject(*this, BULLET);
-}
-
 
 void Bullet::move(sf::Time deltaTime, sf::Vector2f)
 {

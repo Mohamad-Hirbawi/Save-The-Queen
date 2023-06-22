@@ -1,7 +1,4 @@
 ﻿#include "KeyMonster.h"
-#include "Prince.h"
-#include "Board.h"
-#include "GameController.h"
 KeyMonster::KeyMonster(Toolbar_t symbol, sf::Vector2f position)
 	:Monster(symbol, position), m_positionKeyMonster(position) 
 {
@@ -45,30 +42,4 @@ void KeyMonster::move(sf::Time deltaTime, sf::Vector2f princePos)
     m_dir = getDirection(princePos);
     m_icon.move(m_dir * MONSTERSPEED * deltaTime.asSeconds());
 }
-
-void KeyMonster::handleCollision(Prince& prince, GameController& game)
-{
-    prince.handleCollision(*this, game);
-}
-
-void KeyMonster::handleCollision(Object& obj, GameController& game)
-{
-    obj.handleCollision(*this, game);
-}
-
-void KeyMonster::handleCollision(Bullet&, GameController& game)
-{
-    game.eraseObject(*this, KEYMONSTER);
-}
-
-void KeyMonster::handleCollision(Wall&, GameController&)
-{
-    moveToPrevPos();
-}
-
-void KeyMonster::handleCollision(Door&, GameController&)
-{
-    moveToPrevPos();
-}
-
 
