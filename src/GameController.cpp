@@ -39,26 +39,31 @@ void GameController::run() {
 
 }
 
-void GameController::updateView() {
-
+void GameController::updateView() 
+{
+	float playerPosX,
+		playerPosY,
+		viewX,
+		viewY;
 
 	sf::View view = window.getView();
-	m_playerPosX = m_viewX = m_board.m_prince->getposition().x;
-	m_playerPosY = m_viewY = m_board.m_prince->getposition().y;
+	playerPosX = viewX = m_board.m_prince->getposition().x;
+	playerPosY = viewY = m_board.m_prince->getposition().y;
 
-	if (m_playerPosX > WINDOW_WIDTH - VIEWSIZE / 2)
-		m_viewX = WINDOW_WIDTH - VIEWSIZE / 2;
-	else if (m_playerPosX < VIEWSIZE / 2)
-		m_viewX = VIEWSIZE / 2;
+	if (playerPosX > WINDOW_WIDTH - VIEWSIZE / 2)
+		viewX = WINDOW_WIDTH - VIEWSIZE / 2;
+	else if (playerPosX < VIEWSIZE / 2)
+		viewX = VIEWSIZE / 2;
 
-	if (m_playerPosY < WINDOW_HEIGHT / 2)
-		m_viewY = VIEWSIZE / 2;
-	else if (m_playerPosY > WINDOW_HEIGHT - VIEWSIZE / 2)
-		m_viewY = WINDOW_HEIGHT - VIEWSIZE / 2;
+	if (playerPosY < WINDOW_HEIGHT / 2)
+		viewY = VIEWSIZE / 2;
+	else if (playerPosY > WINDOW_HEIGHT - VIEWSIZE / 2)
+		viewY = WINDOW_HEIGHT - VIEWSIZE / 2;
 
 	view.setSize(VIEWSIZE, VIEWSIZE);
-	view.setCenter(m_viewX, m_viewY);
+	view.setCenter(viewX, viewY);
 	window.setView(view);
+	
 }
 void GameController::creatObject() 
 {
@@ -104,21 +109,8 @@ void GameController::move(sf::Time deltaTime)
 		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
-	m_board.m_queen->move(deltaTime, m_board.m_prince.get()->getposition());
+	//m_board.m_queen->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_board.move(deltaTime, *this);
-}
-
-
-void GameController::checkCollision(MovingObject& thisObj)
-{
-	//m_board.checkCollision(thisObj, *this); //check collisions with static objects
-
-	//if (thisObj.collidesWith(*m_board.m_prince))
-	//	thisObj.handleCollision(*m_board.m_prince, *this);
-	
-
-	//m_board.checkCollisionMoving(thisObj, *this);
-
 }
 
 void GameController::increaseScore(const int number)
@@ -137,11 +129,11 @@ void GameController::setLastDirection(sf::Vector2f direction)
 
 void GameController::eraseObject(Object& movingObject , Toolbar_t typeVector )
 {
-	m_board.m_erased = m_board.eraseMoving(movingObject, typeVector);
+	m_board.setErased(m_board.erase(movingObject, typeVector));
 }
 bool GameController::ifErased()
 {
-	return m_board.m_erased;
+	return m_board.getErased();
 }
 
 
@@ -190,7 +182,7 @@ bool GameController::collide(Object& obj1, Object& obj2)
 
 void GameController::checkCollis()
 {
-	m_board.m_erased = false;
+	m_board.setErased(false);
 
 	collideAndProcessPairs(m_board.m_keyMonster, m_board.m_staticObj ,* this);
 	collideAndProcessPairs(m_board.m_bullet, m_board.m_staticObj, *this);
@@ -199,9 +191,9 @@ void GameController::checkCollis()
 	collideAndProcessPairs(m_board.m_ballMonster, m_board.m_bullet, *this);
 
 	collideAndProcessOnePair(m_board.m_staticObj, m_board.m_prince.get(), *this);
-	if(!m_lose)	collideAndProcessOnePair(m_board.m_keyMonster, m_board.m_prince.get(), *this);
-	if(!m_lose)	collideAndProcessOnePair(m_board.m_ballMonster, m_board.m_prince.get(), *this);
-	if(!m_lose)	collideAndProcessOnePair(m_board.m_bullet, m_board.m_prince.get(), *this);
+	collideAndProcessOnePair(m_board.m_keyMonster, m_board.m_prince.get(), *this);
+	collideAndProcessOnePair(m_board.m_ballMonster, m_board.m_prince.get(), *this);
+	collideAndProcessOnePair(m_board.m_bullet, m_board.m_prince.get(), *this);
 }
 
 
