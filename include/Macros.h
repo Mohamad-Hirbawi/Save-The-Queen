@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-const int WINDOW_WIDTH =1500;//1500
-const int WINDOW_HEIGHT = 1000;//1000
+const int WINDOW_WIDTH =900;//1500
+const int WINDOW_HEIGHT = 700;//1000
 const int VIEWSIZE = 1000;
 
 // for start screen(menu)

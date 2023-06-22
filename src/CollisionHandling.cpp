@@ -203,18 +203,18 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithStair(prince, stair, game);
     }
 
-    //void PrinceWithCoin(Object& prince,
-    //    Object& coin, GameController& game)
-    //{
-    //    game.eraseObject(coin, COIN);
-    //    game.increaseScore(EATCOIN);
-    //}
+    void PrinceWithCoin(Object& prince,
+        Object& coin, GameController& game)
+    {
+        game.eraseObject(coin, STATICS);
+        game.increaseScore(EATCOIN);
+    }
 
-    //void CoinWithPrince(Object& coin,
-    //    Object& prince, GameController& game)
-    //{
-    //    PrinceWithCoin(prince, coin, game);
-    //}
+    void CoinWithPrince(Object& coin,
+        Object& prince, GameController& game)
+    {
+        PrinceWithCoin(prince, coin, game);
+    }
 
     
     
@@ -266,8 +266,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Door), typeid(Prince))] = &DoorWithPrince;
         phm[Key(typeid(Prince), typeid(Stair))] = &PrinceWithStair;
         phm[Key(typeid(Stair), typeid(Prince))] = &StairWithPrince;
-        //phm[Key(typeid(Prince), typeid(Coin))] = &PrinceWithCoin;
-        //phm[Key(typeid(Coin), typeid(Prince))] = &CoinWithPrince;
+        phm[Key(typeid(Prince), typeid(Coin))] = &PrinceWithCoin;
+        phm[Key(typeid(Coin), typeid(Prince))] = &CoinWithPrince;
 
         
 
