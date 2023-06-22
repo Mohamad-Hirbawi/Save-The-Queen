@@ -23,6 +23,7 @@ public:
 	void dead();
 
 	void increaseBullet();
+	void dicreaseCoin();
 	bool haveKey();
 	bool isLosing();
 	bool collide(Object&, Object&);
@@ -48,8 +49,10 @@ private:
 	Caption m_caption;
 	Menu m_menu;
 	Board m_board;
-
 	sf::View m_view;
+
+
+
 
 	/// non private non puplick
 

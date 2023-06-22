@@ -65,7 +65,6 @@ void Board::createStaticObject(const char &c, sf::Vector2f position)
 	case STAIR_C:	m_staticObj.emplace_back(std::make_unique<Stair>(STAIR, position));	break;
 
 	case COIN_C:	m_staticObj.emplace_back(std::make_unique<Coin>(COIN, position));	break;
-
 	case DDOR_C:	m_staticObj.emplace_back(std::make_unique<Door>(DOOR, position));	break;
 
 	default:		m_staticObj.emplace_back(selectGiftType(position,c));				break;
@@ -90,6 +89,7 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 		break;
 	}
 }
+
 
 
 std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char& c)

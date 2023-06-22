@@ -40,6 +40,11 @@ void Caption::increaseScore(const int number)
 	intCaption [SCORE]+= number;
 }
 
+void Caption::UpdateNumCoin(const int& number)
+{
+	intCaption[NUMCOIN]+= number;
+}
+
 void Caption::updateTime(float time)
 {
 	std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now(); 
