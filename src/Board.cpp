@@ -178,6 +178,7 @@ void Board::clearBoard()
 	m_ballMonster.clear();
 	m_keyMonster.clear();
 	m_staticObj.clear();
+	m_bullet.clear();
 	m_initailPrince = sf::Vector2f(0, 0);
 }
 

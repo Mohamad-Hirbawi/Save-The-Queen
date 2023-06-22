@@ -29,7 +29,7 @@ void GameController::run() {
 		move(m_timer.restart());
 		checkCollis();
 		m_view = window.getView();
-		updateView();
+		//updateView();
 		window.display();
 	}
 
@@ -109,11 +109,11 @@ void GameController::checkCollision(MovingObject& thisObj)
 {
 	m_board.checkCollision(thisObj, *this); //check collisions with static objects
 
-	if (thisObj.collidesWith(*m_board.m_prince))
-		thisObj.handleCollision(*m_board.m_prince, *this);
+	//if (thisObj.collidesWith(*m_board.m_prince))
+	//	thisObj.handleCollision(*m_board.m_prince, *this);
 	
 
-	m_board.checkCollisionMoving(thisObj, *this);
+	//m_board.checkCollisionMoving(thisObj, *this);
 
 }
 
@@ -148,6 +148,8 @@ void GameController::dead(){
 		m_caption.newLevel(TIMEOFGAME);
 		std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
 		m_board.m_prince = std::move(help);
+		m_board.m_bullet.clear();
+
 	}
 	else		losing();
 
@@ -214,7 +216,8 @@ void GameController::checkCollis()
 				processCollision(*a, *b, *this);
 			}
 		});
-	
+	if (ifErased())
+		return;
 
 
 	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
@@ -224,30 +227,33 @@ void GameController::checkCollis()
 			{
 				processCollision(*a, *b, *this);
 			}
-		});
-	//for_one_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
-//	*m_board.m_prince.get(),
-//	[this](auto& a, auto& b)
-//	{
-//		if (collide(*a, b))
-//		{
-//			processCollision(*a, b, *this);
+		});	if (ifErased())
+			return;
+	for_one_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+	*m_board.m_prince.get(), *this,
+	[this](auto& a, auto& b)
+	{
+		if (collide(*a, b))
+		{
+			processCollision(*a, b, *this);
 
-//		}
-//	});
-//for_one_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
-//	*m_board.m_prince.get(),
-//	[this](auto& a, auto& b)
-//	{
-//		if (collide(*a, b))
-//		{
-//			processCollision(*a, b, *this);
+		}
+	});	if (ifErased())
+		return;
+for_one_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
+	*m_board.m_prince.get(), *this,
+	[this](auto& a, auto& b)
+	{
+		if (collide(*a, b))
+		{
+			processCollision(*a, b, *this);
 
-//		}
-//	});
+		}
+	});	if (ifErased())
+		return;
 
 //for_one_pair(m_board.m_staticObj.begin(), m_board.m_staticObj.end(),
-//	*m_board.m_prince.get(),
+//	*m_board.m_prince.get(),*this,
 //	[this](auto& a, auto& b)
 //	{
 //		if (collide(*a, b))

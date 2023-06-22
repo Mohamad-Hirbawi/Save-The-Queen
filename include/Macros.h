@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-const int WINDOW_WIDTH =1500;//1500
-const int WINDOW_HEIGHT = 1000;//1000
+const int WINDOW_WIDTH =900;//1500
+const int WINDOW_HEIGHT = 700;//1000
 const int VIEWSIZE = 1000;
 
 // for start screen(menu)
@@ -13,7 +13,7 @@ const float BOLD_OUTLINE = 10.0;
 const std::string INFOSTR = "This game was done by Mohammad Hirbawi and Mustafa fachori.";
 const float  MOVEMENTSPEED = 170.0;//3
 const float  MONSTERSPEED= 80.0;//3
-const float  BULEETSPEED = 300.0;//3
+const float  BULEETSPEED = 30.0;//3
 const int NUMMENU = 4;
 
 enum Menus_t

@@ -127,7 +127,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         BallMonsterWithBullet(ballMonster, bullet, game);
     }
 
-    /*
+  
        
     void KeyMonsterWithPrince(Object& keyMonster,
         Object& prince, GameController& game)
@@ -140,9 +140,12 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         KeyMonsterWithPrince(keyMonster, prince, game);
     } 
+
+   
     void BulletWithPrince(Object& bullet,
         Object& prince, GameController& game)
     {
+        game.eraseObject(bullet, BULLET);
         game.dead();
     }
 
@@ -151,6 +154,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         BulletWithPrince(bullet, prince, game);
     }
+     /*
     //
       // prince collision-processing functions
     void PrinceWithWall(Object& prince,
@@ -215,14 +219,14 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(BallMonster), typeid(Bullet))] = &BallMonsterWithBullet;
         phm[Key(typeid(Bullet), typeid(BallMonster))] = &BulletWithBallMonster;
 
-        /*
+       
         
         phm[Key(typeid(KeyMonster), typeid(Prince))] = &KeyMonsterWithPrince;
         phm[Key(typeid(Prince), typeid(KeyMonster))] = &PrinceWithKeyMonster;
         phm[Key(typeid(Bullet), typeid(Prince))] = &BulletWithPrince;
         phm[Key(typeid(Prince), typeid(Bullet))] = &PrinceWithBullet;
 
-
+/*
         phm[Key(typeid(Prince), typeid(Wall))] = &PrinceWithWall;
         phm[Key(typeid(Wall), typeid(Prince))] = &WallWithPrince;
         phm[Key(typeid(Prince), typeid(Door))] = &PrinceWithDoor;
