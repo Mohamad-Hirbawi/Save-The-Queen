@@ -210,7 +210,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         game.increaseScore(EATCOIN);
     }
 
-    void CoinWithPrince(Object& coin,
+    void CoinWithPrince(Object& coin, 
         Object& prince, GameController& game)
     {
         PrinceWithCoin(prince, coin, game);
