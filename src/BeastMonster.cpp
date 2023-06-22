@@ -1,5 +1,4 @@
 #include "BeastMonster.h"
-#include "Prince.h"
 
 BeastMonster::BeastMonster(Toolbar_t symbol, sf::Vector2f position)
     :Monster(symbol, position) {
@@ -61,9 +60,4 @@ void BeastMonster::move(sf::Time deltaTime, sf::Vector2f princePos)
     m_prevPos = m_icon.getPosition();
     m_dir = getDirection(princePos);
     m_icon.move(m_dir * MONSTERSPEED * deltaTime.asSeconds());
-}
-
-void BeastMonster::handleCollision(Prince& , GameController& game)
-{
-	//prince.handleCollision(*this, game);
 }

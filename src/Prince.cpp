@@ -6,39 +6,39 @@ Prince::Prince(Toolbar_t symbol, sf::Vector2f position)
 {
     m_positionPrince = position;
 }
-
-void Prince::handleCollision(Stair&s , GameController&)
-{
-    m_princeCollisStair = true;
-}
-
-void Prince::handleCollision(Object& obj, GameController& game)
-{
-	obj.handleCollision(*this, game);
-}
-
-void Prince::handleCollision(Wall&, GameController&)
-{
-	moveToPrevPos();
-}
-
-void Prince::handleCollision(Coin&, GameController&)
-{}
-
-void Prince::handleCollision(Door&, GameController&)
-{  
-    moveToPrevPos();
-}
-
-void Prince::handleCollision(KeyMonster&, GameController& game)
-{
-    game.dead();
-}
-
-void Prince::handleCollision(BallMonster&, GameController& game)
-{
-    game.dead();
-}
+//
+//void Prince::handleCollision(Stair&s , GameController&)
+//{
+//    m_princeCollisStair = true;
+//}
+//
+//void Prince::handleCollision(Object& obj, GameController& game)
+//{
+//	obj.handleCollision(*this, game);
+//}
+//
+//void Prince::handleCollision(Wall&, GameController&)
+//{
+//	moveToPrevPos();
+//}
+//
+//void Prince::handleCollision(Coin&, GameController&)
+//{}
+//
+//void Prince::handleCollision(Door&, GameController&)
+//{  
+//    moveToPrevPos();
+//}
+//
+//void Prince::handleCollision(KeyMonster&, GameController& game)
+//{
+//    game.dead();
+//}
+//
+//void Prince::handleCollision(BallMonster&, GameController& game)
+//{
+//    game.dead();
+//}
 
 sf::Vector2f dirFromKey()
 {

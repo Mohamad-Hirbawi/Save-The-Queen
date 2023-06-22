@@ -8,10 +8,6 @@ public:
 
 	sf::Vector2f getDirection(sf::Vector2f princePos);
 	virtual void move(sf::Time deltaTime, sf::Vector2f princePos)override;
-	virtual void handleCollision(Prince&, GameController&) override;
-	sf::Vector2f directionFollowPrince(sf::Vector2f princePos);
-	virtual void handleCollision(Wall&, GameController&) override{};
-	//virtual void handleCollision(Bullet&, GameController&) override {};
 
 private:
 	//sf::Vector2f directionFollowPrince(sf::Vector2f princePos);
