@@ -47,3 +47,18 @@ bool Object::isDoorOpen() const
 {
 	return m_open;
 }
+
+void Object::setDoorOpen()
+{
+	m_open = true;
+}
+
+void Object::setPrinceCollisStair()
+{
+	m_princeCollisStair = true;
+}
+
+sf::Sprite& Object::getIcon() 
+{
+	return m_icon;
+}

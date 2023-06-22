@@ -39,11 +39,14 @@ public:
 	virtual void handleCollision(Bullet&, GameController&)  = 0;
 	virtual void handleCollision(Gift&, GameController&)  = 0;
 	bool isDoorOpen()const;
+	void setDoorOpen();
+	void setPrinceCollisStair();
+	sf::Sprite& getIcon();
 
 
 protected:
-	bool m_open;
 	sf::Sprite m_icon;
+	bool m_open;
 	sf::Vector2f m_prevPos;
 	bool  m_princeCollisStair  = false;
 

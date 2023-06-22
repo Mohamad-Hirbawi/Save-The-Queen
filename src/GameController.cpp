@@ -95,7 +95,7 @@ bool GameController::isStaticObj(const char& c)
 void GameController::move(sf::Time deltaTime)
 {
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
-	checkCollision(*m_board.m_prince);
+	//checkCollision(*m_board.m_prince);
 
 	if(m_board.m_beastMonster)
 		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
@@ -181,6 +181,8 @@ m_caption.dicreaseBullet();
 
 void GameController::checkCollis()
 {
+	if (ifErased())
+		return;
 	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
 		m_board.m_staticObj.begin(),m_board.m_staticObj.end(),*this, [this](auto& a, auto& b)
 		{
@@ -188,7 +190,8 @@ void GameController::checkCollis()
 			{
 				processCollision(*a, *b,*this);
 			}
-		});
+		});	if (ifErased())
+			return;
 	
 	for_each_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
 		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
@@ -197,7 +200,8 @@ void GameController::checkCollis()
 			{
 				processCollision(*a, *b, *this);
 			}
-		});	
+		});		if (ifErased())
+			return;
 
 	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
 		m_board.m_bullet.begin(), m_board.m_bullet.end(), *this, [this](auto& a, auto& b)
@@ -206,7 +210,8 @@ void GameController::checkCollis()
 			{
 				processCollision(*a, *b, *this);
 			}
-		});
+		});	if (ifErased())
+			return;
 	
 	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
 		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
@@ -230,38 +235,38 @@ void GameController::checkCollis()
 		});	if (ifErased())
 			return;
 	for_one_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
-	*m_board.m_prince.get(), *this,
+	m_board.m_prince.get(), *this,
 	[this](auto& a, auto& b)
 	{
-		if (collide(*a, b))
+		if (collide(*a, *b))
 		{
-			processCollision(*a, b, *this);
+			processCollision(*a, *b, *this);
 
 		}
 	});	if (ifErased())
 		return;
 for_one_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
-	*m_board.m_prince.get(), *this,
+	m_board.m_prince.get(), *this,
 	[this](auto& a, auto& b)
 	{
-		if (collide(*a, b))
+		if (collide(*a, *b))
 		{
-			processCollision(*a, b, *this);
+			processCollision(*a, *b, *this);
 
 		}
 	});	if (ifErased())
 		return;
 
-//for_one_pair(m_board.m_staticObj.begin(), m_board.m_staticObj.end(),
-//	*m_board.m_prince.get(),*this,
-//	[this](auto& a, auto& b)
-//	{
-//		if (collide(*a, b))
-//		{
-//			processCollision(*a, b, *this);
+for_one_pair(m_board.m_staticObj.begin(), m_board.m_staticObj.end(),
+	m_board.m_prince.get(),*this,
+	[this](auto& a, auto& b)
+	{
+		if (collide(*a, *b))
+		{
+			processCollision(*a, *b, *this);
 
-//		}
-//	});
+		}
+	});
 
 }
 
