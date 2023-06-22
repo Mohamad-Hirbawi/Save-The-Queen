@@ -204,7 +204,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
     void PrinceWithCoin(Object& prince,
-        Object& coin, GameController& game)
+        Object& coin, GameController& game) 
     {
         game.eraseObject(coin, STATICS);
         game.increaseScore(EATCOIN);
@@ -214,6 +214,45 @@ namespace // anonymous namespace — the standard way to make function "static"
         Object& prince, GameController& game)
     {
         PrinceWithCoin(prince, coin, game);
+    }
+
+    void PrinceWithGiftBuleet(Object& prince,
+        Object& giftBullet, GameController& game)
+    {
+        game.eraseObject(giftBullet, STATICS);
+        game.increaseBullet();
+    }
+
+    void GiftBuleetWithPrince(Object& giftBullet,
+        Object& prince, GameController& game)
+    {
+        PrinceWithGiftBuleet(prince, giftBullet, game);
+    } 
+    
+    void PrinceWithGiftAddLife(Object& prince,
+        Object& giftlife, GameController& game)
+    {
+        game.eraseObject(giftlife, STATICS);
+        game.addLife();
+    }
+
+    void GiftAddLifeWithPrince(Object& giftlife,
+        Object& prince, GameController& game)
+    {
+        PrinceWithGiftAddLife(prince, giftlife, game);
+    } 
+    
+    void PrinceWithGiftIncreasingTime(Object& prince,
+        Object& giftTime, GameController& game)
+    {
+        game.eraseObject(giftTime, STATICS);
+        game.increaseTime();
+    }
+
+    void GiftIncreasingTimeWithPrince(Object& giftTime,
+        Object& prince, GameController& game)
+    {
+        PrinceWithGiftIncreasingTime(prince, giftTime, game);
     }
 
     
@@ -268,6 +307,12 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Stair), typeid(Prince))] = &StairWithPrince;
         phm[Key(typeid(Prince), typeid(Coin))] = &PrinceWithCoin;
         phm[Key(typeid(Coin), typeid(Prince))] = &CoinWithPrince;
+        phm[Key(typeid(Prince), typeid(GiftBuleet))] = &PrinceWithGiftBuleet;
+        phm[Key(typeid(GiftBuleet), typeid(Prince))] = &GiftBuleetWithPrince;
+        phm[Key(typeid(Prince), typeid(AddLife))] = &PrinceWithGiftAddLife;
+        phm[Key(typeid(AddLife), typeid(Prince))] = &GiftAddLifeWithPrince;
+        phm[Key(typeid(Prince), typeid(IncreasingTime))] = &PrinceWithGiftIncreasingTime;
+        phm[Key(typeid(IncreasingTime), typeid(Prince))] = &GiftIncreasingTimeWithPrince;
 
         
 

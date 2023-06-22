@@ -85,7 +85,7 @@ void GameController::creatObject()
 
 bool GameController::isStaticObj(const char& c)
 {
-	if (c == WALL_C || c == STAIR_C || c == COIN_C || c == GIFT_C || c == ADDLIFE_C || c== DDOR_C ||
+	if (c == WALL_C || c == STAIR_C || c == COIN_C || c == ADDTIME_C || c == ADDLIFE_C || c== DDOR_C ||
 		c == GIFTBULLET_C)
 		return true;
 	return false;
