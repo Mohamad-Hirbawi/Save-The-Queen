@@ -33,7 +33,8 @@ public:
 	void increaseBullet();
 	bool haveKey();
 	bool isLosing();
-  
+	bool collide(Object&, Object&);
+
 private:
 	sf::Vector2f m_lastPrinceDirection;
 	sf::RenderWindow window;
@@ -43,7 +44,6 @@ private:
 
 	void checkCollis();
 
-	bool collide(Object&, Object&);
 
 	sf::Sprite m_backgroundSprite;
 	void losing();
@@ -74,10 +74,47 @@ private:
 //
 //}
 
-// STL-like algorithm to run over all pairs
-template <typename FwdIt1,typename FwdIt2, typename Fn>
-void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2,
-	GameController&game,Fn fn)
+//////// STL-like algorithm to run over all pairs
+//////template <typename FwdIt1,typename FwdIt2, typename Fn>
+//////void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2,
+//////	GameController&game,Fn fn)
+//////{
+//////	for (; begin1 != end1; ++begin1)
+//////		for (auto second = begin2; second != end2; ++second)
+//////		{
+//////			fn(*begin1, *second);
+//////			if (game.ifErased())
+//////				return;
+//////		}
+//////}
+//////
+//////
+//////
+//////
+//////// STL-like algorithm to run over all pairs
+//////template <typename FwdIt1, typename FwdIt2, typename Fn>
+//////void for_one_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 second,
+//////	GameController& game, Fn fn)
+//////{
+//////	for (; begin1 != end1; ++begin1)
+//////	{
+//////		fn(*begin1, second);
+//////		if (game.ifErased())
+//////			return;
+//////	}
+//////}
+
+//// STL-like algorithm to run over all pairs
+//template <typename FwdIt1,typename FwdIt2, typename Fn>
+//void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 second, Fn fn)
+//{
+//	for (; begin1 != end1; ++begin1)
+//			fn(*begin1, *second);
+//}
+
+template <typename FwdIt1, typename FwdIt2, typename Fn>
+void for_each_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 begin2, FwdIt2 end2,
+	GameController& game, Fn fn)
 {
 	for (; begin1 != end1; ++begin1)
 		for (auto second = begin2; second != end2; ++second)
@@ -88,10 +125,6 @@ void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2,
 		}
 }
 
-
-
-
-// STL-like algorithm to run over all pairs
 template <typename FwdIt1, typename FwdIt2, typename Fn>
 void for_one_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 second,
 	GameController& game, Fn fn)
@@ -104,10 +137,21 @@ void for_one_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 second,
 	}
 }
 
-//// STL-like algorithm to run over all pairs
-//template <typename FwdIt1,typename FwdIt2, typename Fn>
-//void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 second, Fn fn)
-//{
-//	for (; begin1 != end1; ++begin1)
-//			fn(*begin1, *second);
-//}
+template <typename FwdIt1, typename FwdIt2>
+void collideAndProcess(FwdIt1 begin1, FwdIt1 end1, FwdIt2 begin2, FwdIt2 end2, GameController& game)
+{
+	for_each_pair(begin1, end1, begin2, end2,game, [&](auto& a, auto& b) {
+		if (game.collide(*a, *b))
+		processCollision(*a, *b, game);
+		});
+}
+
+template <typename FwdIt1, typename FwdIt2>
+void collideAndProcessOnePair(FwdIt1 begin1, FwdIt1 end1, FwdIt2* second, GameController& game)
+{
+	for_one_pair(begin1, end1, second,game, [&](auto& a, auto& b) {
+		if (game.collide(*a, *b))
+			processCollision(*a, *b, game);
+
+		});
+}

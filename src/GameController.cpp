@@ -180,109 +180,174 @@ m_caption.dicreaseBullet();
 
 }
 
-void GameController::checkCollis()
-{
-	m_board.m_erased = false;
-	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
-		m_board.m_staticObj.begin(),m_board.m_staticObj.end(),*this, [this](auto& a, auto& b)
-		{
-			if (collide(*a, *b))
-			{
-				processCollision(*a, *b,*this);
-			}
-		});	if (ifErased())
-			return;
-	
-	for_each_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
-		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
-		{
-			if (collide(*a, *b))
-			{
-				processCollision(*a, *b, *this);
-			}
-		});		if (ifErased())
-			return;
-
-	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
-		m_board.m_bullet.begin(), m_board.m_bullet.end(), *this, [this](auto& a, auto& b)
-		{
-			if (collide(*a, *b))
-			{
-				processCollision(*a, *b, *this);
-			}
-		});	if (ifErased())
-			return;
-	
-	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
-		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
-		{
-			if (collide(*a, *b))
-			{
-				processCollision(*a, *b, *this);
-			}
-		});
-	if (ifErased())
-		return;
-
-
-	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
-		m_board.m_bullet.begin(),m_board.m_bullet.end(), *this, [this](auto& a, auto& b)
-		{
-			if (collide(*a, *b))
-			{
-				processCollision(*a, *b, *this);
-			}
-		});	if (ifErased())
-			return;
-	for_one_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
-	m_board.m_prince.get(), *this,
-	[this](auto& a, auto& b)
-	{
-		if (collide(*a, *b))
-		{
-			processCollision(*a, *b, *this);
-
-		}
-	});	if (ifErased())
-		return;
-	for_one_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
-	m_board.m_prince.get(), *this,
-	[this](auto& a, auto& b)
-	{
-		if (collide(*a, *b))
-		{
-			processCollision(*a, *b, *this);
-
-		}
-	});	if (ifErased())
-		return;
-for_one_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
-	m_board.m_prince.get(), *this,
-	[this](auto& a, auto& b)
-	{
-		if (collide(*a, *b))
-		{
-			processCollision(*a, *b, *this);
-
-		}
-	});	if (ifErased())
-		return;
-
-for_one_pair(m_board.m_staticObj.begin(), m_board.m_staticObj.end(),
-	m_board.m_prince.get(),*this,
-	[this](auto& a, auto& b)
-	{
-		if (collide(*a, *b))
-		{
-			processCollision(*a, *b, *this);
-
-		}
-	});
-
-}
-
-
 bool GameController::collide(Object& obj1, Object& obj2)
 {
 	return obj1.collidesWith(obj2);
 }
+
+//
+//void GameController::checkCollis()
+//{
+//	m_board.m_erased = false;
+//	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+//		m_board.m_staticObj.begin(),m_board.m_staticObj.end(),*this, [this](auto& a, auto& b)
+//		{
+//			if (collide(*a, *b))
+//			{
+//				processCollision(*a, *b,*this);
+//			}
+//		});	if (ifErased())
+//			return;
+//	
+//	for_each_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
+//		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
+//		{
+//			if (collide(*a, *b))
+//			{
+//				processCollision(*a, *b, *this);
+//			}
+//		});		if (ifErased())
+//			return;
+//
+//	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+//		m_board.m_bullet.begin(), m_board.m_bullet.end(), *this, [this](auto& a, auto& b)
+//		{
+//			if (collide(*a, *b))
+//			{
+//				processCollision(*a, *b, *this);
+//			}
+//		});	if (ifErased())
+//			return;
+//	
+//	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
+//		m_board.m_staticObj.begin(),m_board.m_staticObj.end(), *this, [this](auto& a, auto& b)
+//		{
+//			if (collide(*a, *b))
+//			{
+//				processCollision(*a, *b, *this);
+//			}
+//		});
+//	if (ifErased())
+//		return;
+//
+//
+//	for_each_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
+//		m_board.m_bullet.begin(),m_board.m_bullet.end(), *this, [this](auto& a, auto& b)
+//		{
+//			if (collide(*a, *b))
+//			{
+//				processCollision(*a, *b, *this);
+//			}
+//		});	if (ifErased())
+//			return;
+//	for_one_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+//	m_board.m_prince.get(), *this,
+//	[this](auto& a, auto& b)
+//	{
+//		if (collide(*a, *b))
+//		{
+//			processCollision(*a, *b, *this);
+//
+//		}
+//	});	if (ifErased())
+//		return;
+//	for_one_pair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
+//	m_board.m_prince.get(), *this,
+//	[this](auto& a, auto& b)
+//	{
+//		if (collide(*a, *b))
+//		{
+//			processCollision(*a, *b, *this);
+//
+//		}
+//	});	if (ifErased())
+//		return;
+//for_one_pair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
+//	m_board.m_prince.get(), *this,
+//	[this](auto& a, auto& b)
+//	{
+//		if (collide(*a, *b))
+//		{
+//			processCollision(*a, *b, *this);
+//
+//		}
+//	});	if (ifErased())
+//		return;
+//
+//for_one_pair(m_board.m_staticObj.begin(), m_board.m_staticObj.end(),
+//	m_board.m_prince.get(),*this,
+//	[this](auto& a, auto& b)
+//	{
+//		if (collide(*a, *b))
+//		{
+//			processCollision(*a, *b, *this);
+//
+//		}
+//	});
+//
+//}
+
+
+
+void GameController::checkCollis()
+{
+	m_board.m_erased = false;
+
+	// Collisions between key monsters and static objects
+	collideAndProcess(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+		m_board.m_staticObj.begin(), m_board.m_staticObj.end(), *this);
+
+	// Collisions between bullets and static objects
+	collideAndProcess(m_board.m_bullet.begin(), m_board.m_bullet.end(),
+		m_board.m_staticObj.begin(), m_board.m_staticObj.end(), *this);
+
+	if (ifErased())
+		return;
+
+	// Collisions between key monsters and bullets
+	collideAndProcess(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+		m_board.m_bullet.begin(), m_board.m_bullet.end(), *this);
+
+	if (ifErased())
+		return;
+
+	// Collisions between ball monsters and static objects
+	collideAndProcess(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
+		m_board.m_staticObj.begin(), m_board.m_staticObj.end(), *this);
+
+	if (ifErased())
+		return;
+
+	// Collisions between ball monsters and bullets
+	collideAndProcess(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
+		m_board.m_bullet.begin(), m_board.m_bullet.end(), *this);
+
+	if (ifErased())
+		return;
+
+	// Collisions between key monsters and prince
+	collideAndProcessOnePair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
+		m_board.m_prince.get(), *this);
+
+	if (ifErased())
+		return;
+
+	// Collisions between ball monsters and prince
+	collideAndProcessOnePair(m_board.m_ballMonster.begin(), m_board.m_ballMonster.end(),
+		m_board.m_prince.get(), *this);
+
+	if (ifErased())
+		return;
+
+	// Collisions between bullets and prince
+	collideAndProcessOnePair(m_board.m_bullet.begin(), m_board.m_bullet.end(),
+		m_board.m_prince.get(), *this);
+
+	if (ifErased())
+		return;
+
+	// Collisions between static objects and prince
+	collideAndProcessOnePair(m_board.m_staticObj.begin(), m_board.m_staticObj.end(),
+		m_board.m_prince.get(), *this);
+}
+
