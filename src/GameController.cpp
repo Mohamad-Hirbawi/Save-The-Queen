@@ -101,6 +101,7 @@ void GameController::move(sf::Time deltaTime)
 		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
+	m_board.m_queen->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_board.move(deltaTime, *this);
 }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <chrono>
 #include "MovingObject.h"
 
 class Queen : public MovingObject
@@ -9,7 +10,7 @@ public:
 
 	virtual void handleCollision(Prince&, GameController&) override {};
 	virtual void handleCollision(Gift&, GameController&) override {};
-	virtual void handleCollision(Stair& s, GameController&) override{};
+	virtual void handleCollision(Stair& , GameController&) override{};
 	virtual void handleCollision(Object&, GameController&) override;
 	virtual void handleCollision(Wall&, GameController&) override;
 	virtual void handleCollision(Coin&, GameController&) override {};
@@ -21,10 +22,13 @@ public:
 
 
 
-	virtual void move(sf::Time deltaTime, sf::Vector2f)override {};
+	virtual void move(sf::Time deltaTime, sf::Vector2f)override ;
+
+	sf::Vector2f getDirection();
+
+	//sf::Vector2f getDirection(sf::Vector2f princePos);
 
 private:
-	bool prim;
-	Stair* m_currentStair;
-	sf::Vector2f m_stairDirection;
+	std::chrono::time_point<std::chrono::steady_clock> m_startTime;
+	sf::Vector2f m_dir;
 };
