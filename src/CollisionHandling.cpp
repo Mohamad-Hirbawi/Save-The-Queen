@@ -10,6 +10,7 @@
 #include "KeyMonster.h"
 #include "Wall.h"
 #include "Door.h"
+#include "Opener.h"
 #include "Bullet.h"
 #include "GameController.h"
 //#include "SpaceShip.h"
@@ -106,6 +107,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void KeyMonsterWithBullet (Object& keyMonster,
         Object& bullet, GameController& game)
     {
+        game.creatKey(keyMonster.getposition());
         game.eraseObject(bullet, BULLET);
         game.eraseObject(keyMonster, KEYMONSTER);
     } 
@@ -267,6 +269,19 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithGiftIncreasingTime(prince, giftTime, game);
     }
 
+    void PrinceWithKey(Object& prince,
+        Object& key, GameController& game)
+    {
+        game.eraseObject(key, STATICS);
+        game.increaseKey();
+    }
+
+    void KeyWithPrince(Object& key,
+        Object& prince, GameController& game)
+    {
+        PrinceWithKey(prince, key, game);
+    }
+
     
     
 
@@ -326,6 +341,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(AddLife), typeid(Prince))] = &GiftAddLifeWithPrince;
         phm[Key(typeid(Prince), typeid(IncreasingTime))] = &PrinceWithGiftIncreasingTime;
         phm[Key(typeid(IncreasingTime), typeid(Prince))] = &GiftIncreasingTimeWithPrince;
+        phm[Key(typeid(Prince), typeid(Opener))] = &PrinceWithKey;
+        phm[Key(typeid(Opener), typeid(Prince))] = &KeyWithPrince;
 
         
 

@@ -18,7 +18,7 @@ void Caption::startCaptions()
 
 void Caption::resetartCaptions()
 {
-	intCaption [Key] = 3;
+	intCaption [Keys] = 0;
 	intCaption [SCORE] = 0;
 	intCaption[LIFE] = 3;
 	intCaption[BULLETS]= 0;
@@ -81,7 +81,7 @@ int Caption::getBullet() const
 
 bool Caption::haveKey()
 {
-	if (intCaption[Key] > 0)
+	if (intCaption[Keys] > 0)
 	{
 		dicreaseKey();
 		return true;
@@ -111,7 +111,12 @@ sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)
 
 void Caption::dicreaseKey()
 {
-	intCaption[Key]--;
+	intCaption[Keys]--;
+}
+
+void Caption::increaseKey()
+{
+	intCaption[Keys]++;
 }
 
 void Caption::newLevel(const int time)

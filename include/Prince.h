@@ -8,7 +8,6 @@ public:
 	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
 
 private:
-	bool prim;
 	Stair* m_currentStair;
 	sf::Vector2f m_stairDirection;
 };
