@@ -12,10 +12,11 @@
 #include "BallMonster.h"
 #include "BeastMonster.h"
 #include "Bullet.h"
-#include <Gift.h>
-#include <IncreasingTime.h>
-#include <AddLife.h>
-#include <GiftBuleet.h>
+#include "Gift.h"
+#include "Gate.h"
+#include "IncreasingTime.h"
+#include "AddLife.h"
+#include "GiftBuleet.h"
 #include "Coin.h"
 #include "StaticObject.h"
 #include <SFML/System/Vector2.hpp>

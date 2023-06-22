@@ -97,7 +97,7 @@ void GameController::creatObject()
 bool GameController::isStaticObj(const char& c)
 {
 	if (c == WALL_C || c == STAIR_C || c == COIN_C || c == ADDTIME_C || c == ADDLIFE_C || c== DDOR_C ||
-		c == GIFTBULLET_C || c== KEY_C)
+		c == GIFTBULLET_C || c== KEY_C || c == GATE_C)
 		return true;
 	return false;
 
@@ -178,6 +178,11 @@ void GameController::dicreaseCoin()
 {
 	m_caption.UpdateNumCoin(-1);
 }
+bool GameController::chekCoin() {
+
+	return m_caption.checkEmptyCoin();
+}
+
 
 void GameController::creatBullet() 
 {
