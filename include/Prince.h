@@ -8,7 +8,7 @@ public:
 
 
 	virtual void handleCollision(Prince&, GameController&) override {};
-	virtual void handleCollision(Gift&, GameController&) override {};
+	virtual void handleCollision(Gift&, GameController&) override {};//
 	virtual void handleCollision(Stair&s, GameController&) override ;
 	virtual void handleCollision(Object&, GameController&) override;
 	virtual void handleCollision(Wall&, GameController&) override;

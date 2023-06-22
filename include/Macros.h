@@ -53,7 +53,7 @@ const std::string strBackground[] = { "conan.jpg" ,"Background.jpg" };
 const std::string strMenu[] = { "New" ,"Info" ,"Exit"};
 
 // for caption
-const int EATCOIN = 1;
+const int EATCOIN = 2;
 const int TIMEOFGAME = 60;
 const int BOUNUSTIME = 20;
 const int CAP_CHAR_SIZE = 20;
