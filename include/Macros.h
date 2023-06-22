@@ -58,14 +58,17 @@ const int TIMEOFGAME = 60;
 const int BOUNUSTIME = 20;
 const int CAP_CHAR_SIZE = 20;
 const int ADDBULEET = 5;
-const int NUMCAPTIONS = 5;
+const int NUMCAPTIONS = 6;
 
 enum Captions
 {
-	SCORE, TIME, LIFE, Keys, BULLETS
+
+	SCORE, TIME, LIFE, Keys, BULLETS, NUMCOIN
 };
 
-const std::string STRCAPTIONARR[] = { "Score: ","Time left: " ,"Life: ","Keys: ","Bullets: " };
+const std::string STRCAPTIONARR[] = { "Score: ","Time left: " ,"Life: ","Key: ","Bullets: ", "Coin: "};
+
+
 
 
 

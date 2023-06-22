@@ -84,6 +84,8 @@ void GameController::creatObject()
 			position = { xLoc, yLoc };
 			c = boadrdmap[row][col];
 			if (c == EMPTY_C)	continue;
+			if (c == COIN_C)
+				m_caption.UpdateNumCoin(1);
 			//static object 
 			if (isStaticObj(c)) m_board.createStaticObject(c, position);
 			//moving object
@@ -171,6 +173,11 @@ bool GameController::isLosing()
 
 void GameController::increaseBullet()
 {m_caption.increaseBullet();}
+
+void GameController::dicreaseCoin()
+{
+	m_caption.UpdateNumCoin(-1);
+}
 
 void GameController::creatBullet() 
 {

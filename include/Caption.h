@@ -13,6 +13,7 @@ public:
 	void resetartCaptions();
 	void drawCaptions(sf::RenderWindow& window);
 	void increaseScore(const int number);
+	void UpdateNumCoin(const int& number);
 	void updateTime(float time);
 	void dicreaseLife();
 	void dicreaseBullet();
