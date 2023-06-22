@@ -14,7 +14,7 @@ public:
 
 	virtual void handleCollision(Object&, GameController&) override {};
 	virtual void handleCollision(Prince&, GameController&) override {};
-	virtual void handleCollision(Queen&, GameController&) override = 0;
+	virtual void handleCollision(Queen&, GameController&) override {};
 	virtual void handleCollision(Wall&, GameController&) override {};
 	virtual void handleCollision(Stair&, GameController&) override {};
 	virtual void handleCollision(Coin&, GameController&) override {};
