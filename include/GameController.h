@@ -26,6 +26,7 @@ public:
 
 	void increaseBullet();
 	void dicreaseCoin();
+	bool chekCoin();
 	bool haveKey();
 	bool isLosing();
 	bool collide(Object&, Object&);

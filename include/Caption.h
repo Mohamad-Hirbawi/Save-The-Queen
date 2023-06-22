@@ -20,6 +20,7 @@ public:
 	void increaseLife();
 	void newLevel(const int time);
 	void increaseKey();
+	bool checkEmptyCoin();
 
 	void increaseBullet();
 	int getBullet()const;
