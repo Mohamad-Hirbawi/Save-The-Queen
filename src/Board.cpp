@@ -68,6 +68,8 @@ void Board::createStaticObject(const char &c, sf::Vector2f position)
 
 	case DDOR_C:	m_staticObj.emplace_back(std::make_unique<Door>(DOOR, position));	break;
 
+	case KEY_C:		m_staticObj.emplace_back(std::make_unique<Opener>(KEY, position));	break;
+
 	default:		m_staticObj.emplace_back(selectGiftType(position,c));				break;
 	}
 }

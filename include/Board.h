@@ -4,6 +4,7 @@
 #include <string>
 #include "Wall.h"
 #include "Door.h"
+#include "Opener.h"
 #include "Stair.h"
 #include "Prince.h"
 #include "Queen.h"
