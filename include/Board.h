@@ -36,12 +36,12 @@ public:
 	sf::Vector2f getiInitailPrincePos()const;
 	bool eraseMoving(Object& movingObject, Toolbar_t typeVector);
 	void clearBoard();
-	std::unique_ptr<Prince> m_prince;
+	std::unique_ptr<Prince> m_prince ;
 	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 	std::vector <std ::unique_ptr<Bullet>> m_bullet;
-	std::unique_ptr<BeastMonster> m_beastMonster;
+	std::unique_ptr<BeastMonster> m_beastMonster = nullptr;
 	bool m_erased;
 
 private:

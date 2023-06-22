@@ -97,7 +97,8 @@ void GameController::move(sf::Time deltaTime)
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
 	checkCollision(*m_board.m_prince);
 
-	m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
+	if(m_board.m_beastMonster)
+		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
 	m_board.move(deltaTime, *this);

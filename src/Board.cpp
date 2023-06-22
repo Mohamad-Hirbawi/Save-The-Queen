@@ -52,9 +52,10 @@ void Board::drawBoard(sf::RenderWindow& window)
 			m_staticObj[i]->draw(window);
 	}
 	// throw if we dont have prince
-
+	
 	m_prince->draw(window);
-	m_beastMonster->draw(window);
+	if(m_beastMonster)
+		m_beastMonster->draw(window);
 	drawObjects(m_keyMonster, window);
 	drawObjects(m_ballMonster, window);
 	drawObjects(m_bullet, window);
