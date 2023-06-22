@@ -22,6 +22,7 @@ public:
 	void creatKey(sf::Vector2f);
 	void eraseObject(Object& movingObject, Toolbar_t);
 	void dead();
+	void creatBullet(sf::Vector2f, Toolbar_t);
 
 	void increaseBullet();
 	void dicreaseCoin();
@@ -33,7 +34,6 @@ public:
 private:
 	void creatObject();
 	void setLastDirection(sf::Vector2f direction);
-	void creatBullet();
 	void updateView();
 	void checkCollis();
 	void losing();
@@ -47,7 +47,6 @@ private:
 	sf::Sprite m_gameWallp;
 	bool m_lose;
 	sf::Texture m_pTexture;
-
 	Caption m_caption;
 	Menu m_menu;
 	Board m_board;

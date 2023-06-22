@@ -113,12 +113,35 @@ std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char& c)
 std::unique_ptr<Bullet> Board::selectBulltType(sf::Vector2f position)
 {
 	sf::Vector2f princePos = m_prince->getposition();
-	if (position == RIGHT)
-		princePos.x += 50;
-	else
-		princePos.x -= 25;
-		
-	return std::make_unique<Bullet>(BULLET, princePos, position);
+	switch (m_typeBullet)
+	{
+		case PRINCE:
+			{
+				if (position == RIGHT)
+					princePos.x += 50;
+				else
+					princePos.x -= 25;
+
+				return std::make_unique<Bullet>(BULLET, princePos, position);
+			}
+
+		case BALLMONSTER:
+		{
+			if (position.x > princePos.x)
+			{
+				position.x -= 50;
+				return std::make_unique<Bullet>(BULLET, position, LEFT);
+			}
+
+			else
+			{
+				position.x += 50;
+				return std::make_unique<Bullet>(BULLET, position, RIGHT);
+
+			}
+		}
+	}
+
 
 }
 
@@ -158,6 +181,11 @@ void Board::clearBoard()
 void Board::setErased(bool erase)	{m_erased = erase;}
 
 bool Board::getErased() const	{return m_erased;}
+
+void Board::setTypeBullet(Toolbar_t type)
+{
+	m_typeBullet = type;
+}
 
 void Board::move(sf::Time deltaTime, GameController& game)
 {

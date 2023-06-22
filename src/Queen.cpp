@@ -6,7 +6,7 @@ Queen::Queen(Toolbar_t symbol, sf::Vector2f position)
 {
 }
 
-void Queen::move(sf::Time deltaTime, sf::Vector2f)
+void Queen::move(sf::Time deltaTime, sf::Vector2f, GameController& game)
 {
    
    m_dir = getDirection();  

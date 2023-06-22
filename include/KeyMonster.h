@@ -6,7 +6,7 @@ class KeyMonster : public Monster
 {
 public:
 	KeyMonster(Toolbar_t symbol, sf::Vector2f position);
-	virtual void move(sf::Time deltaTime, sf::Vector2f)override;
+	virtual void move(sf::Time deltaTime, sf::Vector2f,GameController& game)override;
 
 private:
 	std::chrono::time_point<std::chrono::steady_clock> m_startTime;

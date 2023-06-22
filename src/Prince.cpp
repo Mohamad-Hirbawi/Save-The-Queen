@@ -117,7 +117,7 @@ sf::Vector2f dirFromKey()
 //    m_positionPrince = m_icon.getPosition();
 //}
 
-void Prince::move(sf::Time deltaTime, sf::Vector2f)
+void Prince::move(sf::Time deltaTime, sf::Vector2f, GameController& game)
 {
     m_prevPos = m_icon.getPosition();
     sf::Vector2f dir = dirFromKey();

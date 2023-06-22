@@ -38,6 +38,7 @@ public:
 	void clearBoard();
 	void setErased(bool);
 	bool getErased()const;
+	void setTypeBullet(Toolbar_t);
 	std::unique_ptr<Prince> m_prince ;// shared_ptr
 	std::unique_ptr<Queen> m_queen ;
 	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
@@ -57,6 +58,8 @@ private:
 	int m_width;
 	sf::Vector2f m_initailPrince;
 	bool m_erased;
+	Toolbar_t m_typeBullet;
+
 };
 
 
@@ -91,7 +94,7 @@ void moveObject (std::vector<std::unique_ptr<T1>>& vec ,GameController& game ,
 	
 	for (int index = 0; index < vec.size(); index++)
 	{
-		vec[index]->move(deltaTime, prince.get()->getposition());
+		vec[index]->move(deltaTime, prince.get()->getposition(),game);
 	}
 }
 
