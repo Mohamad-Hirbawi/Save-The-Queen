@@ -25,7 +25,10 @@ void GameController::run() {
 			{case sf::Event::Closed:		window.close();		break;
 			case sf::Event::KeyPressed:
 				if (evnt.key.code == sf::Keyboard::Escape) { window.close(); break; }
-				else if (evnt.key.code == sf::Keyboard::X && m_caption.getBullet() > 0)		creatBullet();
+				else if (evnt.key.code == sf::Keyboard::X && m_caption.getBullet() > 0)
+				{
+					creatBullet(m_lastPrinceDirection,PRINCE);	m_caption.dicreaseBullet();
+				}
 			default:	break;
 			}
 		}
@@ -105,10 +108,10 @@ bool GameController::isStaticObj(const char& c)
 
 void GameController::move(sf::Time deltaTime)
 {
-	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
+	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition(), *this);
 
 	if(m_board.m_beastMonster)
-		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
+		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition(),*this);
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
 	//m_board.m_queen->move(deltaTime, m_board.m_prince.get()->getposition());
@@ -179,10 +182,11 @@ void GameController::dicreaseCoin()
 	m_caption.UpdateNumCoin(-1);
 }
 
-void GameController::creatBullet() 
+void GameController::creatBullet(sf::Vector2f direction, Toolbar_t type)
 {
-	m_board.createMovingObject(BULLET_C, m_lastPrinceDirection);
-	m_caption.dicreaseBullet();
+	m_board.setTypeBullet(type);
+	m_board.createMovingObject(BULLET_C, direction);
+
 }
 
 void GameController::creatKey(sf::Vector2f posotion)

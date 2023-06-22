@@ -55,7 +55,7 @@ sf::Vector2f BeastMonster::getDirection(sf::Vector2f princePos)
 
 }
 
-void BeastMonster::move(sf::Time deltaTime, sf::Vector2f princePos)
+void BeastMonster::move(sf::Time deltaTime, sf::Vector2f princePos,GameController& game)
 {
     m_prevPos = m_icon.getPosition();
     m_dir = getDirection(princePos);

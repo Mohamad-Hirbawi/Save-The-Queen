@@ -9,7 +9,7 @@ public:
 
 	//void moveToPrevPos();
 
-	virtual void move(sf::Time deltaTime, sf::Vector2f) = 0;
+	virtual void move(sf::Time deltaTime, sf::Vector2f, GameController& game) = 0;
 	virtual void handleCollision(Object&, GameController&) {}
 
 

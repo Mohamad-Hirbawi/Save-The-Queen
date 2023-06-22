@@ -7,12 +7,11 @@ public:
 	BallMonster(Toolbar_t symbol, sf::Vector2f position);
 
 	sf::Vector2f getDirection(sf::Vector2f princePos);
-	virtual void move(sf::Time deltaTime, sf::Vector2f princePos)override;
+	virtual void move(sf::Time deltaTime, sf::Vector2f princePos, GameController& game)override;
 
 private:
-	//sf::Vector2f directionFollowPrince(sf::Vector2f princePos);
-	//sf::Vector2f getDirection(sf::Vector2f princePos);
 	std::chrono::time_point<std::chrono::steady_clock> m_startTime;
+	std::chrono::time_point<std::chrono::steady_clock> m_startTime2;
 	sf::Vector2f m_dir;
 	sf::Clock m_changeDircectionAlarm;
 	sf::Vector2f m_positionKeyMonster;

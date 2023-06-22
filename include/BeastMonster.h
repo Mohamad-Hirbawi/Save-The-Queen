@@ -11,7 +11,7 @@ public:
 
 	sf::Vector2f getDirection(sf::Vector2f princePos);
 
-	virtual void move(sf::Time deltaTime, sf::Vector2f)override ;
+	virtual void move(sf::Time deltaTime, sf::Vector2f, GameController& game)override ;
 
 
 private:
