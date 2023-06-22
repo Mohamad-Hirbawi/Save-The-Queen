@@ -1,6 +1,11 @@
 ﻿#include "GameController.h"
 #include <iostream>
 
+GameController::GameController()
+{
+	window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game", sf::Style::Titlebar | sf::Style::Close);
+}
+
 void GameController::run() {
 	m_lose = false;
 	m_menu.activateMenu(window);
@@ -57,7 +62,7 @@ void GameController::updateView() {
 }
 void GameController::creatObject() 
 {
-	// חריגה
+	// throw
 	if (!m_pTexture.loadFromFile("Background1.jpg"))
 		;
 	m_gameWallp.setTexture(m_pTexture);
@@ -73,7 +78,7 @@ void GameController::creatObject()
 			yLoc = 50 * row;
 			position = { xLoc, yLoc };
 			c = boadrdmap[row][col];
-			if (c == ' ')	continue;
+			if (c == EMPTY_C)	continue;
 			//static object 
 			if (isStaticObj(c)) m_board.createStaticObject(c, position);
 			//moving object
@@ -94,7 +99,6 @@ bool GameController::isStaticObj(const char& c)
 void GameController::move(sf::Time deltaTime)
 {
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition());
-	//checkCollision(*m_board.m_prince);
 
 	if(m_board.m_beastMonster)
 		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition());
@@ -107,7 +111,7 @@ void GameController::move(sf::Time deltaTime)
 
 void GameController::checkCollision(MovingObject& thisObj)
 {
-	m_board.checkCollision(thisObj, *this); //check collisions with static objects
+	//m_board.checkCollision(thisObj, *this); //check collisions with static objects
 
 	//if (thisObj.collidesWith(*m_board.m_prince))
 	//	thisObj.handleCollision(*m_board.m_prince, *this);
@@ -193,10 +197,11 @@ void GameController::checkCollis()
 	collideAndProcessPairs(m_board.m_keyMonster, m_board.m_bullet, *this);
 	collideAndProcessPairs(m_board.m_ballMonster, m_board.m_staticObj, *this);
 	collideAndProcessPairs(m_board.m_ballMonster, m_board.m_bullet, *this);
-	collideAndProcessOnePair(m_board.m_keyMonster, m_board.m_prince.get(), *this);
-	collideAndProcessOnePair(m_board.m_ballMonster, m_board.m_prince.get(), *this);
-	collideAndProcessOnePair(m_board.m_bullet, m_board.m_prince.get(), *this);
+
 	collideAndProcessOnePair(m_board.m_staticObj, m_board.m_prince.get(), *this);
+	if(!m_lose)	collideAndProcessOnePair(m_board.m_keyMonster, m_board.m_prince.get(), *this);
+	if(!m_lose)	collideAndProcessOnePair(m_board.m_ballMonster, m_board.m_prince.get(), *this);
+	if(!m_lose)	collideAndProcessOnePair(m_board.m_bullet, m_board.m_prince.get(), *this);
 }
 
 

@@ -12,11 +12,7 @@ class Bullet;
 class GameController
 {
 public:
-	GameController()
-	{
-		window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game", sf::Style::Titlebar | sf::Style::Close);
-	}
-	GameController(const GameController&) = delete;
+	GameController();
 	void run();
 	void updateView();
 	void creatObject();
@@ -74,7 +70,7 @@ void for_each_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 begin2, FwdIt2 end2,
 		for (auto second = begin2; second != end2; ++second)
 		{
 			fn(*begin1, *second);
-			if (game.ifErased())
+			if (game.ifErased() || game.isLosing())
 				return;
 		}
 }
@@ -86,7 +82,7 @@ void for_one_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 second,
 	for (; begin1 != end1; ++begin1)
 	{
 		fn(*begin1, second);
-		if (game.ifErased())
+		if (game.ifErased()||game.isLosing())
 			return;
 	}
 }
