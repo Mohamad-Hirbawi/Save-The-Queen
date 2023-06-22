@@ -29,17 +29,7 @@ public:
 	sf::Vector2f getprevPos()const;
 	void moveToPrevPos();
 	virtual void handleCollision(Object&, GameController&) = 0;
-	virtual void handleCollision(Prince&, GameController&) = 0;
-	virtual void handleCollision(Queen&, GameController&) = 0;
-	virtual void handleCollision(Wall&, GameController&) = 0;
-	virtual void handleCollision(Stair&, GameController&) = 0;
-	virtual void handleCollision(Coin&, GameController&) = 0;
-	virtual void handleCollision(Door&, GameController&) = 0;
-	virtual void handleCollision(KeyMonster&, GameController&) = 0;
-	virtual void handleCollision(BeastMonster&, GameController&) = 0;
-	virtual void handleCollision(BallMonster&, GameController&) = 0;
-	virtual void handleCollision(Bullet&, GameController&)  = 0;
-	virtual void handleCollision(Gift&, GameController&)  = 0;
+
 	bool isDoorOpen()const;
 	void setDoorOpen();
 	void setPrinceCollisStair();
