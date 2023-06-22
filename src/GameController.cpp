@@ -182,8 +182,7 @@ m_caption.dicreaseBullet();
 
 void GameController::checkCollis()
 {
-	if (ifErased())
-		return;
+	m_board.m_erased = false;
 	for_each_pair(m_board.m_keyMonster.begin(), m_board.m_keyMonster.end(),
 		m_board.m_staticObj.begin(),m_board.m_staticObj.end(),*this, [this](auto& a, auto& b)
 		{
