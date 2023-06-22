@@ -65,52 +65,6 @@ private:
 
 
 };
-//template<typename T>
-//void templateMove(const std::vector<std::unique_ptr<T>>& movigObjects, sf::Time deltaTime, const int & index) {
-//
-//	movigObjects[index]->move(deltaTime, movigObjects->getposition());
-//	//m_board.m_keyMonster[index]->move(deltaTime, m_board.m_prince.get()->getposition());
-//
-//
-//}
-
-//////// STL-like algorithm to run over all pairs
-//////template <typename FwdIt1,typename FwdIt2, typename Fn>
-//////void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 begin2, FwdIt2 end2,
-//////	GameController&game,Fn fn)
-//////{
-//////	for (; begin1 != end1; ++begin1)
-//////		for (auto second = begin2; second != end2; ++second)
-//////		{
-//////			fn(*begin1, *second);
-//////			if (game.ifErased())
-//////				return;
-//////		}
-//////}
-//////
-//////
-//////
-//////
-//////// STL-like algorithm to run over all pairs
-//////template <typename FwdIt1, typename FwdIt2, typename Fn>
-//////void for_one_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 second,
-//////	GameController& game, Fn fn)
-//////{
-//////	for (; begin1 != end1; ++begin1)
-//////	{
-//////		fn(*begin1, second);
-//////		if (game.ifErased())
-//////			return;
-//////	}
-//////}
-
-//// STL-like algorithm to run over all pairs
-//template <typename FwdIt1,typename FwdIt2, typename Fn>
-//void for_each_pair(FwdIt1 begin1, FwdIt1 end1,FwdIt2 second, Fn fn)
-//{
-//	for (; begin1 != end1; ++begin1)
-//			fn(*begin1, *second);
-//}
 
 template <typename FwdIt1, typename FwdIt2, typename Fn>
 void for_each_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 begin2, FwdIt2 end2,
@@ -154,4 +108,16 @@ void collideAndProcessOnePair(FwdIt1 begin1, FwdIt1 end1, FwdIt2* second, GameCo
 			processCollision(*a, *b, game);
 
 		});
+}
+
+template <typename Container1, typename Container2>
+void collideAndProcessPairs(Container1& container1, Container2& container2, GameController& game)
+{
+	collideAndProcess(container1.begin(), container1.end(), container2.begin(), container2.end(), game);
+}
+
+template <typename Container, typename T>
+void collideAndProcessOnePair(Container& container, T* object , GameController& game)
+{
+	collideAndProcessOnePair(container.begin(), container.end(), object,game);
 }
