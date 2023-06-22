@@ -7,6 +7,7 @@ class GiftBuleet : public Gift
 public:
 	GiftBuleet(Toolbar_t symbol, sf::Vector2f position);
 	virtual void handleCollision(Prince&, GameController&) override;
+	virtual void handleCollision(Queen&, GameController&) override {};
 
 private:
 

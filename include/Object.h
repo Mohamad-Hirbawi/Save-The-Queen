@@ -5,6 +5,7 @@
 
 class GameController;//
 class Prince;
+class Queen;
 class Wall;
 class Stair;
 class Coin;
@@ -29,6 +30,7 @@ public:
 	void moveToPrevPos();
 	virtual void handleCollision(Object&, GameController&) = 0;
 	virtual void handleCollision(Prince&, GameController&) = 0;
+	virtual void handleCollision(Queen&, GameController&) = 0;
 	virtual void handleCollision(Wall&, GameController&) = 0;
 	virtual void handleCollision(Stair&, GameController&) = 0;
 	virtual void handleCollision(Coin&, GameController&) = 0;

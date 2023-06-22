@@ -7,6 +7,12 @@ void Wall::handleCollision(Prince& prince, GameController& game)
 	prince.handleCollision(*this, game);
 }
 
+void Wall::handleCollision(Queen&queen, GameController&game)
+{
+	queen.handleCollision(*this, game);
+
+}
+
 void Wall::handleCollision(KeyMonster &keyMonster, GameController&game)
 {
 	keyMonster.handleCollision(*this, game);

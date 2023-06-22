@@ -6,6 +6,7 @@
 #include "Door.h"
 #include "Stair.h"
 #include "Prince.h"
+#include "Queen.h"
 #include "KeyMonster.h"
 #include "BallMonster.h"
 #include "BeastMonster.h"
@@ -37,6 +38,7 @@ public:
 	bool eraseMoving(Object& movingObject, Toolbar_t typeVector);
 	void clearBoard();
 	std::unique_ptr<Prince> m_prince ;
+	std::unique_ptr<Queen> m_queen ;
 	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
 	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;

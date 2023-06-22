@@ -1,6 +1,7 @@
 #pragma once 
 #include "Object.h"
 #include "Prince.h"
+#include "Queen.h"
 #include "KeyMonster.h"
 #include "BallMonster.h"
 #include "Monster.h"
@@ -12,7 +13,8 @@ public:
 	StaticObject (Toolbar_t symbol, sf::Vector2f position);
 
 	virtual void handleCollision(Object&, GameController&) override {};
-	virtual void handleCollision(Prince&, GameController&) override = 0;
+	virtual void handleCollision(Prince&, GameController&) override {};
+	virtual void handleCollision(Queen&, GameController&) override = 0;
 	virtual void handleCollision(Wall&, GameController&) override {};
 	virtual void handleCollision(Stair&, GameController&) override {};
 	virtual void handleCollision(Coin&, GameController&) override {};
