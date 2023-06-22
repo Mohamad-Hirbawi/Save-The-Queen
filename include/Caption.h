@@ -27,7 +27,6 @@ public:
 
 
 private:
-	void funcDrwCap(Captions cap, const std::string& str, const int& caption);
 	void startCaptions();
 	sf::Text drawInCaption(sf::Text text, const float x, const float y);
 	void dicreaseKey();

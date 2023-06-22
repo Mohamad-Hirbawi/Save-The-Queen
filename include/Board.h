@@ -94,14 +94,6 @@ void moveObject (std::vector<std::unique_ptr<T1>>& vec ,GameController& game ,
 	for (int index = 0; index < vec.size(); index++)
 	{
 		vec[index]->move(deltaTime, prince.get()->getposition());
-
-		//bord.checkCollision(*vec[index], game); //check collisions with static objects
-
-		//if (!bord.m_erased && vec[index]->collidesWith(*prince))
-		//	vec[index]->handleCollision(*prince, game);
-
-		//if (!bord.m_erased)
-		//	bord.checkCollisionMoving(*vec[index], game);
 	}
 }
 

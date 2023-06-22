@@ -48,10 +48,6 @@ void Menu::activateMenu(sf::RenderWindow& window)
 			window.draw(m_startWallp);
 			for (int index =0 ; index < NUMMENU - 1; index ++ )
 				window.draw(m_text[index]);
-
-			//window.draw(m_text[NEW]);
-			//window.draw(m_text[INFO]);
-			//window.draw(m_text[EXIT]);
 		}
 		if (m_index == 2){	infoFunc(window);}
 
@@ -112,18 +108,7 @@ bool Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window, i
 		}
 
 	}
-	//if (m_text[BACK].getGlobalBounds().contains(Location)) { // pressed back
-	//	i = 0;
-	//	return true;
-	//}
-	//if (m_text[NEW].getGlobalBounds().contains(Location)) { // pressed New
-	//	i = 1;
-	//	return true;
-	//}
-	//if (m_text[INFO].getGlobalBounds().contains(Location)) { // pressed info
-	//	i = 2;
-	//	return true;
-	//}
+
 	return true;
 
 }
@@ -146,15 +131,10 @@ sf::Text Menu::doHandleClick(sf::Text text, const sf::Vector2f& Location)
 
 void Menu::handleMove(const sf::Vector2f& Location)
 {
-
 	m_textHelp = m_text;
 	m_text.clear();
 	// mark/unmark button
 	for(int index = 0 ; index < NUMMENU; index ++)
 		m_text.emplace_back(doHandleClick(m_textHelp[index], Location));
 
-	//m_text.emplace_back(doHandleClick(m_textHelp[NEW], Location));
-	//m_text.emplace_back(doHandleClick(m_textHelp[INFO], Location));
-	//m_text.emplace_back(doHandleClick(m_textHelp[EXIT], Location));
-	//m_text.emplace_back(doHandleClick(m_textHelp[BACK], Location));
 }

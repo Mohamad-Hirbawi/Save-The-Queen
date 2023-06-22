@@ -31,32 +31,8 @@ void Caption::drawCaptions(sf::RenderWindow& window)
 	for(int index =0 ; index < NUMCAPTIONS; index++)
 	{ 
 		m_text[index].setString(STRCAPTIONARR[index] + std::to_string(intCaption[index]));
-
-	}
-	//funcDrwCap(TIME, "Time left: ", m_stageTime);
-	//funcDrwCap(SCORE, "Score: ", m_score);
-	//funcDrwCap(LIFE, "Life: ", intCaption [LIFE]);
-	//funcDrwCap(Key, "Key: ", m_keys);
-	//funcDrwCap(BULLETS, "Bullets: ", intCaption [BULLETS]);
-
-
-	//m_text[TIME].setString("Time left: " + std::to_string(m_stageTime));
-
-	//m_text[SCORE].setString("Score: " + std::to_string(m_score));
-
-	//m_text[LIFE].setString("Life: " + std::to_string(intCaption [LIFE]));
-
-	//m_text[Key].setString("Key: " + std::to_string(m_keys));
-
-	//m_text[BULLETS].setString("Bullets: " + std::to_string(intCaption [BULLETS]));
-
-	for (int index = 0; index < NUMCAPTIONS; index++)
 		window.draw(m_text[index]);
-
-}
-void Caption ::funcDrwCap(Captions cap, const std::string& str, const int& caption) {
-
-	m_text[cap].setString(str + std::to_string(caption));
+	}
 }
 
 void Caption::increaseScore(const int number)
@@ -100,7 +76,6 @@ void Caption::increaseBullet()
 }
 
 int Caption::getBullet() const
-
 {return intCaption[BULLETS];}
 
 

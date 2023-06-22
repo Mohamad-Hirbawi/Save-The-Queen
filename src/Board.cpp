@@ -46,14 +46,9 @@ int Board::getWidth() const
 // templete
 void Board::drawBoard(sf::RenderWindow& window)
 {
-	for (int i = 0; i < m_staticObj.size(); i++)
-	{
-		if (m_staticObj[i] != nullptr)
-			m_staticObj[i]->draw(window);
-	}
-	// throw if we dont have prince
-	
-	m_prince->draw(window);
+	drawObjects(m_staticObj, window);
+
+	m_prince->draw(window);//throw
 	if(m_beastMonster)
 		m_beastMonster->draw(window);
 	m_queen->draw(window);
