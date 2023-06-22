@@ -97,7 +97,7 @@ void GameController::creatObject()
 bool GameController::isStaticObj(const char& c)
 {
 	if (c == WALL_C || c == STAIR_C || c == COIN_C || c == ADDTIME_C || c == ADDLIFE_C || c== DDOR_C ||
-		c == GIFTBULLET_C)
+		c == GIFTBULLET_C || c== KEY_C)
 		return true;
 	return false;
 
@@ -120,6 +120,9 @@ void GameController::increaseScore(const int number)
 
 void GameController::increaseTime()
 {m_caption.updateTime(BOUNUSTIME);}
+
+void GameController::increaseKey()
+{m_caption.increaseKey();}
 
 void GameController::addLife()
 {m_caption.increaseLife();}
@@ -178,8 +181,13 @@ void GameController::dicreaseCoin()
 
 void GameController::creatBullet() 
 {
-	m_board.createMovingObject('b', m_lastPrinceDirection);
+	m_board.createMovingObject(BULLET_C, m_lastPrinceDirection);
 	m_caption.dicreaseBullet();
+}
+
+void GameController::creatKey(sf::Vector2f posotion)
+{
+	m_board.createStaticObject(KEY_C, posotion);
 }
 
 bool GameController::collide(Object& obj1, Object& obj2)

@@ -19,6 +19,7 @@ public:
 	void dicreaseBullet();
 	void increaseLife();
 	void newLevel(const int time);
+	void increaseKey();
 
 	void increaseBullet();
 	int getBullet()const;

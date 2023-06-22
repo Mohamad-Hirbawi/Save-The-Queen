@@ -16,9 +16,10 @@ public:
 	void run();
 	void increaseScore(const int number);
 	void increaseTime();
+	void increaseKey();
 	void addLife();
 	bool ifErased();
-
+	void creatKey(sf::Vector2f);
 	void eraseObject(Object& movingObject, Toolbar_t);
 	void dead();
 
