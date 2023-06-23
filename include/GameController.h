@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "Board.h"
 #include "Caption.h"
+#include "Sound.h"
 #include "Bullet.h"
 #include <SFML/Graphics.hpp>
 #include "CollisionHandling.h"
@@ -52,7 +53,7 @@ private:
 	Board m_board;
 	sf::View m_view;
 
-
+	Sound m_sound;
 
 
 	/// non private non puplick

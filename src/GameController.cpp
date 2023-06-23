@@ -8,6 +8,7 @@ GameController::GameController()
 
 void GameController::run() {
 	m_lose = false;
+	m_sound.playMusic("menuMusic.ogg");
 	m_menu.activateMenu(window);
 	creatObject();
 	m_caption.resetartCaptions();
