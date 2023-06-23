@@ -8,7 +8,8 @@ GameController::GameController()
 
 void GameController::run() {
 	m_lose = false;
-	m_sound.playMusic("menuMusic.ogg");
+	//m_sound.playMusic("menuMusic.ogg");
+	m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
 	m_menu.activateMenu(window);
 	creatObject();
 	m_caption.resetartCaptions();
