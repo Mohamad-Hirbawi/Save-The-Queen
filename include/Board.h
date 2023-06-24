@@ -36,6 +36,8 @@ public:
 
 	void resetLevelMap();
 
+	void resetRead();
+
 	sf::Vector2f getiInitailPrincePos()const;
 	bool erase(Object& movingObject, Toolbar_t typeVector);
 	void clearBoard();

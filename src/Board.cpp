@@ -204,3 +204,8 @@ void Board::resetLevelMap()
 	}
 	m_map.clear();
 }
+
+void Board::resetRead()
+{
+	m_read.seekg(0);
+}
