@@ -195,3 +195,12 @@ void Board::move(sf::Time deltaTime, GameController& game)
 
 	moveObject(m_ballMonster, game, m_prince, deltaTime , *this);
 }
+
+void Board::resetLevelMap()
+{
+	for (int row = m_height - 1; row >= 0; row--)
+	{
+		m_map.pop_back();
+	}
+	m_map.clear();
+}

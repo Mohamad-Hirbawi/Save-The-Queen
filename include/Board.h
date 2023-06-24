@@ -25,6 +25,7 @@ class Board
 {
 public:
 	Board();
+	bool readLvlMap();
 	std::vector<std::string> getMap() const;
 	int getHeight()const;
 	int getWidth()const;
@@ -32,6 +33,8 @@ public:
 	void createStaticObject(const char &c, sf::Vector2f position);
 	void createMovingObject(const char &c, sf::Vector2f position);
 	void move(sf::Time deltaTime,GameController& game);
+
+	void resetLevelMap();
 
 	sf::Vector2f getiInitailPrincePos()const;
 	bool erase(Object& movingObject, Toolbar_t typeVector);
@@ -48,7 +51,6 @@ public:
 	std::unique_ptr<BeastMonster> m_beastMonster = nullptr;
 
 private:
-	bool readLvlMap();
 	void readLvlSize();
 	std::unique_ptr<Gift> selectGiftType(sf::Vector2f position, const char& c);
 	std::unique_ptr<Bullet> selectBulltType(sf::Vector2f position);

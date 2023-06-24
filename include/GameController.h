@@ -25,6 +25,8 @@ public:
 	void dead();
 	void creatBullet(sf::Vector2f, Toolbar_t);
 
+	void newLevel();
+
 	void increaseBullet();
 	void dicreaseCoin();
 	bool chekCoin();
