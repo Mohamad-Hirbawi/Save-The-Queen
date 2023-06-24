@@ -11,8 +11,8 @@ void GameController::run() {
 	//m_sound.playMusic("menuMusic.ogg");
 	m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
 	m_menu.activateMenu(window);
-	creatObject();
 	m_caption.resetartCaptions();
+	creatObject();
 	m_timer.restart();
 	m_view = window.getView();
 	
@@ -194,6 +194,15 @@ void GameController::creatBullet(sf::Vector2f direction, Toolbar_t type)
 	m_board.setTypeBullet(type);
 	m_board.createMovingObject(BULLET_C, direction);
 
+}
+
+void GameController::newLevel()
+{
+	m_board.clearBoard();
+	m_board.resetLevelMap();
+	m_board.readLvlMap();
+	m_caption.resetartCaptions();
+	creatObject();
 }
 
 void GameController::creatKey(sf::Vector2f posotion)

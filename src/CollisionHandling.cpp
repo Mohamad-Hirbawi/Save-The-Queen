@@ -286,10 +286,10 @@ namespace // anonymous namespace — the standard way to make function "static"
     void PrinceWithGate(Object& prince, Object& gate, GameController& game) {
 
         if (game.chekCoin())
+        {
             game.eraseObject(gate, STATICS);
-        else
-            prince.moveToPrevPos();
-
+            game.newLevel();
+        }
     }
     void GateWithPrince(Object& gate, Object& prince, GameController& game) {
 

@@ -22,6 +22,7 @@ void Caption::resetartCaptions()
 	intCaption [SCORE] = 0;
 	intCaption[LIFE] = 3;
 	intCaption[BULLETS]= 0;
+	intCaption[NUMCOIN]= 0;
 	newLevel(TIMEOFGAME);
 }
 
