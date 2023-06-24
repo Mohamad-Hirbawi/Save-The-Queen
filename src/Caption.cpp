@@ -2,6 +2,7 @@
 
 Caption::Caption()
 {
+	restartLifeAndScore();
 	resetartCaptions();
 	startCaptions();
 }
@@ -19,8 +20,6 @@ void Caption::startCaptions()
 void Caption::resetartCaptions()
 {
 	intCaption [Keys] = 0;
-	intCaption [SCORE] = 0;
-	intCaption[LIFE] = 3;
 	intCaption[BULLETS]= 0;
 	intCaption[NUMCOIN]= 0;
 	newLevel(TIMEOFGAME);
@@ -103,6 +102,12 @@ int Caption::getLife()const
 int Caption::getTime() const
 {
 	return intCaption[TIME];
+}
+
+void Caption::restartLifeAndScore()
+{
+	intCaption[LIFE] = 3;
+	intCaption[SCORE] = 0;
 }
 
 sf::Text Caption::drawInCaption(sf::Text text, const float x, const float y)

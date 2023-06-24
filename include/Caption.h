@@ -27,6 +27,7 @@ public:
 	bool haveKey();
 	int getLife()const;
 	int getTime()const;
+	void restartLifeAndScore();
 
 
 private:

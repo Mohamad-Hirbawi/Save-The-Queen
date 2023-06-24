@@ -165,6 +165,8 @@ void GameController::losing()
 {
 	window.clear();
 	m_board.clearBoard();
+	m_board.resetRead();
+	m_caption.restartLifeAndScore();
 	window.setView(m_view);
 	run();
 	m_lose = true;
