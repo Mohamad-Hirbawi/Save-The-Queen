@@ -10,7 +10,7 @@ Caption::Caption()
 void Caption::startCaptions()
 {
 	sf::Text m_helpText;
-	for (int i = 1; i <= NUMCAPTIONS; i++)
+	for (int i = 1; i <= STRCAPTIONARR.size(); i++)
 	{
 		m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1 *i);
 		m_text.emplace_back(m_helpText);
@@ -28,7 +28,7 @@ void Caption::resetartCaptions()
 void Caption::drawCaptions(sf::RenderWindow& window)
 {
 	updateTime(0); 
-	for(int index =0 ; index < NUMCAPTIONS; index++)
+	for(int index =0 ; index < STRCAPTIONARR.size(); index++)
 	{ 
 		m_text[index].setString(STRCAPTIONARR[index] + std::to_string(intCaption[index]));
 		window.draw(m_text[index]);
