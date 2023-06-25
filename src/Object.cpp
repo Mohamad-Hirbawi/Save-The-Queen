@@ -1,9 +1,5 @@
 #include"Object.h"
 
-Object::Object(): m_open(false), m_prevPos(0,0)
-{
-	m_icon.setScale(0.3, 0.3);
-}
 
 
 Object::Object(Toolbar_t symbol, sf::Vector2f position):m_prevPos(position),m_open(false)

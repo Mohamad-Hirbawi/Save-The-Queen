@@ -94,7 +94,7 @@ bool  eraseObject(T1& object ,  std::vector<std::unique_ptr<T2>> &vec) {
 
 template<typename T1, typename T2>
 void moveObject (std::vector<std::unique_ptr<T1>>& vec ,GameController& game ,
-	std::unique_ptr<T2> &prince,sf::Time deltaTime , Board& bord) {
+	std::unique_ptr<T2> &prince,sf::Time deltaTime , Board& ) {
 	
 	for (int index = 0; index < vec.size(); index++)
 	{

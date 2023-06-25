@@ -20,7 +20,6 @@ class Object
 {
 public:	
 
-	Object();
 	Object(Toolbar_t symbol, sf::Vector2f position);
 	~Object() {}
 	void draw(sf::RenderWindow&);
