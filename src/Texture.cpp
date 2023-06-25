@@ -23,11 +23,12 @@ sf::Texture* Textures::getIcon(const Toolbar_t symbol)
 void Textures::setImagesForObj()
 {
 	sf::Texture newImage;
-	// PRINCE , WALL, STAIR , COIN, KEYMONSTER , BALLMONSTER , INCREASETIME, ADDLIFE,DOOR
 	for (const auto& tuxt : strTexture) {
-		newImage.loadFromFile(tuxt);
+		if (!newImage.loadFromFile(tuxt))
+			throw std::runtime_error("Failed to load texture");
 		m_pTexture.emplace_back(newImage);
 	}
+	system("cls");
 	m_font.loadFromFile("SundayMorning.ttf");
 
 }

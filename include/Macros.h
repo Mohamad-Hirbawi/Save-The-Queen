@@ -45,7 +45,7 @@ enum  Toolbar_t
 };
 
 // for loadFromFile and emplace_back Texture
-const std::string strTexture[] = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
+const std::vector<std::string> strTexture = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
 "BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png",
 "giftBullet.png", "buleet.png", "beastMonster.png","Queen.png","key.png", "gate.png"};
 

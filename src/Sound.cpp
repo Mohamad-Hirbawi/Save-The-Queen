@@ -34,7 +34,8 @@ Sound::Sound()
 /* Plays the music in a loop. */
 void Sound::playMusic(const std::string fileName)
 {
-	this->m_music.openFromFile(fileName);
+	if(!m_music.openFromFile(fileName))
+		throw std::runtime_error("failed to open file for sound");
 	this->m_music.setLoop(true);
 	this->m_music.play();
 }
