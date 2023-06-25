@@ -148,6 +148,7 @@ void GameController::dead(){
 	m_caption.dicreaseLife();
 	if (m_caption.getLife() > 0)
 	{
+		printMsg("You have " + std::to_string(m_caption.getLife()) + " lives left before losing");
 		m_caption.newLevel(TIMEOFGAME);
 		std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
 		m_board.m_prince = std::move(help);
@@ -197,6 +198,7 @@ void GameController::newLevel()
 		win();
 
 	else {
+		printMsg("Next level");
 		m_caption.resetartCaptions();
 		creatObject();
 	}
@@ -205,18 +207,23 @@ void GameController::newLevel()
 
 }
 
-void GameController::finishGame(std::string msg)
+void GameController::printMsg(std::string msg)
 {
 	sf::Font font;
 	font.loadFromFile("SundayMorning.ttf");
 
-	sf::Text youWinText(msg, font, 50);
-	youWinText.setPosition((WINDOW_WIDTH - youWinText.getLocalBounds().width) / 2, (WINDOW_HEIGHT - youWinText.getLocalBounds().height) / 2);
+	sf::Text text(msg, font, 50);
+	text.setPosition((WINDOW_WIDTH - text.getLocalBounds().width) / 2, (WINDOW_HEIGHT - text.getLocalBounds().height) / 2);
 
 	window.clear();
-	window.draw(youWinText);
+	window.draw(text);
 	window.display();
 	std::this_thread::sleep_for(std::chrono::seconds(3));
+	
+}
+void GameController::finishGame(std::string msg)
+{
+	printMsg(msg);
 	window.close();
 	m_finishGame = true;
 }
