@@ -16,6 +16,7 @@ public:
 
 private:
 	std::chrono::time_point<std::chrono::steady_clock> m_startTime;
+	std::chrono::time_point<std::chrono::steady_clock> m_startTime2;
 	sf::Vector2f m_dir;
 	sf::Clock m_changeDircectionAlarm;
 	sf::Vector2f m_positionKeyMonster;

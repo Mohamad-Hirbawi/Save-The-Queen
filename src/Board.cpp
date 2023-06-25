@@ -123,8 +123,8 @@ std::unique_ptr<Bullet> Board::selectBulltType(sf::Vector2f position)
 
 				return std::make_unique<Bullet>(BULLET, princePos, position);
 			}
-
 		case BALLMONSTER:
+		case BEASTMONSTER:
 		{
 			if (position.x > princePos.x)
 			{
