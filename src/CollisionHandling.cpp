@@ -46,7 +46,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
     void monsterWithWall(Object& monster,
-        Object& wall, GameController& game)
+        Object& , GameController& )
     {
         monster.moveToPrevPos();
     }
@@ -110,8 +110,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         BeastMonsterWithBullet(beastMonster, bullet, game);
     }
 
-    void MonsterWithPrince(Object& monster,
-        Object& prince, GameController& game)
+    void MonsterWithPrince(Object&,
+        Object&, GameController& game)
     {
         game.dead();
     }
@@ -124,7 +124,7 @@ namespace // anonymous namespace — the standard way to make function "static"
    
    
     void BulletWithPrince(Object& bullet,
-        Object& prince, GameController& game)
+        Object&, GameController& game)
     {
         game.eraseObject(bullet, BULLET);
         game.dead();
@@ -136,10 +136,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         BulletWithPrince(bullet, prince, game);
     }
      
-    //
       // prince collision-processing functions
     void PrinceWithWall(Object& prince,
-        Object& wall, GameController& game)
+        Object&, GameController& )
     {
         prince.moveToPrevPos();
     }
@@ -171,7 +170,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
     void PrinceWithStair(Object& prince,
-        Object& stair, GameController& game)
+        Object&, GameController&)
     {
         prince.setPrinceCollisStair();
     }
@@ -182,7 +181,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithStair(prince, stair, game);
     }
 
-    void PrinceWithCoin(Object& prince,
+    void PrinceWithCoin(Object&,
         Object& coin, GameController& game) 
     { 
         game.dicreaseCoin();
@@ -196,7 +195,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithCoin(prince, coin, game);
     }
 
-    void PrinceWithGiftBuleet(Object& prince,
+    void PrinceWithGiftBuleet(Object&,
         Object& giftBullet, GameController& game)
     {
         game.eraseObject(giftBullet, STATICS);
@@ -209,7 +208,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithGiftBuleet(prince, giftBullet, game);
     } 
     
-    void PrinceWithGiftAddLife(Object& prince,
+    void PrinceWithGiftAddLife(Object&,
         Object& giftlife, GameController& game)
     {
         game.eraseObject(giftlife, STATICS);
@@ -222,7 +221,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithGiftAddLife(prince, giftlife, game);
     } 
     
-    void PrinceWithGiftIncreasingTime(Object& prince,
+    void PrinceWithGiftIncreasingTime(Object&,
         Object& giftTime, GameController& game)
     {
         game.eraseObject(giftTime, STATICS);
@@ -235,7 +234,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithGiftIncreasingTime(prince, giftTime, game);
     }
 
-    void PrinceWithKey(Object& prince,
+    void PrinceWithKey(Object&,
         Object& key, GameController& game)
     {
         game.eraseObject(key, STATICS);
@@ -248,7 +247,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithKey(prince, key, game);
     }
 
-    void PrinceWithGate(Object& prince, Object& gate, GameController& game) {
+    void PrinceWithGate(Object&, Object& gate, GameController& game) {
 
         if (game.chekCoin())
         {
@@ -260,9 +259,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
         PrinceWithGate(prince, gate, game);
     }
-    
-    
-
 
     using HitFunctionPtr = std::function<void(Object&, Object& , GameController &)>;
     // typedef void (*HitFunctionPtr)(Object&, Object&);
