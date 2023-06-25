@@ -5,7 +5,7 @@ class BallMonster : public Monster
 {
 public:
 	BallMonster(Toolbar_t symbol, sf::Vector2f position);
-
+	~BallMonster(){}
 	sf::Vector2f getDirection(sf::Vector2f princePos);
 	virtual void move(sf::Time deltaTime, sf::Vector2f princePos, GameController& game)override;
 

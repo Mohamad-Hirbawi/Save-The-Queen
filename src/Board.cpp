@@ -106,10 +106,10 @@ std::unique_ptr<Gift> Board::selectGiftType(sf::Vector2f position,const char& c)
 	case ADDLIFE_C:	return std::make_unique <AddLife>(ADDLIFE, position);
 	
 	case  GIFTBULLET_C: return std::make_unique <GiftBuleet>(GIFTBULLET, position);
-	default:
-		;
 
 	}
+	throw std::runtime_error("This object can't be a gift");
+
 }
 
 std::unique_ptr<Bullet> Board::selectBulltType(sf::Vector2f position)

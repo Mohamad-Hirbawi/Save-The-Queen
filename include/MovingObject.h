@@ -4,7 +4,6 @@
 class MovingObject :public Object
 {
 public:
-	MovingObject() {}
 	MovingObject(Toolbar_t symbol, sf::Vector2f position);
 
 	//void moveToPrevPos();

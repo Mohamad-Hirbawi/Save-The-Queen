@@ -83,8 +83,8 @@ void GameController::creatObject()
 	for (int row = 0; row < m_board.getHeight(); row++)
 	{
 		for (int col = 0; col < m_board.getWidth(); col++){
-			xLoc = 50 * col;
-			yLoc = 50 * row;
+			xLoc = float (50 * col);
+			yLoc = float (50 * row);
 			position = { xLoc, yLoc };
 			c = boadrdmap[row][col];
 			if (c == EMPTY_C)	continue;
