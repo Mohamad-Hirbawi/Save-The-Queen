@@ -48,13 +48,12 @@ void Board::drawBoard(sf::RenderWindow& window)
 	drawObjects(m_staticObj, window);
 
 	m_prince->draw(window);//throw
-	if(m_beastMonster)
-		m_beastMonster->draw(window);
 	//m_queen->draw(window);
 
 	drawObjects(m_keyMonster, window);
 	drawObjects(m_ballMonster, window);
 	drawObjects(m_bullet, window);
+	drawObjects(m_beastMonster, window);
 }
 
 void Board::createStaticObject(const char &c, sf::Vector2f position)
@@ -85,7 +84,7 @@ void Board::createMovingObject(const char & c, sf::Vector2f position)
 	
 	case BALLMONSTER_C: m_ballMonster.emplace_back(std::make_unique<BallMonster>(BALLMONSTER, position));	break;
 	
-	case BEASTMONSTER_C: m_beastMonster = std::make_unique<BeastMonster>(BEASTMONSTER, position); break;
+	case BEASTMONSTER_C: m_beastMonster.emplace_back(std::make_unique<BeastMonster>(BEASTMONSTER, position)); break;
 	
 	case QUEEN_C: m_queen= std::make_unique<Queen>(QUEEN, position); break;
 
@@ -158,6 +157,8 @@ bool Board::erase(Object& movingObject, Toolbar_t typeVector)
 		return eraseObject(movingObject, m_keyMonster);
 	case BALLMONSTER:
 		return eraseObject(movingObject, m_ballMonster);
+	case BEASTMONSTER:
+		return eraseObject(movingObject, m_beastMonster);
 	case BULLET:
 		return eraseObject(movingObject, m_bullet);
 	case STATICS:
@@ -172,6 +173,7 @@ void Board::clearBoard()
 {
 	m_prince.reset();
 	m_ballMonster.clear();
+	m_beastMonster.clear();
 	m_keyMonster.clear();
 	m_staticObj.clear();
 	m_bullet.clear();
@@ -190,10 +192,9 @@ void Board::setTypeBullet(Toolbar_t type)
 void Board::move(sf::Time deltaTime, GameController& game)
 {
 	moveObject(m_keyMonster, game, m_prince, deltaTime , *this);
-
 	moveObject(m_bullet, game, m_prince, deltaTime , *this);
-
 	moveObject(m_ballMonster, game, m_prince, deltaTime , *this);
+	moveObject(m_beastMonster, game, m_prince, deltaTime , *this);
 }
 
 void Board::resetLevelMap()

@@ -9,7 +9,7 @@ GameController::GameController()
 void GameController::run() {
 	m_finishGame = false;
 	//m_sound.playMusic("menuMusic.ogg");
-	m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
+	//m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
 	m_menu.activateMenu(window);
 	m_caption.resetartCaptions();
 	creatObject();
@@ -112,8 +112,6 @@ void GameController::move(sf::Time deltaTime)
 {
 	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition(), *this);
 
-	if(m_board.m_beastMonster)
-		m_board.m_beastMonster->move(deltaTime, m_board.m_prince.get()->getposition(),*this);
 	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
 
 	//m_board.m_queen->move(deltaTime, m_board.m_prince.get()->getposition());
@@ -247,11 +245,16 @@ void GameController::checkCollis()
 	collideAndProcessPairs(m_board.m_keyMonster, m_board.m_bullet, *this);
 	collideAndProcessPairs(m_board.m_ballMonster, m_board.m_staticObj, *this);
 	collideAndProcessPairs(m_board.m_ballMonster, m_board.m_bullet, *this);
+	collideAndProcessPairs(m_board.m_beastMonster, m_board.m_staticObj, *this);
+	collideAndProcessPairs(m_board.m_beastMonster, m_board.m_bullet, *this);
 
 	collideAndProcessOnePair(m_board.m_staticObj, m_board.m_prince.get(), *this);
 	collideAndProcessOnePair(m_board.m_keyMonster, m_board.m_prince.get(), *this);
 	collideAndProcessOnePair(m_board.m_ballMonster, m_board.m_prince.get(), *this);
+	collideAndProcessOnePair(m_board.m_beastMonster, m_board.m_prince.get(), *this);
 	collideAndProcessOnePair(m_board.m_bullet, m_board.m_prince.get(), *this);
+
+
 }
 
 

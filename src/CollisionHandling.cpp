@@ -13,42 +13,12 @@
 #include "Opener.h"
 #include "Bullet.h"
 #include "GameController.h"
-//#include "SpaceShip.h"
-//#include "SpaceStation.h"
-//#include "Asteroid.h"
 #include "MovingObject.h"
 
 namespace // anonymous namespace — the standard way to make function "static"
 {
 
     // primary collision-processing functions
-    void KeyMonsterWithWall(Object& keyMonster,
-        Object& wall , GameController&game)
-    {
-        keyMonster.moveToPrevPos();
-    }
-
-    void WallWithKeyMonster(Object& wall,
-        Object& keyMonster , GameController& game)
-    {
-        KeyMonsterWithWall(keyMonster,wall,game);
-    }
-
-    void KeyMonsterWithDoor (Object& keyMonster,
-        Object& door, GameController& game)
-    {
-        if (door.isDoorOpen())
-            return;
-        keyMonster.moveToPrevPos();
-    }
-
-    void DoorWithKeyMonster(Object& door,
-        Object& keyMonster, GameController& game)
-    {
-
-        KeyMonsterWithDoor(keyMonster, door,game);
-    }
-
     void BulletWithWall(Object& bullet,
         Object& wall, GameController& game)
     {
@@ -75,35 +45,32 @@ namespace // anonymous namespace — the standard way to make function "static"
         BulletWithDoor(bullet, door, game);
     }
 
-    void BallMonsterWithWall(Object& ballMonster,
+    void monsterWithWall(Object& monster,
         Object& wall, GameController& game)
     {
-        ballMonster.moveToPrevPos();
+        monster.moveToPrevPos();
     }
 
-    void WallWithBallMonster(Object& wall,
-        Object& ballMonster, GameController& game)
+    void WallWithMonster(Object& wall,
+        Object& monster, GameController& game)
     {
-        BallMonsterWithWall(ballMonster, wall, game);
+        monsterWithWall(monster, wall, game);
     }
 
-    void BallMonsterWithDoor(Object& ballMonster,
+    void MonsterWithDoor(Object& monster,
         Object& door, GameController& game)
     {
         if (door.isDoorOpen())
             return;
-        ballMonster.moveToPrevPos();
+        monster.moveToPrevPos();
     }
 
-    void DoorWithBallMonster(Object& door,
-        Object& ballMonster, GameController& game)
+    void DoorWithMonster(Object& door,
+        Object& monster, GameController& game)
     {
-        BallMonsterWithDoor(ballMonster, door, game);
+        MonsterWithDoor(monster, door, game);
     }
 
-
-  
-    
     void KeyMonsterWithBullet (Object& keyMonster,
         Object& bullet, GameController& game)
     {
@@ -129,32 +96,30 @@ namespace // anonymous namespace — the standard way to make function "static"
         BallMonsterWithBullet(ballMonster, bullet, game);
     }
 
-  
-       
-    void KeyMonsterWithPrince(Object& keyMonster,
-        Object& prince, GameController& game)
+    void BeastMonsterWithBullet(Object& beastMonster,
+        Object& bullet, GameController& game)
     {
-        game.dead();
-    }
-
-    void PrinceWithKeyMonster(Object& prince,
-        Object& keyMonster, GameController& game)
-    {
-        KeyMonsterWithPrince(keyMonster, prince, game);
-    }
-    
-    void BallMonsterWithPrince(Object& ballMonster,
-        Object& prince, GameController& game)
-    {
-        game.dead();
-    }
-
-    void PrinceWithBallMonster(Object& prince,
-        Object& ballMonster, GameController& game)
-    {
-        BallMonsterWithPrince(ballMonster, prince, game);
+        game.eraseObject(bullet, BULLET);
+        game.eraseObject(beastMonster, BALLMONSTER);
     } 
+    void BulletWithBeastMonster(Object& bullet,
+        Object& beastMonster, GameController& game)
+    {
+        BeastMonsterWithBullet(beastMonster, bullet, game);
+    }
 
+    void MonsterWithPrince(Object& monster,
+        Object& prince, GameController& game)
+    {
+        game.dead();
+    }
+
+    void PrinceWithMonster(Object& prince,
+        Object& monster, GameController& game)
+    {
+        MonsterWithPrince(monster, prince, game);
+    }
+   
    
     void BulletWithPrince(Object& bullet,
         Object& prince, GameController& game)
@@ -180,8 +145,6 @@ namespace // anonymous namespace — the standard way to make function "static"
     void WallWithPrince(Object& wall,
         Object& prince, GameController& game)
     {
-        prince.moveToPrevPos();
-
         PrinceWithWall(prince, wall, game);
     }
 
@@ -308,20 +271,25 @@ namespace // anonymous namespace — the standard way to make function "static"
     HitMap initializeCollisionMap()/////////////
     {
         HitMap phm;
-        phm[Key(typeid(KeyMonster), typeid(Wall))] = &KeyMonsterWithWall;
-        phm[Key(typeid(Wall), typeid(KeyMonster))] = &WallWithKeyMonster; 
-        phm[Key(typeid(KeyMonster), typeid(Door))] = &KeyMonsterWithDoor;
-        phm[Key(typeid(Door), typeid(KeyMonster))] = &DoorWithKeyMonster;
+        phm[Key(typeid(KeyMonster), typeid(Wall))] = &monsterWithWall;
+        phm[Key(typeid(Wall), typeid(KeyMonster))] = &WallWithMonster;
+        phm[Key(typeid(KeyMonster), typeid(Door))] = &MonsterWithDoor;
+        phm[Key(typeid(Door), typeid(KeyMonster))] = &DoorWithMonster;
 
         phm[Key(typeid(Bullet), typeid(Wall))] = &BulletWithWall;
         phm[Key(typeid(Wall), typeid(Bullet))] = &WallWithBullet;
         phm[Key(typeid(Bullet), typeid(Door))] = &BulletWithDoor;
         phm[Key(typeid(Door), typeid(Bullet))] = &DoorWithBullet;
 
-        phm[Key(typeid(BallMonster), typeid(Wall))] = &BallMonsterWithWall;
-        phm[Key(typeid(Wall), typeid(BallMonster))] = &WallWithBallMonster;
-        phm[Key(typeid(BallMonster), typeid(Door))] = &BallMonsterWithDoor;
-        phm[Key(typeid(Door), typeid(BallMonster))] = &DoorWithBallMonster;
+        phm[Key(typeid(BallMonster), typeid(Wall))] = &monsterWithWall;
+        phm[Key(typeid(Wall), typeid(BallMonster))] = &WallWithMonster;
+        phm[Key(typeid(BallMonster), typeid(Door))] = &MonsterWithDoor;
+        phm[Key(typeid(Door), typeid(BallMonster))] = &DoorWithMonster;
+
+        phm[Key(typeid(BeastMonster), typeid(Wall))] = &monsterWithWall;
+        phm[Key(typeid(Wall), typeid(BeastMonster))] = &WallWithMonster;
+        phm[Key(typeid(BeastMonster), typeid(Door))] = &MonsterWithDoor;
+        phm[Key(typeid(Door), typeid(BeastMonster))] = &DoorWithMonster;
 
 
 
@@ -330,15 +298,20 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Bullet), typeid(KeyMonster))] = &BulletWithKeyMonster;
         phm[Key(typeid(BallMonster), typeid(Bullet))] = &BallMonsterWithBullet;
         phm[Key(typeid(Bullet), typeid(BallMonster))] = &BulletWithBallMonster;
+        phm[Key(typeid(BeastMonster), typeid(Bullet))] = &BeastMonsterWithBullet;
+        phm[Key(typeid(Bullet), typeid(BeastMonster))] = &BulletWithBeastMonster;
 
        
         // prince with moving
-        phm[Key(typeid(KeyMonster), typeid(Prince))] = &KeyMonsterWithPrince;
-        phm[Key(typeid(Prince), typeid(KeyMonster))] = &PrinceWithKeyMonster;
+        phm[Key(typeid(KeyMonster), typeid(Prince))] = &MonsterWithPrince;
+        phm[Key(typeid(Prince), typeid(KeyMonster))] = &PrinceWithMonster;
         phm[Key(typeid(Bullet), typeid(Prince))] = &BulletWithPrince;
         phm[Key(typeid(Prince), typeid(Bullet))] = &PrinceWithBullet;
-        phm[Key(typeid(BallMonster), typeid(Prince))] = &BallMonsterWithPrince;
-        phm[Key(typeid(Prince), typeid(BallMonster))] = &PrinceWithBallMonster;
+        phm[Key(typeid(BallMonster), typeid(Prince))] = &MonsterWithPrince;
+        phm[Key(typeid(Prince), typeid(BallMonster))] = &PrinceWithMonster;
+        phm[Key(typeid(BeastMonster), typeid(Prince))] = &MonsterWithPrince;
+        phm[Key(typeid(Prince), typeid(BeastMonster))] = &PrinceWithMonster;
+
         // prince with static
         phm[Key(typeid(Prince), typeid(Wall))] = &PrinceWithWall;
         phm[Key(typeid(Wall), typeid(Prince))] = &WallWithPrince;

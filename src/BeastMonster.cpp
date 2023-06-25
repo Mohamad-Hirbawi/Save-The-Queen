@@ -30,8 +30,7 @@ sf::Vector2f BeastMonster::directionFollowPrince(sf::Vector2f princePos)
 
 sf::Vector2f BeastMonster::getDirection(sf::Vector2f princePos)
 {
-    //if (getposition().y - princePos.y >= -20 && getposition().y - princePos.y <= 20)
-    if(std::abs( princePos.x - getposition().x) < 300  && std::abs (getposition().y - princePos.y) <= 100  )
+    if(std::abs( princePos.x - getposition().x) < 500 )
          return directionFollowPrince(princePos); 
 
     std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now();
