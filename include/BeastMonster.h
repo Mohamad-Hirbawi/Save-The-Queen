@@ -12,6 +12,7 @@ public:
 	sf::Vector2f getDirection(sf::Vector2f princePos);
 
 	virtual void move(sf::Time deltaTime, sf::Vector2f, GameController& game)override ;
+	int m_lifeBeast;
 
 
 private:
@@ -20,6 +21,5 @@ private:
 	sf::Vector2f m_dir;
 	sf::Clock m_changeDircectionAlarm;
 	sf::Vector2f m_positionKeyMonster;
-
 
 };

@@ -1,17 +1,16 @@
 #include"Object.h"
 
-Object::Object()
+Object::Object(): m_open(false), m_prevPos(0,0)
 {
 	m_icon.setScale(0.3, 0.3);
 }
 
 
-Object::Object(Toolbar_t symbol, sf::Vector2f position)
+Object::Object(Toolbar_t symbol, sf::Vector2f position):m_prevPos(position),m_open(false)
 {
 	auto texturePtr = Textures::instance().getIcon(symbol);
 	m_icon.setTexture(*texturePtr);
 	m_icon.setPosition(position);
-	m_prevPos = position;
 }
 
 void Object::draw(sf::RenderWindow& window)
@@ -60,4 +59,14 @@ void Object::setPrinceCollisStair()
 sf::Sprite& Object::getIcon() 
 {
 	return m_icon;
+}
+
+void Object::dicreaseLifeBeast()
+{
+	m_beastLife--;
+}
+
+int Object::getLifeBeast() const
+{
+	return m_beastLife;
 }

@@ -5,6 +5,7 @@ class Wall : public StaticObject
 {
 public:
 	Wall(Toolbar_t symbol, sf::Vector2f position);
+	~Wall() {}
 private:
 
 };
