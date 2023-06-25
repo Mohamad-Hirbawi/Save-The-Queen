@@ -1,8 +1,10 @@
 #include "BeastMonster.h"
+#include "GameController.h"
 
 BeastMonster::BeastMonster(Toolbar_t symbol, sf::Vector2f position)
     :Monster(symbol, position) {
     m_startTime = std::chrono::steady_clock::now();
+    m_startTime2 = std::chrono::steady_clock::now();
 
 
 }
@@ -58,5 +60,17 @@ void BeastMonster::move(sf::Time deltaTime, sf::Vector2f princePos,GameControlle
 {
     m_prevPos = m_icon.getPosition();
     m_dir = getDirection(princePos);
+    if (abs(getposition().y - princePos.y) <= 20)
+    {
+        std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now();
+        std::chrono::seconds elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_startTime2);
+
+        if (elapsedTime >= std::chrono::seconds(2))
+        {
+            m_startTime2 = currentTime;
+            game.creatBullet(m_icon.getPosition(), BEASTMONSTER);
+        }
+
+    }
     m_icon.move(m_dir * MONSTERSPEED * deltaTime.asSeconds());
 }

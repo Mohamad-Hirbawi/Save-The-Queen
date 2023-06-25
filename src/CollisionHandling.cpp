@@ -100,7 +100,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         Object& bullet, GameController& game)
     {
         game.eraseObject(bullet, BULLET);
-        game.eraseObject(beastMonster, BALLMONSTER);
+        game.eraseObject(beastMonster, BEASTMONSTER);
     } 
     void BulletWithBeastMonster(Object& bullet,
         Object& beastMonster, GameController& game)
