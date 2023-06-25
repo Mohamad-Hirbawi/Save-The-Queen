@@ -44,13 +44,14 @@ public:
 	void setErased(bool);
 	bool getErased()const;
 	void setTypeBullet(Toolbar_t);
-	std::unique_ptr<Prince> m_prince ;// shared_ptr
-	std::unique_ptr<Queen> m_queen ;
-	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
-	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
-	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
-	std::vector <std ::unique_ptr<Bullet>> m_bullet;
-	std::vector<std::unique_ptr<BeastMonster>> m_beastMonster;
+
+	std::unique_ptr<Prince>& getPrince();
+	std::vector<std::unique_ptr<StaticObject>>& getStatic();
+	std::vector<std::unique_ptr<BallMonster>>& getBallMonster();
+	std::vector<std::unique_ptr<KeyMonster>>& getKeyMonster();
+	std::vector <std::unique_ptr<Bullet>>& getBullet();
+	std::vector<std::unique_ptr<BeastMonster>>& getBeastMonster();
+	std::unique_ptr<Queen>& getQueen();
 
 private:
 	void readLvlSize();
@@ -63,7 +64,13 @@ private:
 	sf::Vector2f m_initailPrince;
 	bool m_erased;
 	Toolbar_t m_typeBullet;
-
+	std::vector<std::unique_ptr<StaticObject>> m_staticObj;
+	std::vector<std::unique_ptr<BallMonster>> m_ballMonster;
+	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
+	std::vector <std::unique_ptr<Bullet>> m_bullet; 
+	std::vector<std::unique_ptr<BeastMonster>> m_beastMonster;
+	std::unique_ptr<Queen> m_queen;
+	std::unique_ptr<Prince> m_prince;
 };
 
 

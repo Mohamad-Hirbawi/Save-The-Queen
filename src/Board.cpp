@@ -190,6 +190,20 @@ void Board::setTypeBullet(Toolbar_t type)
 	m_typeBullet = type;
 }
 
+std::unique_ptr<Prince>& Board::getPrince() { return m_prince; }
+
+std::vector<std::unique_ptr<StaticObject>>& Board::getStatic() { return m_staticObj; }
+
+std::vector<std::unique_ptr<BallMonster>>& Board::getBallMonster() { return m_ballMonster; }
+
+std::vector<std::unique_ptr<KeyMonster>>& Board::getKeyMonster() { return m_keyMonster; }
+
+std::vector<std::unique_ptr<Bullet>>& Board::getBullet() { return m_bullet; }
+
+std::vector<std::unique_ptr<BeastMonster>>& Board::getBeastMonster() { return m_beastMonster; }
+
+std::unique_ptr<Queen>& Board::getQueen() { return m_queen; }
+
 void Board::move(sf::Time deltaTime, GameController& game)
 {
 	moveObject(m_keyMonster, game, m_prince, deltaTime , *this);
