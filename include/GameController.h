@@ -25,7 +25,9 @@ public:
 	void dead();
 	void creatBullet(sf::Vector2f, Toolbar_t);
 
+	void win();
 	void newLevel();
+
 
 	void increaseBullet();
 	void dicreaseCoin();
@@ -41,6 +43,7 @@ private:
 	void checkCollis();
 	void losing();
 	bool isStaticObj(const char& c);
+	void finishGame(std::string msg);
 	void move(sf::Time deltaTime);
 
 	sf::Vector2f m_lastPrinceDirection;
@@ -48,7 +51,7 @@ private:
 	sf::Clock m_timer;
 
 	sf::Sprite m_gameWallp;
-	bool m_lose;
+	bool m_finishGame;
 	sf::Texture m_pTexture;
 	Caption m_caption;
 	Menu m_menu;
