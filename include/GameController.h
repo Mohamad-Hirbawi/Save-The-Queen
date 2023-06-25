@@ -43,6 +43,7 @@ private:
 	void checkCollis();
 	void losing();
 	bool isStaticObj(const char& c);
+	void printMsg(std::string msg);
 	void finishGame(std::string msg);
 	void move(sf::Time deltaTime);
 
