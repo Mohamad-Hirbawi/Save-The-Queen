@@ -7,7 +7,7 @@ GameController::GameController()
 }
 
 void GameController::run() {
-	m_lose = false;
+	m_finishGame = false;
 	//m_sound.playMusic("menuMusic.ogg");
 	m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
 	m_menu.activateMenu(window);
@@ -16,7 +16,7 @@ void GameController::run() {
 	m_timer.restart();
 	m_view = window.getView();
 	
-	while (window.isOpen()) {
+	while (window.isOpen() && !m_finishGame) {
 		window.clear();
 		window.draw(m_gameWallp);
 		m_board.drawBoard(window);
@@ -163,20 +163,14 @@ void GameController::dead(){
 
 void GameController::losing()
 {
-	window.clear();
-	m_board.clearBoard();
-	m_board.resetRead();
-	m_caption.restartLifeAndScore();
-	window.setView(m_view);
-	run();
-	m_lose = true;
+	finishGame("Game over!");
 }
 
 bool GameController::haveKey()
 {return m_caption.haveKey();}
 
 bool GameController::isLosing()
-{return m_lose;}
+{return m_finishGame;}
 
 void GameController::increaseBullet()
 {m_caption.increaseBullet();}
@@ -202,11 +196,38 @@ void GameController::newLevel()
 {
 	m_board.clearBoard();
 	m_board.resetLevelMap();
-	m_board.readLvlMap();
-	m_caption.resetartCaptions();
-	creatObject();
+	if (!m_board.readLvlMap()) // last level  
+		win();
+
+	else {
+		m_caption.resetartCaptions();
+		creatObject();
+	}
+
+
+
 }
 
+void GameController::finishGame(std::string msg)
+{
+	sf::Font font;
+	font.loadFromFile("SundayMorning.ttf");
+
+	sf::Text youWinText(msg, font, 50);
+	youWinText.setPosition((WINDOW_WIDTH - youWinText.getLocalBounds().width) / 2, (WINDOW_HEIGHT - youWinText.getLocalBounds().height) / 2);
+
+	window.clear();
+	window.draw(youWinText);
+	window.display();
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	window.close();
+	m_finishGame = true;
+}
+
+void GameController::win()
+{
+	finishGame("You win");
+}
 void GameController::creatKey(sf::Vector2f posotion)
 {
 	m_board.createStaticObject(KEY_C, posotion);
