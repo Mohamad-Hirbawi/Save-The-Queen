@@ -20,7 +20,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     // primary collision-processing functions
     void BulletWithWall(Object& bullet,
-        Object& wall, GameController& game)
+        Object&, GameController& game)
     {
         game.eraseObject(bullet, BULLET);
     }
@@ -81,7 +81,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void BulletWithKeyMonster(Object& bullet,
         Object& keyMonster, GameController& game)
     {
-         BulletWithKeyMonster(keyMonster, bullet, game);
+        KeyMonsterWithBullet(keyMonster, bullet, game);
     }
 
     void BallMonsterWithBullet(Object& ballMonster,
@@ -100,7 +100,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         Object& bullet, GameController& game)
     {
         game.eraseObject(bullet, BULLET);
-        game.eraseObject(beastMonster, BEASTMONSTER);
+        beastMonster.dicreaseLifeBeast();
+        if (beastMonster.getLifeBeast() == 0)
+            game.eraseObject(beastMonster, BEASTMONSTER);
     } 
     void BulletWithBeastMonster(Object& bullet,
         Object& beastMonster, GameController& game)

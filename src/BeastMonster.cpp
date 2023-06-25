@@ -5,7 +5,7 @@ BeastMonster::BeastMonster(Toolbar_t symbol, sf::Vector2f position)
     :Monster(symbol, position) {
     m_startTime = std::chrono::steady_clock::now();
     m_startTime2 = std::chrono::steady_clock::now();
-
+    m_lifeBeast = 3;
 
 }
 sf::Vector2f BeastMonster::directionFollowPrince(sf::Vector2f princePos)

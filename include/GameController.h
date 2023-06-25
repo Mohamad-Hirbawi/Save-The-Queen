@@ -28,7 +28,6 @@ public:
 	void win();
 	void newLevel();
 
-
 	void increaseBullet();
 	void dicreaseCoin();
 	bool chekCoin();
