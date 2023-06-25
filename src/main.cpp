@@ -3,13 +3,16 @@
 
 int main()
 {
-	GameController d;
-	d.run();
+	try 
+	{
+		GameController d;
+		d.run();
+	}
+
+	catch (const std::runtime_error& e)
+	{
+		std::cout << "Error: " << e.what() << std::endl;
+		return EXIT_FAILURE;
+	}
+	return EXIT_SUCCESS;
 }
-/*
-	I want to fix the move for ballMonster.
-	I want to do that the ballMonster throw balls at the prince
-	I want to fix the move for BeastMonster.
-
-
-*/

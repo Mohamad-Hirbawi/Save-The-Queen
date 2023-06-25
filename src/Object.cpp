@@ -16,7 +16,6 @@ Object::Object(Toolbar_t symbol, sf::Vector2f position)
 
 void Object::draw(sf::RenderWindow& window)
 {
-	//if(m_icon)
 	window.draw(m_icon);
 }
 

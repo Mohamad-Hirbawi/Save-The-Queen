@@ -3,8 +3,10 @@
 
 Board::Board()
 {
-	// throw
 	m_read.open("board.txt", std::ios_base::in);
+	if (!m_read.is_open()) {
+		throw std::runtime_error("Failed to open file");
+	}
 	readLvlMap();
 }
 
@@ -46,8 +48,9 @@ int Board::getWidth() const
 void Board::drawBoard(sf::RenderWindow& window)
 {
 	drawObjects(m_staticObj, window);
-
-	m_prince->draw(window);//throw
+	if (!m_prince)
+		throw std::runtime_error("You can't play without prince");
+	m_prince->draw(window);
 	//m_queen->draw(window);
 
 	drawObjects(m_keyMonster, window);
@@ -140,7 +143,7 @@ std::unique_ptr<Bullet> Board::selectBulltType(sf::Vector2f position)
 			}
 		}
 	}
-
+	throw std::runtime_error("This object can't throw a bullet");
 
 }
 
@@ -164,9 +167,7 @@ bool Board::erase(Object& movingObject, Toolbar_t typeVector)
 	case STATICS:
 		return eraseObject(movingObject, m_staticObj);
 	}
-	//throw
-	//return eraseObject(movingObject, m_bullet);
-
+	throw std::runtime_error("You can't erase the object");
 }
 
 void Board::clearBoard()

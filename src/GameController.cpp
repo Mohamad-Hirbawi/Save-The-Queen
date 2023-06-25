@@ -1,7 +1,7 @@
 ﻿#include "GameController.h"
 #include <iostream>
 
-GameController::GameController()
+GameController::GameController():m_finishGame(false)
 {
 	window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game", sf::Style::Titlebar | sf::Style::Close);
 }
@@ -72,9 +72,8 @@ void GameController::updateView()
 }
 void GameController::creatObject() 
 {
-	// throw
 	if (!m_pTexture.loadFromFile("Background1.jpg"))
-		;
+		throw std::runtime_error("Failed to load the texture");
 	m_gameWallp.setTexture(m_pTexture);
 	m_gameWallp.setScale(0.5, 0.5);
 	std::vector<std::string> boadrdmap = m_board.getMap();
