@@ -52,8 +52,8 @@ void GameController::updateView()
 		viewY;
 
 	sf::View view = window.getView();
-	playerPosX = viewX = m_board.m_prince->getposition().x;
-	playerPosY = viewY = m_board.m_prince->getposition().y;
+	playerPosX = viewX = m_board.getPrince()->getposition().x;
+	playerPosY = viewY = m_board.getPrince()->getposition().y;
 
 	if (playerPosX > WINDOW_WIDTH - VIEWSIZE / 2)
 		viewX = WINDOW_WIDTH - VIEWSIZE / 2;
@@ -109,9 +109,9 @@ bool GameController::isStaticObj(const char& c)
 
 void GameController::move(sf::Time deltaTime)
 {
-	m_board.m_prince->move(deltaTime, m_board.m_prince.get()->getposition(), *this);
+	m_board.getPrince()->move(deltaTime, m_board.getPrince().get()->getposition(), *this);
 
-	m_lastPrinceDirection = m_board.m_prince->m_dirPrince;
+	m_lastPrinceDirection = m_board.getPrince()->m_dirPrince;
 
 	//m_board.m_queen->move(deltaTime, m_board.m_prince.get()->getposition());
 	m_board.move(deltaTime, *this);
@@ -151,8 +151,8 @@ void GameController::dead(){
 		printMsg("You have " + std::to_string(m_caption.getLife()) + " lives left before losing");
 		m_caption.newLevel(TIMEOFGAME);
 		std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
-		m_board.m_prince = std::move(help);
-		m_board.m_bullet.clear();
+		m_board.getPrince() = std::move(help);
+		m_board.getBullet().clear();
 
 	}
 	else		losing();
@@ -246,19 +246,19 @@ void GameController::checkCollis()
 {
 	m_board.setErased(false);
 
-	collideAndProcessPairs(m_board.m_keyMonster, m_board.m_staticObj ,* this);
-	collideAndProcessPairs(m_board.m_bullet, m_board.m_staticObj, *this);
-	collideAndProcessPairs(m_board.m_keyMonster, m_board.m_bullet, *this);
-	collideAndProcessPairs(m_board.m_ballMonster, m_board.m_staticObj, *this);
-	collideAndProcessPairs(m_board.m_ballMonster, m_board.m_bullet, *this);
-	collideAndProcessPairs(m_board.m_beastMonster, m_board.m_staticObj, *this);
-	collideAndProcessPairs(m_board.m_beastMonster, m_board.m_bullet, *this);
+	collideAndProcessPairs(m_board.getKeyMonster(), m_board.getStatic(),* this);
+	collideAndProcessPairs(m_board.getBullet(), m_board.getStatic(), *this);
+	collideAndProcessPairs(m_board.getKeyMonster(), m_board.getBullet(), *this);
+	collideAndProcessPairs(m_board.getBallMonster(), m_board.getStatic(), *this);
+	collideAndProcessPairs(m_board.getBallMonster(), m_board.getBullet(), *this);
+	collideAndProcessPairs(m_board.getBeastMonster(), m_board.getStatic(), *this);
+	collideAndProcessPairs(m_board.getBeastMonster(), m_board.getBullet(), *this);
 
-	collideAndProcessOnePair(m_board.m_staticObj, m_board.m_prince.get(), *this);
-	collideAndProcessOnePair(m_board.m_keyMonster, m_board.m_prince.get(), *this);
-	collideAndProcessOnePair(m_board.m_ballMonster, m_board.m_prince.get(), *this);
-	collideAndProcessOnePair(m_board.m_beastMonster, m_board.m_prince.get(), *this);
-	collideAndProcessOnePair(m_board.m_bullet, m_board.m_prince.get(), *this);
+	collideAndProcessOnePair(m_board.getStatic(), m_board.getPrince().get(), *this);
+	collideAndProcessOnePair(m_board.getKeyMonster(), m_board.getPrince().get(), *this);
+	collideAndProcessOnePair(m_board.getBallMonster(), m_board.getPrince().get(), *this);
+	collideAndProcessOnePair(m_board.getBeastMonster(), m_board.getPrince().get(), *this);
+	collideAndProcessOnePair(m_board.getBullet(), m_board.getPrince().get(), *this);
 
 
 }
