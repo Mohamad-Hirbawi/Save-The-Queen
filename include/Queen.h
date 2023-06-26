@@ -6,6 +6,7 @@ class Queen : public MovingObject
 {
 public:
 	Queen(Toolbar_t symbol, sf::Vector2f position);
+	~Queen() {}
 	virtual void move(sf::Time deltaTime, sf::Vector2f,GameController& game)override ;
 
 	sf::Vector2f getDirection();

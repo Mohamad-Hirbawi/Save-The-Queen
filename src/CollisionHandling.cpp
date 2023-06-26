@@ -58,7 +58,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
     void MonsterWithDoor(Object& monster,
-        Object& door, GameController& game)
+        Object& door, GameController& )
     {
         if (door.isDoorOpen())
             return;
