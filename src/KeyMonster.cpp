@@ -36,7 +36,7 @@ sf::Vector2f KeyMonster::getDirection(sf::Vector2f princePos)
  
 }
 
-void KeyMonster::move(sf::Time deltaTime, sf::Vector2f princePos,GameController& game)
+void KeyMonster::move(sf::Time deltaTime, sf::Vector2f princePos,GameController& )
 {
     m_prevPos = m_icon.getPosition();
     m_dir = getDirection(princePos);

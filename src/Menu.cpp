@@ -6,8 +6,8 @@ Menu::Menu() :m_index(0)
 	m_font.loadFromFile("PLAYBILL.TTF");
 	// intialize start button
 	int i = 1;
-	for (const auto text : strMenu){
-		m_helpText = drawInMenu(m_helpText, text, WINDOW_WIDTH * 0.48, WINDOW_HEIGHT * i/ NUMMENU);
+	for (const auto& text : strMenu) {
+		m_helpText = drawInMenu(m_helpText, text, static_cast<float>(WINDOW_WIDTH) * 0.48, static_cast<float>(WINDOW_HEIGHT) * i / NUMMENU);
 		m_text.emplace_back(m_helpText);
 		i++;
 	}
@@ -64,7 +64,7 @@ void Menu::activateMenu(sf::RenderWindow& window)
 				window.clear();
 				Location = window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 
-				if (handleClick(Location, window, m_index)) {
+				if (handleClick(Location, m_index)) {
 					if (m_index == 1)		return; //start
 				}		 
 				else		window.close();		break;
@@ -84,13 +84,13 @@ void Menu::infoFunc(sf::RenderWindow& window) {
 	sf::Text text;
 	text.setFont(m_font);
 	text.setFillColor(sf::Color::Black);
-	text.setCharacterSize(REG_CHAR_SIZE * 0.5);
+	text.setCharacterSize(REG_CHAR_SIZE_INFO);
 	text.setPosition({ WINDOW_WIDTH * 0.1, WINDOW_HEIGHT * 0.1 });
 	text.setString(INFOSTR);
 	window.draw(text);
 }
 
-bool Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window, int& i) const
+bool Menu::handleClick(const sf::Vector2f& Location, int& i) const
 {
 
 	if (m_text[EXIT].getGlobalBounds().contains(Location))// pressed exit

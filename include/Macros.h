@@ -2,12 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-const float WINDOW_WIDTH =1500,//1500
+const int WINDOW_WIDTH =1500,//1500
 	 WINDOW_HEIGHT = 1000,//1000
 	 VIEWSIZE = 700;//1000
 
 // for start screen(menu)
 const int REG_CHAR_SIZE = 100;
+const int REG_CHAR_SIZE_INFO = 100;
 const float OUTLINE_THICKNESS = 5.0;
 const float BOLD_OUTLINE = 10.0;
 const std::string INFOSTR = "This game was done by Mohammad Hirbawi and Mustafa fachori.";

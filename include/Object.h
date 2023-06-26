@@ -21,7 +21,7 @@ class Object
 public:	
 
 	Object(Toolbar_t symbol, sf::Vector2f position);
-	~Object() {}
+	virtual ~Object() {}
 	void draw(sf::RenderWindow&);
 
 	bool collidesWith(const Object& obj) const;

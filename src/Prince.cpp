@@ -1,6 +1,6 @@
 ﻿#include "Prince.h"
 
-Prince::Prince(Toolbar_t symbol, sf::Vector2f position)
+Prince::Prince(Toolbar_t symbol, sf::Vector2f position) 
 	:MovingObject(symbol, position)
 {
     m_positionPrince = position;
@@ -117,7 +117,7 @@ sf::Vector2f dirFromKey()
 //    m_positionPrince = m_icon.getPosition();
 //}
 
-void Prince::move(sf::Time deltaTime, sf::Vector2f, GameController& game)
+void Prince::move(sf::Time deltaTime, sf::Vector2f, GameController& )
 {
     m_prevPos = m_icon.getPosition();
     sf::Vector2f dir = dirFromKey();
