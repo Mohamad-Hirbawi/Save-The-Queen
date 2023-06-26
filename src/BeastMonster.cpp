@@ -25,7 +25,7 @@ sf::Vector2f BeastMonster::directionFollowPrince(sf::Vector2f princePos)
     else if (getposition().y > princePos.y && getposition().x < princePos.x)
         return UPRIGHT;
 
-    else if (getposition().y > princePos.y && getposition().x > princePos.x)
+    //else if (getposition().y > princePos.y && getposition().x > princePos.x)
         return UPLEFT;
 
 }

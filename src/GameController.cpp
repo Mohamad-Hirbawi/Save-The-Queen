@@ -43,33 +43,34 @@ void GameController::run() {
 	}
 
 }
+//
+//void GameController::updateView() 
+//{
+//	float playerPosX,
+//		playerPosY,
+//		viewX,
+//		viewY;
+//
+//	sf::View view = window.getView();
+//	playerPosX = viewX = m_board.getPrince()->getposition().x;
+//	playerPosY = viewY = m_board.getPrince()->getposition().y;
+//
+//	if (playerPosX > WINDOW_WIDTH - VIEWSIZE / 2)
+//		viewX = WINDOW_WIDTH - VIEWSIZE / 2;
+//	else if (playerPosX < VIEWSIZE / 2)
+//		viewX = VIEWSIZE / 2;
+//
+//	if (playerPosY < WINDOW_HEIGHT / 2)
+//		viewY = VIEWSIZE / 2;
+//	else if (playerPosY > WINDOW_HEIGHT - VIEWSIZE / 2)
+//		viewY = WINDOW_HEIGHT - VIEWSIZE / 2;
+//
+//	view.setSize(VIEWSIZE, VIEWSIZE);
+//	view.setCenter(viewX, viewY);
+//	window.setView(view);
+//	
+//}
 
-void GameController::updateView() 
-{
-	float playerPosX,
-		playerPosY,
-		viewX,
-		viewY;
-
-	sf::View view = window.getView();
-	playerPosX = viewX = m_board.getPrince()->getposition().x;
-	playerPosY = viewY = m_board.getPrince()->getposition().y;
-
-	if (playerPosX > WINDOW_WIDTH - VIEWSIZE / 2)
-		viewX = WINDOW_WIDTH - VIEWSIZE / 2;
-	else if (playerPosX < VIEWSIZE / 2)
-		viewX = VIEWSIZE / 2;
-
-	if (playerPosY < WINDOW_HEIGHT / 2)
-		viewY = VIEWSIZE / 2;
-	else if (playerPosY > WINDOW_HEIGHT - VIEWSIZE / 2)
-		viewY = WINDOW_HEIGHT - VIEWSIZE / 2;
-
-	view.setSize(VIEWSIZE, VIEWSIZE);
-	view.setCenter(viewX, viewY);
-	window.setView(view);
-	
-}
 void GameController::creatObject() 
 {
 	if (!m_pTexture.loadFromFile("Background1.jpg"))

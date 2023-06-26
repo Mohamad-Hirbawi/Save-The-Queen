@@ -19,7 +19,7 @@ public:
 private:
 	void infoFunc(sf::RenderWindow& window);
 
-	bool handleClick(const sf::Vector2f&, sf::RenderWindow&, int& i) const;
+	bool handleClick(const sf::Vector2f&, int& i) const;
 	void handleMove(const sf::Vector2f&);
 	sf::Text doHandleClick(sf::Text text, const sf::Vector2f& Location);
 	sf::Text drawInMenu(sf::Text text, std::string str, const float x, const float y);

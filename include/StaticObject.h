@@ -11,7 +11,7 @@ class StaticObject : public Object
 {
 public:
 	StaticObject (Toolbar_t symbol, sf::Vector2f position);
-	~StaticObject() {}
+	virtual ~StaticObject() {}
 	virtual void handleCollision(Object&, GameController&) {}
 
 
