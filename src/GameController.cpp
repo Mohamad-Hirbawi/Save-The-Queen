@@ -12,6 +12,8 @@ void GameController::run() {
 	m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
 	m_menu.activateMenu(window);
 	m_caption.resetartCaptions();
+	m_caption.restartLifeAndScore();
+	m_board.readLvlMap();
 	creatObject();
 	m_timer.restart();
 	m_view = window.getView();
@@ -203,7 +205,7 @@ void GameController::newLevel()
 		win();
 
 	else {
-		m_sound.playSound(winGameSound);
+		//m_sound.playSound(winGameSound);
 		printMsg("Next level");
 		m_caption.resetartCaptions();
 		creatObject();
@@ -230,7 +232,9 @@ void GameController::printMsg(std::string msg)
 void GameController::finishGame(std::string msg)
 {
 	printMsg(msg);
-	window.close();
+	m_board.clearBoard();
+	m_board.resetRead();
+	run();
 	m_finishGame = true;
 }
 

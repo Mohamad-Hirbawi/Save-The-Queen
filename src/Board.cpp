@@ -7,7 +7,6 @@ Board::Board()
 	if (!m_read.is_open()) {
 		throw std::runtime_error("Failed to open file");
 	}
-	readLvlMap();
 }
 
 
@@ -223,5 +222,6 @@ void Board::resetLevelMap()
 
 void Board::resetRead()
 {
-	m_read.seekg(0);
+	m_read.clear();
+	m_read.seekg(std::ios_base::beg);
 }
