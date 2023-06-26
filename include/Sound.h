@@ -16,20 +16,9 @@ public:
 	void playSound(const int &place);
 	void playMusic(const std::string fileName);
 	void stopMusic();
-
-	void setSound(const std::string fileName, Sounds_t soundEnum);
-
-	sf::SoundBuffer* getGameBuffer(Sounds_t bufferEnum);
-
+	void setSound(const std::string fileName, const int& place);
 	void loadGameBuffer(const std::string fileName);
-
-	///* Volume control. */
-	//void setSound(const std::string fileName, Sounds_t soundEnum);
-	//void setVolume();
-	//void incVolume();
-	//void decVolume();
-	//void muteVolume();
-
+	sf::SoundBuffer* getGameBuffer(const int& place);
 private:
 	std::vector<sf::Sound> m_sounds; // Stores the sounds of the game.
 	sf::Music m_music; // Used to stream music.
