@@ -32,7 +32,8 @@ public:
 
 	bool isDoorOpen()const;
 	void setDoorOpen();
-	void setPrinceCollisStair();
+	void setPrinceCollisStairUp();
+	void setPrinceCollisStairDown();
 	sf::Sprite& getIcon();
 	void dicreaseLifeBeast();
 	int getLifeBeast()const;
@@ -41,7 +42,8 @@ protected:
 	sf::Sprite m_icon;
 	bool m_open;
 	sf::Vector2f m_prevPos;
-	bool  m_princeCollisStair  = false;
+	bool  m_princeCollisStairUp  = false;
+	bool  m_princeCollisStairDown = false;
 	int m_beastLife = 3;
 
 

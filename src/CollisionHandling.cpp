@@ -176,9 +176,18 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
     void PrinceWithStair(Object& prince,
-        Object&, GameController&)
+        Object& stair, GameController&)
     {
-        prince.setPrinceCollisStair();
+
+        if (std::abs(prince.getposition().x - stair.getposition().x) <= 15)
+        {
+            if (prince.getposition().y - stair.getposition().y > -49)// long prince
+                prince.setPrinceCollisStairUp();
+            if (
+                prince.getposition().y - stair.getposition().y <100)// long stair
+                prince.setPrinceCollisStairDown();
+
+        }
     }
 
     void StairWithPrince(Object& stair,

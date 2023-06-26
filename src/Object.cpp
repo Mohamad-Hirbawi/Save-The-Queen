@@ -47,9 +47,14 @@ void Object::setDoorOpen()
 	m_open = true;
 }
 
-void Object::setPrinceCollisStair()
+void Object::setPrinceCollisStairUp()
 {
-	m_princeCollisStair = true;
+	m_princeCollisStairUp = true;
+}
+
+void Object::setPrinceCollisStairDown()
+{
+	m_princeCollisStairDown = true;
 }
 
 sf::Sprite& Object::getIcon() 
