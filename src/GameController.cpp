@@ -38,6 +38,7 @@ void GameController::run() {
 		}
 		if (m_caption.getTime() <= 0)		dead();
 
+
 		move(m_timer.restart());
 		checkCollis();
 		//updateView();
@@ -233,6 +234,7 @@ void GameController::finishGame(std::string msg)
 {
 	printMsg(msg);
 	m_board.clearBoard();
+	m_board.resetLevelMap();
 	m_board.resetRead();
 	run();
 	m_finishGame = true;

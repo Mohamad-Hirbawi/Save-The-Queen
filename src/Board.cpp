@@ -213,11 +213,7 @@ void Board::move(sf::Time deltaTime, GameController& game)
 
 void Board::resetLevelMap()
 {
-	for (int row = m_height - 1; row >= 0; row--)
-	{
-		m_map.pop_back();
-	}
-	m_map.clear();
+	m_map.resize(0);
 }
 
 void Board::resetRead()
