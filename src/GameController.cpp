@@ -9,7 +9,7 @@ GameController::GameController():m_finishGame(false)
 void GameController::run() {
 	m_finishGame = false;
 	//m_sound.playMusic("menuMusic.ogg");
-	//m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
+	m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
 	m_menu.activateMenu(window);
 	m_caption.resetartCaptions();
 	creatObject();
@@ -143,7 +143,7 @@ bool GameController::ifErased()
 	return m_board.getErased();
 }
 
-
+// we have a problem with MovingObject position without the prince;
 void GameController::dead(){
 	m_caption.dicreaseLife();
 	if (m_caption.getLife() > 0)
@@ -153,6 +153,7 @@ void GameController::dead(){
 		std::unique_ptr<Prince> help = std::make_unique<Prince>(PRINCE, m_board.getiInitailPrincePos());
 		m_board.getPrince() = std::move(help);
 		m_board.getBullet().clear();
+		
 
 	}
 	else		losing();
@@ -181,7 +182,10 @@ bool GameController::chekCoin() {
 
 	return m_caption.checkEmptyCoin();
 }
+void GameController::playSound(const int& place) {
 
+	m_sound.playSound(place);
+}
 
 void GameController::creatBullet(sf::Vector2f direction, Toolbar_t type)
 {
@@ -198,6 +202,7 @@ void GameController::newLevel()
 		win();
 
 	else {
+		m_sound.playSound(winGameSound);
 		printMsg("Next level");
 		m_caption.resetartCaptions();
 		creatObject();
@@ -230,6 +235,7 @@ void GameController::finishGame(std::string msg)
 
 void GameController::win()
 {
+	m_sound.playSound(GameWin);
 	finishGame("You win");
 }
 void GameController::creatKey(sf::Vector2f posotion)
