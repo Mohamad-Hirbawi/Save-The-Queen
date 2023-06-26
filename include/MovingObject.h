@@ -5,8 +5,7 @@ class MovingObject :public Object
 {
 public:
 	MovingObject(Toolbar_t symbol, sf::Vector2f position);
-
-	//void moveToPrevPos();
+	~MovingObject() {}
 
 	virtual void move(sf::Time deltaTime, sf::Vector2f, GameController& game) = 0;
 	virtual void handleCollision(Object&, GameController&) {}

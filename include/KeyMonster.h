@@ -6,6 +6,7 @@ class KeyMonster : public Monster
 {
 public:
 	KeyMonster(Toolbar_t symbol, sf::Vector2f position);
+	~KeyMonster() {}
 	virtual void move(sf::Time deltaTime, sf::Vector2f,GameController& game)override;
 
 private:

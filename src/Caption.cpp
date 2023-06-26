@@ -12,7 +12,8 @@ void Caption::startCaptions()
 	sf::Text m_helpText;
 	for (int i = 1; i <= STRCAPTIONARR.size(); i++)
 	{
-		m_helpText = drawInCaption(m_helpText, WINDOW_WIDTH * 0.85, WINDOW_HEIGHT * 0.1 *i);
+		m_helpText = drawInCaption(m_helpText, float (WINDOW_WIDTH * 0.85),
+			float(WINDOW_HEIGHT * 0.1 *i));
 		m_text.emplace_back(m_helpText);
 	}
 }
