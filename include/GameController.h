@@ -7,6 +7,8 @@
 #include "Bullet.h"
 #include <SFML/Graphics.hpp>
 #include "CollisionHandling.h"
+#include <thread>
+#include <chrono>
 
 
 class Bullet;
@@ -31,6 +33,7 @@ public:
 	void increaseBullet();
 	void dicreaseCoin();
 	bool chekCoin();
+	void playSound(const int& place);
 	bool haveKey();
 	bool isLosing();
 	bool collide(Object&, Object&);

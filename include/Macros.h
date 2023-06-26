@@ -43,7 +43,15 @@ enum  Toolbar_t
 	OPENDOOR, GIFTBULLET ,BULLET, BEASTMONSTER ,QUEEN, KEY, GATE ,STATICS  ,NONE
 
 };
+enum Sounds_t
+{
+	GameWin, TC,GiftSound, keyDrop, gateOpen, BeastMonsterDead, fireTouch, winGameSound
+};
 
+const std::vector<std::string> soundVec = {
+	"GameWin.ogg", "TC"
+
+};
 // for loadFromFile and emplace_back Texture
 const std::vector<std::string> strTexture = { "prince.png", "wall.png","Stair.png","coin.png","KeyMonster.png",
 "BallMonster.png" ,"IncreasTime.png" ,"addLife.png","door.png","openDoor.png",

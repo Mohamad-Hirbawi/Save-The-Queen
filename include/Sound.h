@@ -13,9 +13,15 @@ public:
 	Sound();
 
 	/* Functions to play/stop music/sound. */
-	//void playSound(int place);
+	void playSound(const int &place);
 	void playMusic(const std::string fileName);
-	//void stopMusic();
+	void stopMusic();
+
+	void setSound(const std::string fileName, Sounds_t soundEnum);
+
+	sf::SoundBuffer* getGameBuffer(Sounds_t bufferEnum);
+
+	void loadGameBuffer(const std::string fileName);
 
 	///* Volume control. */
 	//void setSound(const std::string fileName, Sounds_t soundEnum);
@@ -29,4 +35,5 @@ private:
 	sf::Music m_music; // Used to stream music.
 	unsigned int m_volume; // For volume control.
 	unsigned int m_prevVolume; // For volume control.
+	std::vector<sf::SoundBuffer> m_gameBuffers;
 };

@@ -74,6 +74,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void KeyMonsterWithBullet (Object& keyMonster,
         Object& bullet, GameController& game)
     {
+        game.playSound(fireTouch);
         game.creatKey(keyMonster.getposition());
         game.eraseObject(bullet, BULLET);
         game.eraseObject(keyMonster, KEYMONSTER);
@@ -87,6 +88,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void BallMonsterWithBullet(Object& ballMonster,
         Object& bullet, GameController& game)
     {
+        game.playSound(fireTouch);
         game.eraseObject(bullet, BULLET);
         game.eraseObject(ballMonster, BALLMONSTER);
     } 
@@ -102,7 +104,10 @@ namespace // anonymous namespace — the standard way to make function "static"
         game.eraseObject(bullet, BULLET);
         beastMonster.dicreaseLifeBeast();
         if (beastMonster.getLifeBeast() == 0)
+        {
+            game.playSound(BeastMonsterDead);
             game.eraseObject(beastMonster, BEASTMONSTER);
+        }
     } 
     void BulletWithBeastMonster(Object& bullet,
         Object& beastMonster, GameController& game)
@@ -156,6 +161,7 @@ namespace // anonymous namespace — the standard way to make function "static"
             return;
         if (game.haveKey())
         {
+            game.playSound(gateOpen);
             door.getIcon().setTexture(*Textures::instance().getIcon(OPENDOOR));
             door.setDoorOpen();
         }
@@ -184,6 +190,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void PrinceWithCoin(Object&,
         Object& coin, GameController& game) 
     { 
+        game.playSound(TC);
         game.dicreaseCoin();
         game.eraseObject(coin, STATICS);
         game.increaseScore(EATCOIN);
@@ -198,6 +205,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void PrinceWithGiftBuleet(Object&,
         Object& giftBullet, GameController& game)
     {
+        game.playSound(GiftSound);
         game.eraseObject(giftBullet, STATICS);
         game.increaseBullet();
     }
@@ -211,6 +219,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void PrinceWithGiftAddLife(Object&,
         Object& giftlife, GameController& game)
     {
+        game.playSound(GiftSound);
         game.eraseObject(giftlife, STATICS);
         game.addLife();
     }
@@ -224,6 +233,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void PrinceWithGiftIncreasingTime(Object&,
         Object& giftTime, GameController& game)
     {
+        game.playSound(GiftSound);
         game.eraseObject(giftTime, STATICS);
         game.increaseTime();
     }
@@ -231,12 +241,14 @@ namespace // anonymous namespace — the standard way to make function "static"
     void GiftIncreasingTimeWithPrince(Object& giftTime,
         Object& prince, GameController& game)
     {
+
         PrinceWithGiftIncreasingTime(prince, giftTime, game);
     }
 
     void PrinceWithKey(Object&,
         Object& key, GameController& game)
     {
+        game.playSound(keyDrop);
         game.eraseObject(key, STATICS);
         game.increaseKey();
     }

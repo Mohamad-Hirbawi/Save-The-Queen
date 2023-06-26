@@ -2,7 +2,26 @@
 
 Sound::Sound()
 {
-	/* List of sounds. */
+
+	loadGameBuffer("GameWin.ogg");
+	loadGameBuffer("TC.ogg");
+	loadGameBuffer("GiftSound.ogg");
+	loadGameBuffer("keyDrop.ogg");
+	loadGameBuffer("gateOpen.ogg");
+	loadGameBuffer("BeastMonsterDead.ogg");
+	loadGameBuffer("fireTouch.ogg");
+	loadGameBuffer("winGameSound.ogg");
+
+	
+	setSound("GameWin.ogg", GameWin);
+	setSound("TC.ogg", TC);
+	setSound("GiftSound.ogg", GiftSound);
+	setSound("keyDrop.ogg", keyDrop);
+	setSound("gateOpen.ogg", gateOpen);
+	setSound("BeastMonsterDead.ogg", BeastMonsterDead);
+	setSound("fireTouch.ogg", fireTouch);
+	setSound("winGameSound.ogg", winGameSound);
+
 	//setSound("bumpIntoWall.ogg", bumpIntoWall);
 	//setSound("keyLoot.ogg", keyLoot);
 	//setSound("winLevel.ogg", winLevelSound);
@@ -19,7 +38,6 @@ Sound::Sound()
 	//setSound("killElvesSound.ogg", killElvesSound);
 	//setSound("collectGiftSound.ogg", collectGiftSound);
 	//setSound("winGameSound.ogg", winGameSound);
-
 	/* Volume initiation. */
 	//this->m_volume = defaultVol;
 	//setVolume();
@@ -31,6 +49,11 @@ Sound::Sound()
 //	this->m_sounds[place].play();
 //}
 
+void Sound::playSound(const int &place)
+{
+	m_sounds[place].play();
+}
+
 /* Plays the music in a loop. */
 void Sound::playMusic(const std::string fileName)
 {
@@ -38,6 +61,10 @@ void Sound::playMusic(const std::string fileName)
 		throw std::runtime_error("failed to open file for sound");
 	this->m_music.setLoop(true);
 	this->m_music.play();
+}
+
+void Sound::stopMusic()
+{
 }
 
 ///* Stops the music. */
@@ -82,6 +109,27 @@ void Sound::playMusic(const std::string fileName)
 //	this->setVolume();
 //}
 //
+void Sound::setSound(const std::string fileName, Sounds_t soundEnum)
+{
+	sf::Sound tempSound;
+	sf::SoundBuffer* tempBuffer = getGameBuffer(soundEnum);
+	tempSound.setBuffer(*tempBuffer);
+	this->m_sounds.push_back(tempSound);
+}
+
+sf::SoundBuffer* Sound::getGameBuffer(Sounds_t bufferEnum)
+{
+	return &(m_gameBuffers[bufferEnum]);
+}
+
+void Sound::loadGameBuffer(const std::string fileName)
+{
+	sf::SoundBuffer temp;
+	temp.loadFromFile(fileName);
+	m_gameBuffers.push_back(temp);
+}
+
+
 ///* Function to mute and unmute volume. */
 //void Sound::muteVolume()
 //{
