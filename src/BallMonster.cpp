@@ -46,5 +46,5 @@ void BallMonster::move(sf::Time deltaTime, sf::Vector2f princePos, GameControlle
 
     }
     else
-        m_icon.move(m_dir * MOVEMENTSPEED * deltaTime.asSeconds());
+        m_icon.move(m_dir * MONSTERSPEED * deltaTime.asSeconds());
 }

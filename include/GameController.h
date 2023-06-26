@@ -35,13 +35,13 @@ public:
 	bool chekCoin();
 	void playSound(const int& place);
 	bool haveKey();
-	bool isLosing();
+	bool isFinished();
 	bool collide(Object&, Object&);
 
 private:
 	void creatObject();
 	void setLastDirection(sf::Vector2f direction);
-	void updateView();
+	//void updateView();
 	void checkCollis();
 	void losing();
 	bool isStaticObj(const char& c);
@@ -78,7 +78,7 @@ void for_each_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 begin2, FwdIt2 end2,
 		for (auto second = begin2; second != end2; ++second)
 		{
 			fn(*begin1, *second);
-			if (game.ifErased() || game.isLosing())
+			if (game.ifErased() || game.isFinished())
 				return;
 		}
 }
@@ -90,7 +90,7 @@ void for_one_pair(FwdIt1 begin1, FwdIt1 end1, FwdIt2 second,
 	for (; begin1 != end1; ++begin1)
 	{
 		fn(*begin1, second);
-		if (game.ifErased()||game.isLosing())
+		if (game.ifErased()||game.isFinished())
 			return;
 	}
 }

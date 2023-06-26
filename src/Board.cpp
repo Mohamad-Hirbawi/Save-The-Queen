@@ -1,7 +1,7 @@
 ﻿#include "Board.h"
 #include <GameController.h>
 
-Board::Board()
+Board::Board():m_erased(false),m_height(0),m_width(0),m_typeBullet(BALLMONSTER)
 {
 	m_read.open("board.txt", std::ios_base::in);
 	if (!m_read.is_open()) {

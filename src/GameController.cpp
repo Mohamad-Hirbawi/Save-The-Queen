@@ -172,7 +172,7 @@ void GameController::losing()
 bool GameController::haveKey()
 {return m_caption.haveKey();}
 
-bool GameController::isLosing()
+bool GameController::isFinished()
 {return m_finishGame;}
 
 void GameController::increaseBullet()
