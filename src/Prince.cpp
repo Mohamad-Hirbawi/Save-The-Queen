@@ -48,15 +48,6 @@ void Prince::move(sf::Time deltaTime, sf::Vector2f, GameController& )
             m_dirPrince = dir;
         }
 
-        //else if (dir == DOWN && playerRect.intersects(m_currentStair->getGlobalBounds())) {
-
-        //    // التحقق من وجود السلم أسفل اللاعب
-        //    if (playerRect.intersects(m_currentStair->getGlobalBounds())) {
-        //        // النزول على السلم
-        //        m_icon.move(dir * MOVEMENTSPEED * deltaTime.asSeconds());
-        //        m_dirPrince = dir;
-        //    }
-        //}
     }
 
     m_princeCollisStairUp = false;

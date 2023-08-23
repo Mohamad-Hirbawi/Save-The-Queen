@@ -12,13 +12,13 @@ public:
 	Caption();
 	void resetartCaptions();
 	void drawCaptions(sf::RenderWindow& window);
-	void increaseScore(const int number);
+	void increaseScore(const int& number);
 	void UpdateNumCoin(const int& number);
 	void updateTime(float time);
 	void dicreaseLife();
 	void dicreaseBullet();
 	void increaseLife();
-	void newLevel(const int time);
+	void newLevel(const int &time);
 	void increaseKey();
 	bool checkEmptyCoin();
 

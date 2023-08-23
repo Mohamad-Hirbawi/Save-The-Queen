@@ -9,7 +9,7 @@ GameController::GameController():m_finishGame(false)
 void GameController::run() {
 	m_finishGame = false;
 	//m_sound.playMusic("menuMusic.ogg");
-	m_sound.playMusic("Luchando En El Peligro 2.0.ogg");
+	m_sound.playMusic("menuMusic.ogg");
 	m_menu.activateMenu(window);
 	m_caption.resetartCaptions();
 	m_caption.restartLifeAndScore();
@@ -41,42 +41,14 @@ void GameController::run() {
 
 		move(m_timer.restart());
 		checkCollis();
-		//updateView();
 		window.display();
 	}
 
 }
-//
-//void GameController::updateView() 
-//{
-//	float playerPosX,
-//		playerPosY,
-//		viewX,
-//		viewY;
-//
-//	sf::View view = window.getView();
-//	playerPosX = viewX = m_board.getPrince()->getposition().x;
-//	playerPosY = viewY = m_board.getPrince()->getposition().y;
-//
-//	if (playerPosX > WINDOW_WIDTH - VIEWSIZE / 2)
-//		viewX = WINDOW_WIDTH - VIEWSIZE / 2;
-//	else if (playerPosX < VIEWSIZE / 2)
-//		viewX = VIEWSIZE / 2;
-//
-//	if (playerPosY < WINDOW_HEIGHT / 2)
-//		viewY = VIEWSIZE / 2;
-//	else if (playerPosY > WINDOW_HEIGHT - VIEWSIZE / 2)
-//		viewY = WINDOW_HEIGHT - VIEWSIZE / 2;
-//
-//	view.setSize(VIEWSIZE, VIEWSIZE);
-//	view.setCenter(viewX, viewY);
-//	window.setView(view);
-//	
-//}
 
 void GameController::creatObject() 
 {
-	if (!m_pTexture.loadFromFile("Background1.jpg"))
+	if (!m_pTexture.loadFromFile("Background1.png"))
 		throw std::runtime_error("Failed to load the texture");
 	m_gameWallp.setTexture(m_pTexture);
 	m_gameWallp.setScale(0.5, 0.5);
@@ -117,11 +89,12 @@ void GameController::move(sf::Time deltaTime)
 
 	m_lastPrinceDirection = m_board.getPrince()->m_dirPrince;
 
-	//m_board.m_queen->move(deltaTime, m_board.m_prince.get()->getposition());
+	if(m_board.getQueen())
+		m_board.getQueen()->move(deltaTime, m_board.getPrince().get()->getposition(), *this);
 	m_board.move(deltaTime, *this);
 }
 
-void GameController::increaseScore(const int number)
+void GameController::increaseScore(const int& number)
 {m_caption.increaseScore(number);}
 
 void GameController::increaseTime()
@@ -206,7 +179,6 @@ void GameController::newLevel()
 		win();
 
 	else {
-		//m_sound.playSound(winGameSound);
 		printMsg("Next level");
 		m_caption.resetartCaptions();
 		creatObject();
@@ -272,6 +244,9 @@ void GameController::checkCollis()
 	collideAndProcessOnePair(m_board.getBallMonster(), m_board.getPrince().get(), *this);
 	collideAndProcessOnePair(m_board.getBeastMonster(), m_board.getPrince().get(), *this);
 	collideAndProcessOnePair(m_board.getBullet(), m_board.getPrince().get(), *this);
+	if(m_board.getQueen())
+		collideAndProcessOnePair(m_board.getStatic(), m_board.getQueen().get(), *this);
+	
 
 
 }

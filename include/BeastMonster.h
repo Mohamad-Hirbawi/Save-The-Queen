@@ -7,9 +7,9 @@ class BeastMonster : public Monster
 public:
 	BeastMonster(Toolbar_t symbol, sf::Vector2f position);
 	~BeastMonster() {}
-	sf::Vector2f directionFollowPrince(sf::Vector2f princePos);
 
-	sf::Vector2f getDirection(sf::Vector2f princePos);
+	sf::Vector2f directionFollowPrince(const sf::Vector2f& princePos);
+	sf::Vector2f getDirection(const sf::Vector2f& princePos);
 
 	virtual void move(sf::Time deltaTime, sf::Vector2f, GameController& game)override ;
 	int m_lifeBeast;

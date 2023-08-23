@@ -22,7 +22,7 @@ private:
 	bool handleClick(const sf::Vector2f&, int& i) const;
 	void handleMove(const sf::Vector2f&);
 	sf::Text doHandleClick(sf::Text text, const sf::Vector2f& Location);
-	sf::Text drawInMenu(sf::Text text, std::string str, const float x, const float y);
+	sf::Text drawInMenu(sf::Text text, std::string str, const float& x, const float &y);
 	sf::Font m_font;
 
 	std::vector<sf::Text> m_text;

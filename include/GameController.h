@@ -17,7 +17,7 @@ class GameController
 public:
 	GameController();
 	void run();
-	void increaseScore(const int number);
+	void increaseScore(const int& number);
 	void increaseTime();
 	void increaseKey();
 	void addLife();

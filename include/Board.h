@@ -69,7 +69,7 @@ private:
 	std::vector<std::unique_ptr<KeyMonster>> m_keyMonster;
 	std::vector <std::unique_ptr<Bullet>> m_bullet; 
 	std::vector<std::unique_ptr<BeastMonster>> m_beastMonster;
-	std::unique_ptr<Queen> m_queen;
+	std::unique_ptr<Queen> m_queen = nullptr;
 	std::unique_ptr<Prince> m_prince;
 };
 

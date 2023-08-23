@@ -11,7 +11,7 @@ BallMonster::BallMonster(Toolbar_t symbol, sf::Vector2f position)
 }
 
 
-sf::Vector2f BallMonster::getDirection(sf::Vector2f princePos)
+sf::Vector2f BallMonster::getDirection(const sf::Vector2f &princePos)
 {
     if (getposition().y - princePos.y >= -20 && getposition().y - princePos.y <= 20)// func(sameRow)
         return STANDIGSTIL;

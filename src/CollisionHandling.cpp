@@ -154,6 +154,21 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithWall(prince, wall, game);
     }
 
+
+    void queenWithWall(Object& queen,
+        Object&, GameController&)
+    {
+        queen.moveToPrevPos();
+    }
+
+    void wallWithqueen(Object& wall,
+        Object&queen, GameController&game)
+    {
+        queenWithWall(queen, wall, game);
+
+    }
+
+
     void PrinceWithDoor(Object& prince,
         Object& door, GameController& game)
     {
@@ -281,6 +296,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         PrinceWithGate(prince, gate, game);
     }
 
+
+ 
     using HitFunctionPtr = std::function<void(Object&, Object& , GameController &)>;
     // typedef void (*HitFunctionPtr)(Object&, Object&);
     using Key = std::pair<std::type_index, std::type_index>;
@@ -290,6 +307,9 @@ namespace // anonymous namespace — the standard way to make function "static"
     HitMap initializeCollisionMap()/////////////
     {
         HitMap phm;
+        phm[Key(typeid(Queen), typeid(Wall))] = &queenWithWall;
+        phm[Key(typeid(Wall), typeid(Queen))] = &wallWithqueen;
+
         phm[Key(typeid(KeyMonster), typeid(Wall))] = &monsterWithWall;
         phm[Key(typeid(Wall), typeid(KeyMonster))] = &WallWithMonster;
         phm[Key(typeid(KeyMonster), typeid(Door))] = &MonsterWithDoor;
@@ -338,9 +358,10 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Door), typeid(Prince))] = &DoorWithPrince;
         phm[Key(typeid(Prince), typeid(Stair))] = &PrinceWithStair;
         phm[Key(typeid(Stair), typeid(Prince))] = &StairWithPrince;
-        
         phm[Key(typeid(Gate), typeid(Prince))] = &GateWithPrince;
         phm[Key(typeid(Prince), typeid(Gate))] = &PrinceWithGate;
+        
+    
         
 
         phm[Key(typeid(Prince), typeid(Coin))] = &PrinceWithCoin;
@@ -354,6 +375,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(IncreasingTime), typeid(Prince))] = &GiftIncreasingTimeWithPrince;
         phm[Key(typeid(Prince), typeid(Opener))] = &PrinceWithKey;
         phm[Key(typeid(Opener), typeid(Prince))] = &KeyWithPrince;
+        
+        
+     
 
         
 

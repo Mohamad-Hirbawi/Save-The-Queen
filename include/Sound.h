@@ -11,7 +11,7 @@ class Sound
 public:
 	/* Ctor. */
 	Sound();
-
+	~Sound() {}
 	/* Functions to play/stop music/sound. */
 	void playSound(const int &place);
 	void playMusic(const std::string fileName);

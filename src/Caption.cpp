@@ -21,7 +21,7 @@ void Caption::startCaptions()
 void Caption::resetartCaptions()
 {
 	intCaption [Keys] = 0;
-	intCaption[BULLETS]= 0;
+	intCaption[BULLETS]= 1;
 	intCaption[NUMCOIN]= 0;
 	newLevel(TIMEOFGAME);
 }
@@ -36,7 +36,7 @@ void Caption::drawCaptions(sf::RenderWindow& window)
 	}
 }
 
-void Caption::increaseScore(const int number)
+void Caption::increaseScore(const int& number)
 {
 	intCaption [SCORE]+= number;
 }
@@ -62,6 +62,9 @@ void Caption::updateTime(float time)
 
 void Caption::dicreaseLife()
 {
+	if (intCaption[BULLETS] <= 0)
+		intCaption[BULLETS] = 1;
+
 	intCaption [LIFE]--;
 }
 
@@ -138,7 +141,7 @@ bool Caption::checkEmptyCoin()
 	return false;
 }
 
-void Caption::newLevel(const int time)
+void Caption::newLevel(const int &time)
 {
 	intCaption[TIME] = time;
 	m_startTime = std::chrono::steady_clock::now();

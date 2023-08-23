@@ -14,7 +14,7 @@ Menu::Menu() :m_index(0)
 	m_helpText = drawInMenu(m_helpText, "Back", WINDOW_WIDTH * 0.10, WINDOW_HEIGHT * 0.85);
 	m_text.emplace_back(m_helpText);
 
-	loadBackGroaund(m_infoTexture, m_infosprite, "conan.jpg");
+	loadBackGroaund(m_infoTexture, m_infosprite, "Bakground.jpg");
 	loadBackGroaund(m_pTexture, m_startWallp, "Background.jpg");
 }
 
@@ -22,9 +22,10 @@ void Menu::loadBackGroaund(sf::Texture& Texture, sf::Sprite &sprite ,const std::
 	Texture.loadFromFile(str);
 	sprite.setTexture(Texture);
 	sprite.setScale(0.5, 0.5);
+	
 }
 
-sf::Text Menu::drawInMenu(sf::Text text, std::string str, const float x, const float y)
+sf::Text Menu::drawInMenu(sf::Text text, std::string str, const float &x, const float &y)
 {
 	text.setFont(m_font);
 	text.setFillColor(sf::Color::Cyan);
@@ -83,8 +84,8 @@ void Menu::infoFunc(sf::RenderWindow& window) {
 	window.draw(m_text[BACK]);
 	sf::Text text;
 	text.setFont(m_font);
-	text.setFillColor(sf::Color::Black);
-	text.setCharacterSize(REG_CHAR_SIZE_INFO);
+	text.setFillColor(sf::Color::White);
+	text.setCharacterSize(REG_CHAR_SIZE_INFO /2);
 	text.setPosition({ WINDOW_WIDTH * 0.1, WINDOW_HEIGHT * 0.1 });
 	text.setString(INFOSTR);
 	window.draw(text);

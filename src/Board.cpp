@@ -50,8 +50,10 @@ void Board::drawBoard(sf::RenderWindow& window)
 	if (!m_prince)
 		throw std::runtime_error("You can't play without prince");
 	m_prince->draw(window);
-	//m_queen->draw(window);
+	if (m_queen)
+			m_queen->draw(window);
 
+	m_prince->draw(window);
 	drawObjects(m_keyMonster, window);
 	drawObjects(m_ballMonster, window);
 	drawObjects(m_bullet, window);
@@ -172,6 +174,7 @@ bool Board::erase(Object& movingObject, Toolbar_t typeVector)
 void Board::clearBoard()
 {
 	m_prince.reset();
+	m_queen.reset();
 	m_ballMonster.clear();
 	m_beastMonster.clear();
 	m_keyMonster.clear();

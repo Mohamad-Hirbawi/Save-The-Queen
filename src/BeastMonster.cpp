@@ -8,7 +8,7 @@ BeastMonster::BeastMonster(Toolbar_t symbol, sf::Vector2f position)
     m_lifeBeast = 3;
 
 }
-sf::Vector2f BeastMonster::directionFollowPrince(sf::Vector2f princePos)
+sf::Vector2f BeastMonster::directionFollowPrince(const sf::Vector2f &princePos)
 {
     
     if (getposition().x < princePos.x && std::abs(getposition().y - princePos.y) <= 15)
@@ -30,7 +30,7 @@ sf::Vector2f BeastMonster::directionFollowPrince(sf::Vector2f princePos)
 
 }
 
-sf::Vector2f BeastMonster::getDirection(sf::Vector2f princePos)
+sf::Vector2f BeastMonster::getDirection(const sf::Vector2f &princePos)
 {
     if(std::abs( princePos.x - getposition().x) < 500 )
          return directionFollowPrince(princePos); 
